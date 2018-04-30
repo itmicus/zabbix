@@ -33,18 +33,21 @@ __doc__ = """This script is part of Template_Website_metrics.xml Zabbix Monitori
 
             Install: 
 
-            1. Install requirements Python3 modules:
-            pip install python-dateutil tldextract
+            1. Install requirements Python modules:
+            pip install -r requirements.txt
 
             2. Copy website_settings.example.py to website_settings.py and make proper changes on it
+
+            TODO:
+            1. pyOpenSSL brokes sock.getpeercert() and --testssl not work
 
             """
 
 
 # this code need to add cert properties for SSL connection inside response
-HTTPResponse = requests.packages.urllib3.response.HTTPResponse
-orig_HTTPResponse__init__ = HTTPResponse.__init__
+HTTPResponse = requests.packages.urllib3.response.HTTPResponse #python2/3
 
+orig_HTTPResponse__init__ = HTTPResponse.__init__
 
 def new_HTTPResponse__init__(self, *args, **kwargs):
     orig_HTTPResponse__init__(self, *args, **kwargs)
@@ -52,7 +55,6 @@ def new_HTTPResponse__init__(self, *args, **kwargs):
         self.peercert = self._connection.sock.getpeercert()
     except AttributeError:
         pass
-
 
 HTTPResponse.__init__ = new_HTTPResponse__init__
 
