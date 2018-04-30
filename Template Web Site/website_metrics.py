@@ -1,26 +1,25 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 import argparse
 import json
 import logging
+import requests
 import socket
 import ssl
 import subprocess
 import sys
 import time
+import tldextract
 from base64 import b64encode
 from datetime import datetime
-
-import requests
 from dateutil import parser, relativedelta
-
-import tldextract
 
 try:
     from urllib.parse import urlparse #python3
 except ImportError:
      from urlparse import urlparse #python2
 
+# custom settings
 import website_settings
 
 __author__ = "Pavel Kuznetsov - https://itmicus.ru"
