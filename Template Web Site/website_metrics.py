@@ -9,10 +9,14 @@ import subprocess
 import sys
 import time
 from base64 import b64encode
-from datetime import datetime, timezone
+from datetime import datetime
 
 import requests
 from dateutil import parser, relativedelta
+
+import tldextract
+
+from urllib.parse import urlparse
 
 import website_settings
 
@@ -120,12 +124,10 @@ class WebSiteCheck:
             self.session.proxies.update(self.proxies)
 
     def discovery_domain(self, url):
-        import tldextract
         domain_name = tldextract.extract(url)
         return domain_name.registered_domain
 
     def discovery_ssl(self, url):
-        from urllib.parse import urlparse
         o = urlparse(url)
         hostname = o.hostname
         port = 443
@@ -157,7 +159,7 @@ class WebSiteCheck:
 
         if response.peercert is not None:
             expire_date = parser.parse(response.peercert['notAfter'])
-            expire_in = expire_date - datetime.now(timezone.utc)
+            expire_in = expire_date - datetime.utcnow()
             days_to_expire = 0
             if expire_in.days > 0:
                 days_to_expire = expire_in.days
@@ -202,7 +204,7 @@ class WebSiteCheck:
 
         notBefore = parser.parse(domain_info['created_on'])
         expire_date = parser.parse(domain_info['expires_on'])
-        expire_in = expire_date - datetime.now(timezone.utc)
+        expire_in = expire_date - datetime.utcnow()
         days_to_expire = 0
         if expire_in.days > 0:
             days_to_expire = expire_in.days
@@ -223,7 +225,6 @@ class WebSiteCheck:
         headers = {'User-Agent': user_agent}
         phrase_status = 0
         try:
-
             response = self.session.get(
                 url, headers=headers, timeout=(timeout_value, timeout_value))
             time = round(response.elapsed.total_seconds(), 2)
@@ -271,7 +272,6 @@ def output_json_lld(lld_name, objects):
 
 def send_data(hostname, data):
     logging.debug('Send data: ' + str(data))
-
     result = ''
     if hostname is not None and hostname != '':
         out = zbx_sender(hostname, data)
