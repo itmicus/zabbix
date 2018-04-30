@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.4</version>
-    <date>2018-04-14T08:03:55Z</date>
+    <date>2018-04-30T04:12:54Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -393,18 +393,7 @@
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <filter>
-                        <evaltype>0</evaltype>
-                        <formula/>
-                        <conditions>
-                            <condition>
-                                <macro>{#WEBSITE_METRICS_LLD_DOMAIN_NAME}</macro>
-                                <value/>
-                                <operator>8</operator>
-                                <formulaid>A</formulaid>
-                            </condition>
-                        </conditions>
-                    </filter>
+                    <filter/>
                     <lifetime>1w</lifetime>
                     <description/>
                     <item_prototypes>
@@ -797,18 +786,7 @@
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <filter>
-                        <evaltype>0</evaltype>
-                        <formula/>
-                        <conditions>
-                            <condition>
-                                <macro>{#WEBSITE_METRICS_LLD_SSL_URL}</macro>
-                                <value/>
-                                <operator>8</operator>
-                                <formulaid>A</formulaid>
-                            </condition>
-                        </conditions>
-                    </filter>
+                    <filter/>
                     <lifetime>1w</lifetime>
                     <description/>
                     <item_prototypes>
