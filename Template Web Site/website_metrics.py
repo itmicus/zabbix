@@ -16,7 +16,10 @@ from dateutil import parser, relativedelta
 
 import tldextract
 
-from urllib.parse import urlparse
+try:
+    from urllib.parse import urlparse #python3
+except ImportError:
+     from urlparse import urlparse #python2
 
 import website_settings
 
