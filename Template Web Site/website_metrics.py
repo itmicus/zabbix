@@ -1,19 +1,25 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 import argparse
 import json
 import logging
+import requests
 import socket
 import ssl
 import subprocess
 import sys
 import time
+import tldextract
 from base64 import b64encode
-from datetime import datetime, timezone
-
-import requests
+from datetime import datetime
 from dateutil import parser, relativedelta
 
+try:
+    from urllib.parse import urlparse #python3
+except ImportError:
+     from urlparse import urlparse #python2
+
+# custom settings
 import website_settings
 
 __author__ = "Pavel Kuznetsov - https://itmicus.ru"
@@ -27,18 +33,21 @@ __doc__ = """This script is part of Template_Website_metrics.xml Zabbix Monitori
 
             Install: 
 
-            1. Install requirements Python3 modules:
-            pip install python-dateutil tldextract
+            1. Install requirements Python modules:
+            pip install -r requirements.txt
 
             2. Copy website_settings.example.py to website_settings.py and make proper changes on it
+
+            TODO:
+            1. pyOpenSSL brokes sock.getpeercert() and --testssl not work
 
             """
 
 
 # this code need to add cert properties for SSL connection inside response
-HTTPResponse = requests.packages.urllib3.response.HTTPResponse
-orig_HTTPResponse__init__ = HTTPResponse.__init__
+HTTPResponse = requests.packages.urllib3.response.HTTPResponse #python2/3
 
+orig_HTTPResponse__init__ = HTTPResponse.__init__
 
 def new_HTTPResponse__init__(self, *args, **kwargs):
     orig_HTTPResponse__init__(self, *args, **kwargs)
@@ -46,7 +55,6 @@ def new_HTTPResponse__init__(self, *args, **kwargs):
         self.peercert = self._connection.sock.getpeercert()
     except AttributeError:
         pass
-
 
 HTTPResponse.__init__ = new_HTTPResponse__init__
 
@@ -120,12 +128,10 @@ class WebSiteCheck:
             self.session.proxies.update(self.proxies)
 
     def discovery_domain(self, url):
-        import tldextract
         domain_name = tldextract.extract(url)
         return domain_name.registered_domain
 
     def discovery_ssl(self, url):
-        from urllib.parse import urlparse
         o = urlparse(url)
         hostname = o.hostname
         port = 443
@@ -149,7 +155,7 @@ class WebSiteCheck:
 
     def ssl_get_status(self, url):
         logging.debug('ssl_get_status:'+str(url))
-        response = self.session.get(url, verify=True, timeout=(5, 5))
+        response = self.session.get(url, verify=True, timeout=(5, 10))
         logging.debug('Response:'+str(response))
         if hasattr(response, 'peercert') is False:
             logging.debug('Field peercert not found!')
@@ -157,7 +163,9 @@ class WebSiteCheck:
 
         if response.peercert is not None:
             expire_date = parser.parse(response.peercert['notAfter'])
-            expire_in = expire_date - datetime.now(timezone.utc)
+            logging.debug('Expire date: '+str(expire_date.replace(tzinfo=None)))
+            expire_in = expire_date.replace(tzinfo=None) - datetime.utcnow().replace(tzinfo=None)
+            logging.debug('Expire in: '+str(expire_in))
             days_to_expire = 0
             if expire_in.days > 0:
                 days_to_expire = expire_in.days
@@ -202,7 +210,7 @@ class WebSiteCheck:
 
         notBefore = parser.parse(domain_info['created_on'])
         expire_date = parser.parse(domain_info['expires_on'])
-        expire_in = expire_date - datetime.now(timezone.utc)
+        expire_in = expire_date - datetime.utcnow()
         days_to_expire = 0
         if expire_in.days > 0:
             days_to_expire = expire_in.days
@@ -223,7 +231,6 @@ class WebSiteCheck:
         headers = {'User-Agent': user_agent}
         phrase_status = 0
         try:
-
             response = self.session.get(
                 url, headers=headers, timeout=(timeout_value, timeout_value))
             time = round(response.elapsed.total_seconds(), 2)
@@ -271,7 +278,6 @@ def output_json_lld(lld_name, objects):
 
 def send_data(hostname, data):
     logging.debug('Send data: ' + str(data))
-
     result = ''
     if hostname is not None and hostname != '':
         out = zbx_sender(hostname, data)
@@ -432,3 +438,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
