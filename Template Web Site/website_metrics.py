@@ -186,9 +186,9 @@ class WebSiteCheck:
             logging.debug('Return data:'+str(data))
             return data
 
-    def ssl_verify_cert(self, url):
+    def ssl_verify_cert(self, url, timeout_value=15):
         try:
-            self.session.get(url, verify=True, timeout=(5, 5))
+            self.session.get(url, verify=True, timeout=(timeout_value, timeout_value))
             logging.debug('ssl_verify_cert: OK')
             return 1
         except Exception as e:
@@ -210,7 +210,7 @@ class WebSiteCheck:
 
         notBefore = parser.parse(domain_info['created_on'])
         expire_date = parser.parse(domain_info['expires_on'])
-        expire_in = expire_date - datetime.utcnow()
+        expire_in = expire_date.replace(tzinfo=None) - datetime.utcnow().replace(tzinfo=None)
         days_to_expire = 0
         if expire_in.days > 0:
             days_to_expire = expire_in.days
