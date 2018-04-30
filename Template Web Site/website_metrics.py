@@ -153,7 +153,7 @@ class WebSiteCheck:
 
     def ssl_get_status(self, url):
         logging.debug('ssl_get_status:'+str(url))
-        response = self.session.get(url, verify=True, timeout=(5, 5))
+        response = self.session.get(url, verify=True, timeout=(5, 10))
         logging.debug('Response:'+str(response))
         if hasattr(response, 'peercert') is False:
             logging.debug('Field peercert not found!')
@@ -161,7 +161,9 @@ class WebSiteCheck:
 
         if response.peercert is not None:
             expire_date = parser.parse(response.peercert['notAfter'])
-            expire_in = expire_date - datetime.utcnow()
+            logging.debug('Expire date: '+str(expire_date.replace(tzinfo=None)))
+            expire_in = expire_date.replace(tzinfo=None) - datetime.utcnow().replace(tzinfo=None)
+            logging.debug('Expire in: '+str(expire_in))
             days_to_expire = 0
             if expire_in.days > 0:
                 days_to_expire = expire_in.days
@@ -434,3 +436,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
