@@ -393,7 +393,11 @@
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <filter/>
+                    <filter>
+                        <evaltype>0</evaltype>
+                        <formula/>
+                        <conditions/>
+                    </filter>
                     <lifetime>1w</lifetime>
                     <description/>
                     <item_prototypes>
@@ -786,7 +790,11 @@
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <filter/>
+                    <filter>
+                        <evaltype>0</evaltype>
+                        <formula/>
+                        <conditions/>
+                    </filter>
                     <lifetime>1w</lifetime>
                     <description/>
                     <item_prototypes>
