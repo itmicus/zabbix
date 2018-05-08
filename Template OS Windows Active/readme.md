@@ -1,40 +1,41 @@
-#
 # Template Windows OS Active
-#
 
+# Features
+
+Monitoring:
+CPU
+Memory
+Physical disk
+Logical Disk
+Physical Network adapter
+
+Inventory: Hardware, OS, Software
+Screen: System performance CPU, Memory, Disks, Networks
+
+Independent OS language
+
+
+# Requirements
+Windows 7 or higher
+Windows server 2008 R2 or higher
+PowerShell 3
+
+# How install
 1. Import the template XML file using the Zabbix Templates Import feature.
-2. Create 2 folders in zabbix agent folder:
-scripts
-zabbix_agentd
 
-3. Copy os_windows_active.ps1 to \scripts\
-4. Copy os_windows_active.conf to \zabbix_agentd\
+2. Create host and set Template OS Windows Active
 
-5. ZABBIX.CONF additional lines
+3. Create 2 folders in zabbix agent folder:
+\scripts\
+\zabbix_agentd\
+and copy the files
+os_windows_active.ps1 to \scripts\
+os_windows_active.conf to \zabbix_agentd\
 
-### Option: Include
-#	You may include individual files in the configuration file.
-#
-# Mandatory: no
-# Default:
-# Include=
+4. Add lines to zabbix.conf
 
-# Include=c:\zabbix\zabbix_agentd.userparams.conf
-# Include=c:\zabbix\zabbix_agentd.conf.d\
 Include=C:\Program Files\zabbix-agent\zabbix_agentd\*.conf
-
-### Option: UnsafeUserParameters
-#	Allow all characters to be passed in arguments to user-defined parameters.
-#	The following characters are not allowed:
-#	\ ' " ` * ? [ ] { } ~ $ ! & ; ( ) < > | # @
-#	Additionally, newline characters are not allowed.
-#	0 - do not allow
-#	1 - allow
-#
-# Mandatory: no
-# Range: 0-1
-# Default:
 UnsafeUserParameters=1
 
+5. Restart Zabbix Agent
 
-6. Restart zabbix agent
