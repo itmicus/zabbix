@@ -2,17 +2,17 @@
 
 # Features
 
-Monitoring and LLD :CPU, Memory, Physical disk, Logical Disk,  Physical Network adapter
-Inventory: Hardware, OS, Software
-Screen System performance: CPU, Memory, Disks, Networks
-Independent OS language
-Independent Physical and Virtual hardware
+Monitoring and LLD :CPU, Memory, Physical disk, Logical Disk,  Physical Network adapter  
+Inventory: Hardware, OS, Software  
+Screen System performance: CPU, Memory, Disks, Networks  
+Independent OS language  
+Independent Physical and Virtual hardware  
 
 
 # Requirements
-Windows 7 or higher<br/>
-Windows server 2008 R2 or higher<br/>
-PowerShell 3<br/>
+Windows 7 or higher  
+Windows server 2008 R2 or higher  
+PowerShell 3  
 
 # How install
 1. Import the template XML file using the Zabbix Templates Import feature.
