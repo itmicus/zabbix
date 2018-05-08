@@ -2,23 +2,17 @@
 
 # Features
 
-Monitoring:
-CPU
-Memory
-Physical disk
-Logical Disk
-Physical Network adapter
-
+Monitoring and LLD :CPU, Memory, Physical disk, Logical Disk,  Physical Network adapter
 Inventory: Hardware, OS, Software
-Screen: System performance CPU, Memory, Disks, Networks
-
+Screen System performance: CPU, Memory, Disks, Networks
 Independent OS language
+Independent Physical and Virtual hardware
 
 
 # Requirements
-Windows 7 or higher
-Windows server 2008 R2 or higher
-PowerShell 3
+Windows 7 or higher<br/>
+Windows server 2008 R2 or higher<br/>
+PowerShell 3<br/>
 
 # How install
 1. Import the template XML file using the Zabbix Templates Import feature.
@@ -26,16 +20,16 @@ PowerShell 3
 2. Create host and set Template OS Windows Active
 
 3. Create 2 folders in zabbix agent folder:
-\scripts\
-\zabbix_agentd\
-and copy the files
-os_windows_active.ps1 to \scripts\
-os_windows_active.conf to \zabbix_agentd\
+\scripts\<br/>
+\zabbix_agentd\<br/>
+and copy the files<br/>
+os_windows_active.ps1 to \scripts\<br/>
+os_windows_active.conf to \zabbix_agentd\<br/>
 
 4. Add lines to zabbix.conf
 
-Include=C:\Program Files\zabbix-agent\zabbix_agentd\*.conf
-UnsafeUserParameters=1
+Include=C:\Program Files\zabbix-agent\zabbix_agentd\*.conf<br/>
+UnsafeUserParameters=1<br/>
 
 5. Restart Zabbix Agent
 
