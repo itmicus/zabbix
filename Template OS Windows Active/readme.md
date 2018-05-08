@@ -20,16 +20,16 @@ PowerShell 3
 2. Create host and set Template OS Windows Active
 
 3. Create 2 folders in zabbix agent folder:
-\scripts\<br/>
-\zabbix_agentd\<br/>
-and copy the files<br/>
-active_os_windows.ps1 to \scripts\<br/>
-active_os_windows.conf to \zabbix_agentd\<br/>
+\scripts\  
+\zabbix_agentd\  
+and copy the files  
+active_os_windows.ps1 to \scripts\  
+active_os_windows.conf to \zabbix_agentd\  
 
 4. Add lines to zabbix.conf
 
-Include=C:\Program Files\zabbix-agent\zabbix_agentd\\*.conf<br/>
-UnsafeUserParameters=1<br/>
+Include=C:\Program Files\zabbix-agent\zabbix_agentd\\*.conf  
+UnsafeUserParameters=1  
 
 5. Restart Zabbix Agent
 
