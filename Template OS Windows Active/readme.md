@@ -1,4 +1,4 @@
-# Template Windows OS Active
+# Template OS Windows Active
 
 # Features
 
@@ -23,12 +23,12 @@ PowerShell 3
 \scripts\<br/>
 \zabbix_agentd\<br/>
 and copy the files<br/>
-os_windows_active.ps1 to \scripts\<br/>
-os_windows_active.conf to \zabbix_agentd\<br/>
+active_os_windows.ps1 to \scripts\<br/>
+active_os_windows.conf to \zabbix_agentd\<br/>
 
 4. Add lines to zabbix.conf
 
-Include=C:\Program Files\zabbix-agent\zabbix_agentd\*.conf<br/>
+Include=C:\Program Files\zabbix-agent\zabbix_agentd\\*.conf<br/>
 UnsafeUserParameters=1<br/>
 
 5. Restart Zabbix Agent
