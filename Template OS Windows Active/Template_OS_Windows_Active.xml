@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.4</version>
-    <date>2018-05-08T07:21:47Z</date>
+    <date>2018-05-14T08:28:21Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -9,14 +9,15 @@
     </groups>
     <templates>
         <template>
-            <template>Template Active OS Windows</template>
-            <name>Template Active OS Windows</name>
-            <description>Active OS Windows Custom:&#13;
-CPU&#13;
+            <template>Template OS Windows Active</template>
+            <name>Template OS Windows Active</name>
+            <description>CPU&#13;
 Memory&#13;
 Physical and logical Disk&#13;
 Network&#13;
-Inventory</description>
+Inventory&#13;
+Windows Updates&#13;
+Firewall status</description>
             <groups>
                 <group>
                     <name>Templates</name>
@@ -42,9 +43,6 @@ Inventory</description>
                     <name>Inventory: Software</name>
                 </application>
                 <application>
-                    <name>Memory</name>
-                </application>
-                <application>
                     <name>Network</name>
                 </application>
                 <application>
@@ -55,6 +53,9 @@ Inventory</description>
                 </application>
                 <application>
                     <name>Performance</name>
+                </application>
+                <application>
+                    <name>Physical memory</name>
                 </application>
                 <application>
                     <name>Services</name>
@@ -1536,7 +1537,7 @@ Inventory</description>
                     <master_item/>
                 </item>
                 <item>
-                    <name>Free swap space</name>
+                    <name>Physical memory swap space free</name>
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
@@ -1567,7 +1568,7 @@ Inventory</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
-                            <name>Memory</name>
+                            <name>Physical memory</name>
                         </application>
                     </applications>
                     <valuemap/>
@@ -1577,7 +1578,7 @@ Inventory</description>
                     <master_item/>
                 </item>
                 <item>
-                    <name>Total swap space</name>
+                    <name>Physical memory swap space total</name>
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
@@ -1608,7 +1609,7 @@ Inventory</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
-                            <name>Memory</name>
+                            <name>Physical memory</name>
                         </application>
                     </applications>
                     <valuemap/>
@@ -1706,7 +1707,108 @@ Inventory</description>
                     <master_item/>
                 </item>
                 <item>
-                    <name>Free Memory</name>
+                    <name>Physical memory cache bytes</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>wmi.get[root\cimv2,SELECT CacheBytes FROM Win32_PerfFormattedData_PerfOS_Memory]</key>
+                    <delay>15s</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>B</units>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>\Memory\Cache Bytes&#13;
+&#13;
+Cache Bytes is the sum of the Memory\\System Cache Resident Bytes, Memory\\System Driver Resident Bytes, Memory\\System Code Resident Bytes, and Memory\\Pool Paged Resident Bytes counters. This counter displays the last observed value only; it is not an average.&#13;
+&#13;
+The Memory performance object consists of counters that describe the behavior of physical and virtual memory on the computer. Physical memory is the amount of random access memory on the computer. Virtual memory consists of the space in physical memory and on disk. Many of the memory counters monitor paging, which is the movement of pages of code and data between disk and physical memory. Excessive paging, a symptom of a memory shortage, can cause delays which interfere with all system processes.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Hardware overview</name>
+                        </application>
+                        <application>
+                            <name>Performance</name>
+                        </application>
+                        <application>
+                            <name>Physical memory</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Physical memory Committed Bytes</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>wmi.get[root\cimv2,SELECT CommittedBytes FROM Win32_PerfRawData_PerfOS_Memory]</key>
+                    <delay>15s</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units>B</units>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Memory Available Megabytes&#13;
+perf_counter[\Memory\% Committed Bytes]&#13;
+&#13;
+in Use This measures the ratio of Committed Bytes to the Commit Limit—in other words, the amount of virtual memory in use. This indicates insufficient memory if the number is greater than 80 percent. The obvious solution for this is to add more memory.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Hardware overview</name>
+                        </application>
+                        <application>
+                            <name>Performance</name>
+                        </application>
+                        <application>
+                            <name>Physical memory</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Physical memory free</name>
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
@@ -1741,10 +1843,10 @@ perf_counter[\Memory\Available Bytes]</description>
                             <name>Hardware overview</name>
                         </application>
                         <application>
-                            <name>Memory</name>
+                            <name>Performance</name>
                         </application>
                         <application>
-                            <name>Performance</name>
+                            <name>Physical memory</name>
                         </application>
                     </applications>
                     <valuemap/>
@@ -1759,7 +1861,241 @@ perf_counter[\Memory\Available Bytes]</description>
                     <master_item/>
                 </item>
                 <item>
-                    <name>% Processor Time</name>
+                    <name>Physical memory Free System Page Table Entries</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>wmi.get[root\cimv2,SELECT FreeSystemPageTableEntries FROM Win32_PerfFormattedData_PerfOS_Memory]</key>
+                    <delay>15s</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Memory\Free System Page Table Entries This indicates the number of page table entries not currently in use by the system. If the number is less than 5,000, there may well be a memory leak.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Hardware overview</name>
+                        </application>
+                        <application>
+                            <name>Performance</name>
+                        </application>
+                        <application>
+                            <name>Physical memory</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Physical memory Page Faults Per sec</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>wmi.get[root\cimv2,SELECT PageFaultsPersec FROM Win32_PerfFormattedData_PerfOS_Memory]</key>
+                    <delay>15s</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Memory\ Page Faults Per sec &#13;
+&#13;
+Page Faults/sec is the average number of pages faulted per second. It is measured in number of pages faulted per second because only one page is faulted in each fault operation, hence this is also equal to the number of page fault operations. This counter includes both hard faults (those that require disk access) and soft faults (where the faulted page is found elsewhere in physical memory.) Most processors can handle large numbers of soft faults without significant consequence. However, hard faults, which require disk access, can cause significant delays.&#13;
+&#13;
+The Memory performance object consists of counters that describe the behavior of physical and virtual memory on the computer. Physical memory is the amount of random access memory on the computer. Virtual memory consists of the space in physical memory and on disk. Many of the memory counters monitor paging, which is the movement of pages of code and data between disk and physical memory. Excessive paging, a symptom of a memory shortage, can cause delays which interfere with all system processes.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Hardware overview</name>
+                        </application>
+                        <application>
+                            <name>Performance</name>
+                        </application>
+                        <application>
+                            <name>Physical memory</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Physical memory Page per sec</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>wmi.get[root\cimv2, select PagesPersec FROM Win32_PerfFormattedData_PerfOS_Memory]</key>
+                    <delay>15s</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Memory\Pages per Second &#13;
+This measures the rate at which pages are read from or written to disk to resolve hard page faults. If the value is greater than 1,000, as a result of excessive paging, there may be a memory leak.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Hardware overview</name>
+                        </application>
+                        <application>
+                            <name>Performance</name>
+                        </application>
+                        <application>
+                            <name>Physical memory</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Processor Interrupt Time %</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>wmi.get[root\cimv2,SELECT PercentInterruptTime FROM Win32_PerfFormattedData_PerfOS_Processor]</key>
+                    <delay>15s</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Processor\% Interrupt Time&#13;
+&#13;
+This measures the time the processor spends receiving and servicing hardware interruptions during specific sample intervals. This counter indicates a possible hardware issue if the value is greater than 15 percent.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>CPU</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Processor Privileged Time %</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>wmi.get[root\cimv2, SELECT PercentPrivilegedTime FROM Win32_PerfFormattedData_PerfOS_Processor]</key>
+                    <delay>15s</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Processor\% Privileged Time&#13;
+&#13;
+ is the percentage of elapsed time that the process threads spent executing code in privileged mode. When a Windows system service in called, the service will often run in privileged mode to gain access to system-private data. Such data is protected from access by threads executing in user mode. Calls to the system can be explicit or implicit, such as page faults or interrupts. Unlike some early operating systems, Windows uses process boundaries for subsystem protection in addition to the traditional protection of user and privileged modes. Some work done by Windows on behalf of the application might appear in other subsystem processes in addition to the privileged time in the process.&#13;
+&#13;
+The Processor performance object consists of counters that measure aspects of processor activity The processor is the part of the computer that performs arithmetic and logical computations, initiates operations on peripherals, and runs the threads of processes. A computer can have multiple processors. The processor object represents each processor as an instance of the object.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>CPU</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Processor load %</name>
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
@@ -1807,7 +2143,240 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                     <master_item/>
                 </item>
                 <item>
-                    <name>Total memory</name>
+                    <name>Physical memory Page File % Usage</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>wmi.get[root\cimv2, SELECT PercentUsagePeak FROM Win32_PerfFormattedData_PerfOS_PagingFile]</key>
+                    <delay>15s</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>The peak usage of the Page File instance in percent. S&#13;
+&#13;
+The Paging File performance object consists of counters that monitor the paging file(s) on the computer. The paging file is a reserved space on disk that backs up committed physical memory on the computer.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Hardware overview</name>
+                        </application>
+                        <application>
+                            <name>Performance</name>
+                        </application>
+                        <application>
+                            <name>Physical memory</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Processor User Time %</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>wmi.get[root\cimv2,SELECT PercentUserTime FROM Win32_PerfFormattedData_PerfOS_Processor]</key>
+                    <delay>15s</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Processor\% User Time&#13;
+&#13;
+This measures the percentage of elapsed time the processor spends in user mode. If this value is high, the server is busy with the application. One possible solution here is to optimize the application that is using up the processor resources.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>CPU</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Physical memory Pool Non-paged Bytes</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>wmi.get[root\cimv2,SELECT PoolNonpagedBytes FROM Win32_PerfFormattedData_PerfOS_Memory]</key>
+                    <delay>15s</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>B</units>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Memory\Pool Non-Paged Bytes &#13;
+&#13;
+This measures the size, in bytes, of the non-paged pool. This is an area of system memory for objects that cannot be written to disk but instead must remain in physical memory as long as they are allocated. There is a possible memory leak if the value is greater than 175MB (or 100MB with the /3GB switch). A typical Event ID 2019 is recorded in the system event log.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Hardware overview</name>
+                        </application>
+                        <application>
+                            <name>Performance</name>
+                        </application>
+                        <application>
+                            <name>Physical memory</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Physical memory Pool Paged Bytes</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>wmi.get[root\cimv2,SELECT PoolPagedBytes FROM Win32_PerfFormattedData_PerfOS_Memory]</key>
+                    <delay>15s</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>B</units>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Memory\Pool Paged Bytes &#13;
+&#13;
+This measures the size, in bytes, of the paged pool. This is an area of system memory used for objects that can be written to disk when they are not being used. There may be a memory leak if this value is greater than 250MB (or 170MB with the /3GB switch). A typical Event ID 2020 is recorded in the system event log.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Hardware overview</name>
+                        </application>
+                        <application>
+                            <name>Performance</name>
+                        </application>
+                        <application>
+                            <name>Physical memory</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Processor Queue Length</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>wmi.get[root\cimv2, SELECT ProcessorQueueLength FROM Win32_PerfFormattedData_PerfOS_System]</key>
+                    <delay>15s</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>System\Processor Queue Length&#13;
+&#13;
+This indicates the number of threads in the processor queue. The server doesn't have enough processor power if the value is more than two times the number of CPUs for an extended period of time.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>CPU</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Physical memory total</name>
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
@@ -1834,14 +2403,14 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>Total Memory</description>
+                    <description>Total physical memory</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
                             <name>Hardware overview</name>
                         </application>
                         <application>
-                            <name>Memory</name>
+                            <name>Physical memory</name>
                         </application>
                     </applications>
                     <valuemap/>
@@ -1885,7 +2454,7 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                     <description/>
                     <item_prototypes>
                         <item_prototype>
-                            <name>Used Disk {#LOGICAL_DISK} {#LOGICAL_DISK_VOLUME_NAME} bytes</name>
+                            <name>Used Disk &quot;{#LOGICAL_DISK} {#LOGICAL_DISK_VOLUME_NAME}&quot;</name>
                             <type>15</type>
                             <snmp_community/>
                             <snmp_oid/>
@@ -1927,7 +2496,7 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Used Disk {#LOGICAL_DISK} {#LOGICAL_DISK_VOLUME_NAME} bytes 12h linear forecast shifted</name>
+                            <name>Used Disk &quot;{#LOGICAL_DISK} {#LOGICAL_DISK_VOLUME_NAME}&quot; bytes 12h linear forecast shifted</name>
                             <type>15</type>
                             <snmp_community/>
                             <snmp_oid/>
@@ -1954,7 +2523,7 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Forecast to 12 h</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -1974,7 +2543,7 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Used Disk {#LOGICAL_DISK} {#LOGICAL_DISK_VOLUME_NAME} bytes 12h linear forecast</name>
+                            <name>Used Disk &quot;{#LOGICAL_DISK} {#LOGICAL_DISK_VOLUME_NAME}&quot; bytes 12h linear forecast</name>
                             <type>15</type>
                             <snmp_community/>
                             <snmp_oid/>
@@ -2021,7 +2590,7 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Used Disk {#LOGICAL_DISK} {#LOGICAL_DISK_VOLUME_NAME} bytes 12h linear forecast (MB)</name>
+                            <name>Used Disk &quot;{#LOGICAL_DISK} {#LOGICAL_DISK_VOLUME_NAME}&quot; bytes 12h linear forecast (MB)</name>
                             <type>15</type>
                             <snmp_community/>
                             <snmp_oid/>
@@ -2063,7 +2632,7 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Used Disk {#LOGICAL_DISK} {#LOGICAL_DISK_VOLUME_NAME} bytes (MB)</name>
+                            <name>Used Disk &quot;{#LOGICAL_DISK} {#LOGICAL_DISK_VOLUME_NAME}&quot; (MB)</name>
                             <type>15</type>
                             <snmp_community/>
                             <snmp_oid/>
@@ -2105,7 +2674,7 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Free disk {#LOGICAL_DISK} {#LOGICAL_DISK_VOLUME_NAME} bytes</name>
+                            <name>Free disk &quot;{#LOGICAL_DISK} {#LOGICAL_DISK_VOLUME_NAME}&quot;</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
@@ -2150,7 +2719,7 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Total Disk {#LOGICAL_DISK} {#LOGICAL_DISK_VOLUME_NAME} bytes</name>
+                            <name>Total Disk &quot;{#LOGICAL_DISK} {#LOGICAL_DISK_VOLUME_NAME}&quot;</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
@@ -2194,26 +2763,10 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Template Active OS Windows:wmi.get[root\cimv2,select FreeSpace from win32_logicaldisk where DeviceID='{#LOGICAL_DISK}'].last()}&lt;1G</expression>
+                            <expression>{Template OS Windows Active:os.windows.active.ldisk.used.forecast12h[{#LOGICAL_DISK}].last()}&lt;{$LOGICAL_DISK_FREE_SPACE_HIGH} and {Template OS Windows Active:os.windows.active.ldisk.used.forecast12h[{#LOGICAL_DISK}].last()}&gt;{$LOGICAL_DISK_FREE_SPACE_DISASTER}</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
-                            <name>Free disk space is less than 1Gb on volume {#LOGICAL_DISK} (Last: {ITEM.LASTVALUE1})</name>
-                            <correlation_mode>0</correlation_mode>
-                            <correlation_tag/>
-                            <url/>
-                            <status>0</status>
-                            <priority>5</priority>
-                            <description/>
-                            <type>0</type>
-                            <manual_close>0</manual_close>
-                            <dependencies/>
-                            <tags/>
-                        </trigger_prototype>
-                        <trigger_prototype>
-                            <expression>{Template Active OS Windows:wmi.get[root\cimv2,select FreeSpace from win32_logicaldisk where DeviceID='{#LOGICAL_DISK}'].last()}&lt;10G and {Template Active OS Windows:wmi.get[root\cimv2,select FreeSpace from win32_logicaldisk where DeviceID='{#LOGICAL_DISK}'].last()}&gt;1G</expression>
-                            <recovery_mode>0</recovery_mode>
-                            <recovery_expression/>
-                            <name>Free disk space is less than 10Gb on volume {#LOGICAL_DISK} (Last: {ITEM.LASTVALUE1})</name>
+                            <name>Forecast: Free disk space is less than {$LOGICAL_DISK_FREE_SPACE_HIGH} on volume &quot;{#LOGICAL_DISK}&quot; (Last: {ITEM.LASTVALUE1}) in next 12 hours</name>
                             <correlation_mode>0</correlation_mode>
                             <correlation_tag/>
                             <url/>
@@ -2226,10 +2779,58 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                             <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template Active OS Windows:wmi.get[root\cimv2,select FreeSpace from win32_logicaldisk where DeviceID='{#LOGICAL_DISK}'].last()}&lt;25G and {Template Active OS Windows:wmi.get[root\cimv2,select FreeSpace from win32_logicaldisk where DeviceID='{#LOGICAL_DISK}'].last()}&gt;10G</expression>
+                            <expression>{Template OS Windows Active:os.windows.active.ldisk.used.forecast12h[{#LOGICAL_DISK}].last()}&lt;{$LOGICAL_DISK_FREE_SPACE_INFO} and {Template OS Windows Active:os.windows.active.ldisk.used.forecast12h[{#LOGICAL_DISK}].last()}&gt;{$LOGICAL_DISK_FREE_SPACE_HIGH}</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
-                            <name>Free disk space is less than 25Gb on volume {#LOGICAL_DISK} (Last: {ITEM.LASTVALUE1})</name>
+                            <name>Forecast: Free disk space is less than {$LOGICAL_DISK_FREE_SPACE_INFO} on volume &quot;{#LOGICAL_DISK}&quot; (Last: {ITEM.LASTVALUE1}) in next 12 hours</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
+                            <url/>
+                            <status>0</status>
+                            <priority>1</priority>
+                            <description/>
+                            <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies/>
+                            <tags/>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{Template OS Windows Active:wmi.get[root\cimv2,select FreeSpace from win32_logicaldisk where DeviceID='{#LOGICAL_DISK}'].last()}&lt;{$LOGICAL_DISK_FREE_SPACE_DISASTER}</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
+                            <name>Free disk space is less than {$LOGICAL_DISK_FREE_SPACE_DISASTER} on volume &quot;{#LOGICAL_DISK}&quot; (Last: {ITEM.LASTVALUE1})</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
+                            <url/>
+                            <status>0</status>
+                            <priority>5</priority>
+                            <description/>
+                            <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies/>
+                            <tags/>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{Template OS Windows Active:wmi.get[root\cimv2,select FreeSpace from win32_logicaldisk where DeviceID='{#LOGICAL_DISK}'].last()}&lt;{$LOGICAL_DISK_FREE_SPACE_HIGH} and {Template OS Windows Active:wmi.get[root\cimv2,select FreeSpace from win32_logicaldisk where DeviceID='{#LOGICAL_DISK}'].last()}&gt;{$LOGICAL_DISK_FREE_SPACE_DISASTER}</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
+                            <name>Free disk space is less than {$LOGICAL_DISK_FREE_SPACE_HIGH} on volume &quot;{#LOGICAL_DISK}&quot; (Last: {ITEM.LASTVALUE1})</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
+                            <url/>
+                            <status>0</status>
+                            <priority>4</priority>
+                            <description/>
+                            <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies/>
+                            <tags/>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{Template OS Windows Active:wmi.get[root\cimv2,select FreeSpace from win32_logicaldisk where DeviceID='{#LOGICAL_DISK}'].last()}&lt;{$LOGICAL_DISK_FREE_SPACE_INFO} and {Template OS Windows Active:wmi.get[root\cimv2,select FreeSpace from win32_logicaldisk where DeviceID='{#LOGICAL_DISK}'].last()}&gt;{$LOGICAL_DISK_FREE_SPACE_HIGH}</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
+                            <name>Free disk space is less than {$LOGICAL_DISK_FREE_SPACE_INFO} on volume &quot;{#LOGICAL_DISK}&quot; (Last: {ITEM.LASTVALUE1})</name>
                             <correlation_mode>0</correlation_mode>
                             <correlation_tag/>
                             <url/>
@@ -2244,7 +2845,7 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                     </trigger_prototypes>
                     <graph_prototypes>
                         <graph_prototype>
-                            <name>Disk {#LOGICAL_DISK} bytes usage</name>
+                            <name>Disk &quot;{#LOGICAL_DISK}&quot; usage</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
@@ -2269,7 +2870,7 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>Template Active OS Windows</host>
+                                        <host>Template OS Windows Active</host>
                                         <key>wmi.get[root\cimv2,select Size from win32_logicaldisk where DeviceID='{#LOGICAL_DISK}']</key>
                                     </item>
                                 </graph_item>
@@ -2281,14 +2882,14 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>Template Active OS Windows</host>
+                                        <host>Template OS Windows Active</host>
                                         <key>os.windows.active.ldisk.used.bytes[{#LOGICAL_DISK}]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
                         </graph_prototype>
                         <graph_prototype>
-                            <name>Disk {#LOGICAL_DISK} bytes usage (12h forecast)</name>
+                            <name>Disk &quot;{#LOGICAL_DISK}&quot; usage (12h forecast)</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
@@ -2313,31 +2914,31 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>Template Active OS Windows</host>
+                                        <host>Template OS Windows Active</host>
                                         <key>os.windows.active.ldisk.used.bytes[{#LOGICAL_DISK}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
                                     <sortorder>1</sortorder>
                                     <drawtype>0</drawtype>
-                                    <color>003300</color>
+                                    <color>00CC00</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>Template Active OS Windows</host>
+                                        <host>Template OS Windows Active</host>
                                         <key>os.windows.active.ldisk.used.forecast12h[{#LOGICAL_DISK}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
                                     <sortorder>2</sortorder>
                                     <drawtype>0</drawtype>
-                                    <color>00CC00</color>
+                                    <color>3333FF</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>Template Active OS Windows</host>
+                                        <host>Template OS Windows Active</host>
                                         <key>os.windows.active.ldisk.used.forecast12hshifted[{#LOGICAL_DISK}]</key>
                                     </item>
                                 </graph_item>
@@ -2380,12 +2981,12 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                     <description>Get physical disks</description>
                     <item_prototypes>
                         <item_prototype>
-                            <name>Physical Disk {#PHYSICAL_DISK} Avg. Disk Read/sec</name>
+                            <name>Physical Disk &quot;{#PHYSICAL_DISK}&quot; Avg. Disk Read/sec</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
                             <key>wmi.get[root\cimv2,select AvgDisksecPerRead from Win32_PerfFormattedData_PerfDisk_PhysicalDisk where Name='{#PHYSICAL_DISK}']</key>
-                            <delay>1m</delay>
+                            <delay>15s</delay>
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
@@ -2409,6 +3010,12 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                             <port/>
                             <description>perf_counter[&quot;\PhysicalDisk({#PHYSICAL_DISK})\Avg. Disk sec/Read&quot;]&#13;
 &#13;
+Displays the average time the disk transfers took to complete, in seconds. Although the scale is seconds, the counter has millisecond precision, meaning a value of 0.004 indicates the average time for disk transfers to complete was 4 milliseconds. &#13;
+This is the counter in Perfmon used to measure IO latency. &#13;
+I wrote a blog specifically about measuring latency with Perfmon. For details got to “Measuring Disk Latency with Windows Performance Monitor”. &#13;
+&#13;
+http://blogs.technet.com/b/askcore/archive/2012/02/07/measuring-disk-latency-with-windows-performance-monitor-perfmon.aspx&#13;
+&#13;
 Счетчик производительности Avg. Disk sec/Read указывает среднее время считывания данных с диска в секундах. Среднее значение счетчика производительности Avg. Disk sec/Read не должно превышать 10 миллисекунд. Максимальное значение счетчика производительности Avg. Disk sec/Read не должно превышать 50 миллисекунд.</description>
                             <inventory_link>0</inventory_link>
                             <applications>
@@ -2427,12 +3034,12 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Physical Disk {#PHYSICAL_DISK} Avg. Disk Write/sec</name>
+                            <name>Physical Disk &quot;{#PHYSICAL_DISK}&quot; Avg. Disk Write/sec</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
                             <key>wmi.get[root\cimv2,select AvgDisksecPerWrite from Win32_PerfFormattedData_PerfDisk_PhysicalDisk where Name='{#PHYSICAL_DISK}']</key>
-                            <delay>1m</delay>
+                            <delay>15s</delay>
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
@@ -2456,6 +3063,10 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                             <port/>
                             <description>perf_counter[&quot;\PhysicalDisk({#PHYSICAL_DISK})\Avg. Disk sec/Write&quot;]&#13;
 &#13;
+Displays the average time the disk transfers took to complete, in seconds. Although the scale is seconds, the counter has millisecond precision, meaning a value of 0.004 indicates the average time for disk transfers to complete was 4 milliseconds. &#13;
+This is the counter in Perfmon used to measure IO latency. &#13;
+&#13;
+&#13;
 Счетчик производительности Avg. Disk sec/Read указывает среднее время считывания данных с диска в секундах. Среднее значение счетчика производительности Avg. Disk sec/Read не должно превышать 10 миллисекунд. Максимальное значение счетчика производительности Avg. Disk sec/Read не должно превышать 50 миллисекунд.</description>
                             <inventory_link>0</inventory_link>
                             <applications>
@@ -2474,12 +3085,12 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Physical Disk {#PHYSICAL_DISK} Disk Read Bytes/sec</name>
+                            <name>Physical Disk &quot;{#PHYSICAL_DISK}&quot; Disk Read Bytes/sec</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
                             <key>wmi.get[root\cimv2,select DiskReadBytesPersec from Win32_PerfFormattedData_PerfDisk_PhysicalDisk where Name='{#PHYSICAL_DISK}']</key>
-                            <delay>1m</delay>
+                            <delay>15s</delay>
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
@@ -2503,6 +3114,9 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                             <port/>
                             <description>perf_counter[&quot;\PhysicalDisk({#PHYSICAL_DISK})\Disk Read Bytes/sec&quot;]&#13;
 &#13;
+Perfmon captures the total number of bytes sent to the disk (write) and retrieved from the disk (read) over a period of one second. If the Perfmon capture interval is set for anything greater than one second, the average of the values captured is presented. &#13;
+The Disk Read Bytes/sec and the Disk Write Bytes/sec counters break down the results displaying only read bytes or only write bytes, respectively. &#13;
+&#13;
 Средняя скорость обмена данными с диском, или скорость чтения\записи. Показывает общее количество байт, отправленных на диск (запись) и с диска (чтение) в течении одной секунды, тем самым позволяя оценить пропускную способность дисковой системы. Складывается из значений Disk Read Bytes/sec (скорость чтения) и Disk Write Bytes/sec (скорость записи). Предельные значения сильно зависят от типа диска: к примеру для одиночного жесткого диска максимальная скорость чтения\записи лежит в пределах 160-250Mb/s, для одиночного SSD — около 550-600Mb/s.</description>
                             <inventory_link>0</inventory_link>
                             <applications>
@@ -2521,12 +3135,12 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Physical Disk {#PHYSICAL_DISK} Disk Transfers/sec iops</name>
+                            <name>Physical Disk &quot;{#PHYSICAL_DISK}&quot; Disk Transfers/sec iops</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
                             <key>wmi.get[root\cimv2,select DiskTransfersPersec from Win32_PerfFormattedData_PerfDisk_PhysicalDisk where Name='{#PHYSICAL_DISK}']</key>
-                            <delay>1m</delay>
+                            <delay>15s</delay>
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
@@ -2550,6 +3164,10 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                             <port/>
                             <description>perf_counter[&quot;\PhysicalDisk({#PHYSICAL_DISK})\Disk Transfers/sec&quot;]&#13;
 &#13;
+Disk Transfers/sec is the rate of read and write operations on the disk.&#13;
+&#13;
+The Physical Disk performance object consists of counters that monitor hard or fixed disk drive on a computer. Disks are used to store file, program, and paging data and are read to retrieve these items, and written to record changes to them. The values of physical disk counters are sums of the values of the logical disks (or partitions) into which they are divided.&#13;
+&#13;
 Основной показатель интенсивности запросов к диску. Показывает общее количество операций ввода\вывода, обработанных (завершенных) диском в течении 1 секунды (Input/Output Operations Per Second, IOPS). Этот счетчик позволяет примерно оценить, насколько нагрузка на диски близка к предельной. Для дисков, работающих в нормальном режиме, можно ориентироваться на следующие значения: 80-160 IOPS для одиночного жесткого диска SATA или SAS, 1800-5000 IOPS для одиночного SSD диска. Для уточнения можно воспользоваться счетчиками Disk Reads/sec (количество обработанных за секунду запросов на чтение) и Disk Writes/sec (количество обработанных за секунду запросов на запись).</description>
                             <inventory_link>0</inventory_link>
                             <applications>
@@ -2568,12 +3186,12 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Physical Disk {#PHYSICAL_DISK} Disk Write Bytes/sec</name>
+                            <name>Physical Disk &quot;{#PHYSICAL_DISK}&quot; Disk Write Bytes/sec</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
                             <key>wmi.get[root\cimv2,select DiskWriteBytesPersec from Win32_PerfFormattedData_PerfDisk_PhysicalDisk where Name='{#PHYSICAL_DISK}']</key>
-                            <delay>1m</delay>
+                            <delay>15s</delay>
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
@@ -2597,6 +3215,9 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                             <port/>
                             <description>perf_counter[&quot;\PhysicalDisk({#PHYSICAL_DISK})\Disk Write Bytes/sec&quot;]&#13;
 &#13;
+Perfmon captures the total number of bytes sent to the disk (write) and retrieved from the disk (read) over a period of one second. If the Perfmon capture interval is set for anything greater than one second, the average of the values captured is presented. &#13;
+The Disk Read Bytes/sec and the Disk Write Bytes/sec counters break down the results displaying only read bytes or only write bytes, respectively. &#13;
+&#13;
 Средняя скорость обмена данными с диском, или скорость чтения\записи. Показывает общее количество байт, отправленных на диск (запись) и с диска (чтение) в течении одной секунды, тем самым позволяя оценить пропускную способность дисковой системы. Складывается из значений Disk Read Bytes/sec (скорость чтения) и Disk Write Bytes/sec (скорость записи). Предельные значения сильно зависят от типа диска: к примеру для одиночного жесткого диска максимальная скорость чтения\записи лежит в пределах 160-250Mb/s, для одиночного SSD — около 550-600Mb/s.</description>
                             <inventory_link>0</inventory_link>
                             <applications>
@@ -2617,10 +3238,10 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Template Active OS Windows:wmi.get[root\cimv2,select AvgDisksecPerRead from Win32_PerfFormattedData_PerfDisk_PhysicalDisk where Name='{#PHYSICAL_DISK}'].avg(30m)}&gt;0.25</expression>
+                            <expression>{Template OS Windows Active:wmi.get[root\cimv2,select AvgDisksecPerRead from Win32_PerfFormattedData_PerfDisk_PhysicalDisk where Name='{#PHYSICAL_DISK}'].avg(30m)}&gt;{$PHYSICAL_DISK_AVG_READ}</expression>
                             <recovery_mode>1</recovery_mode>
-                            <recovery_expression>{Template Active OS Windows:wmi.get[root\cimv2,select AvgDisksecPerRead from Win32_PerfFormattedData_PerfDisk_PhysicalDisk where Name='{#PHYSICAL_DISK}'].avg(30m)}&lt;0.1</recovery_expression>
-                            <name>PhysicalDisk {#PHYSICAL_DISK} Avg. Disk sec/Read higher 0.25</name>
+                            <recovery_expression>{Template OS Windows Active:wmi.get[root\cimv2,select AvgDisksecPerRead from Win32_PerfFormattedData_PerfDisk_PhysicalDisk where Name='{#PHYSICAL_DISK}'].avg(30m)}&lt;{$PHYSICAL_DISK_AVG_READ}</recovery_expression>
+                            <name>PhysicalDisk &quot;{#PHYSICAL_DISK}&quot; Avg. Disk sec/Read &gt; {$PHYSICAL_DISK_AVG_READ}</name>
                             <correlation_mode>0</correlation_mode>
                             <correlation_tag/>
                             <url/>
@@ -2633,10 +3254,10 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                             <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template Active OS Windows:wmi.get[root\cimv2,select AvgDisksecPerWrite from Win32_PerfFormattedData_PerfDisk_PhysicalDisk where Name='{#PHYSICAL_DISK}'].avg(30m)}&gt;0.25</expression>
+                            <expression>{Template OS Windows Active:wmi.get[root\cimv2,select AvgDisksecPerWrite from Win32_PerfFormattedData_PerfDisk_PhysicalDisk where Name='{#PHYSICAL_DISK}'].avg(30m)}&gt;{$PHYSICAL_DISK_AVG_WRITE}</expression>
                             <recovery_mode>1</recovery_mode>
-                            <recovery_expression>{Template Active OS Windows:wmi.get[root\cimv2,select AvgDisksecPerWrite from Win32_PerfFormattedData_PerfDisk_PhysicalDisk where Name='{#PHYSICAL_DISK}'].avg(30m)}&lt;0.1</recovery_expression>
-                            <name>PhysicalDisk {#PHYSICAL_DISK} Avg. Disk sec/Write higher 0.25</name>
+                            <recovery_expression>{Template OS Windows Active:wmi.get[root\cimv2,select AvgDisksecPerWrite from Win32_PerfFormattedData_PerfDisk_PhysicalDisk where Name='{#PHYSICAL_DISK}'].avg(30m)}&lt;{$PHYSICAL_DISK_AVG_WRITE}</recovery_expression>
+                            <name>PhysicalDisk &quot;{#PHYSICAL_DISK}&quot; Avg. Disk sec/Write &gt; {$PHYSICAL_DISK_AVG_WRITE}</name>
                             <correlation_mode>0</correlation_mode>
                             <correlation_tag/>
                             <url/>
@@ -2651,7 +3272,7 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                     </trigger_prototypes>
                     <graph_prototypes>
                         <graph_prototype>
-                            <name>Physical Disk {#PHYSICAL_DISK} Disk bytes/second</name>
+                            <name>Physical Disk &quot;{#PHYSICAL_DISK}&quot; Disk bytes/second</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
@@ -2676,7 +3297,7 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>Template Active OS Windows</host>
+                                        <host>Template OS Windows Active</host>
                                         <key>wmi.get[root\cimv2,select DiskReadBytesPersec from Win32_PerfFormattedData_PerfDisk_PhysicalDisk where Name='{#PHYSICAL_DISK}']</key>
                                     </item>
                                 </graph_item>
@@ -2688,14 +3309,14 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>Template Active OS Windows</host>
+                                        <host>Template OS Windows Active</host>
                                         <key>wmi.get[root\cimv2,select DiskWriteBytesPersec from Win32_PerfFormattedData_PerfDisk_PhysicalDisk where Name='{#PHYSICAL_DISK}']</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
                         </graph_prototype>
                         <graph_prototype>
-                            <name>Physical Disk {#PHYSICAL_DISK} ops/second</name>
+                            <name>Physical Disk &quot;{#PHYSICAL_DISK}&quot; ops/second</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
@@ -2720,7 +3341,63 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>Template Active OS Windows</host>
+                                        <host>Template OS Windows Active</host>
+                                        <key>wmi.get[root\cimv2,select DiskTransfersPersec from Win32_PerfFormattedData_PerfDisk_PhysicalDisk where Name='{#PHYSICAL_DISK}']</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>Physical Disk &quot;{#PHYSICAL_DISK}&quot; overview</name>
+                            <width>900</width>
+                            <height>200</height>
+                            <yaxismin>0.0000</yaxismin>
+                            <yaxismax>100.0000</yaxismax>
+                            <show_work_period>1</show_work_period>
+                            <show_triggers>1</show_triggers>
+                            <type>0</type>
+                            <show_legend>1</show_legend>
+                            <show_3d>0</show_3d>
+                            <percent_left>0.0000</percent_left>
+                            <percent_right>0.0000</percent_right>
+                            <ymin_type_1>0</ymin_type_1>
+                            <ymax_type_1>0</ymax_type_1>
+                            <ymin_item_1>0</ymin_item_1>
+                            <ymax_item_1>0</ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>1</drawtype>
+                                    <color>EE0000</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template OS Windows Active</host>
+                                        <key>wmi.get[root\cimv2,select DiskReadBytesPersec from Win32_PerfFormattedData_PerfDisk_PhysicalDisk where Name='{#PHYSICAL_DISK}']</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>1</drawtype>
+                                    <color>0000EE</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template OS Windows Active</host>
+                                        <key>wmi.get[root\cimv2,select DiskWriteBytesPersec from Win32_PerfFormattedData_PerfDisk_PhysicalDisk where Name='{#PHYSICAL_DISK}']</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>2</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>33FF33</color>
+                                    <yaxisside>1</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template OS Windows Active</host>
                                         <key>wmi.get[root\cimv2,select DiskTransfersPersec from Win32_PerfFormattedData_PerfDisk_PhysicalDisk where Name='{#PHYSICAL_DISK}']</key>
                                     </item>
                                 </graph_item>
@@ -2763,12 +3440,12 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                     <description>Get network interfaces</description>
                     <item_prototypes>
                         <item_prototype>
-                            <name>Network Interface {#PHYSICAL_NETWORK_NAME} % Utilization</name>
+                            <name>Network Interface &quot;{#PHYSICAL_NETWORK_NAME}&quot; % Utilization</name>
                             <type>15</type>
                             <snmp_community/>
                             <snmp_oid/>
                             <key>os.windows.active.networkinterface.utilization.percent[{#PHYSICAL_NETWORK_INTERFACEINDEX}]</key>
-                            <delay>1m</delay>
+                            <delay>15s</delay>
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
@@ -2806,12 +3483,12 @@ last(&quot;wmi.get[root\cimv2,select CurrentBandwidth from Win32_PerfFormattedDa
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Network Interface {#PHYSICAL_NETWORK_NAME} Incoming Bytes/sec</name>
+                            <name>Network Interface &quot;{#PHYSICAL_NETWORK_NAME}&quot; Incoming Bytes/sec</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
                             <key>wmi.get[root\cimv2,select BytesReceivedPersec from Win32_PerfFormattedData_Tcpip_NetworkInterface where Name='{#PHYSICAL_NETWORK_NAME_PERF}']</key>
-                            <delay>1m</delay>
+                            <delay>15s</delay>
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
@@ -2851,12 +3528,12 @@ last(&quot;wmi.get[root\cimv2,select CurrentBandwidth from Win32_PerfFormattedDa
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Network Interface {#PHYSICAL_NETWORK_NAME} Outbound Bytes/sec</name>
+                            <name>Network Interface &quot;{#PHYSICAL_NETWORK_NAME}&quot; Outbound Bytes/sec</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
                             <key>wmi.get[root\cimv2,select BytesSentPersec from Win32_PerfFormattedData_Tcpip_NetworkInterface where Name='{#PHYSICAL_NETWORK_NAME_PERF}']</key>
-                            <delay>1m</delay>
+                            <delay>15s</delay>
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
@@ -2896,12 +3573,12 @@ last(&quot;wmi.get[root\cimv2,select CurrentBandwidth from Win32_PerfFormattedDa
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Network Interface {#PHYSICAL_NETWORK_NAME} Total Bytes/sec</name>
+                            <name>Network Interface &quot;{#PHYSICAL_NETWORK_NAME}&quot; Total Bytes/sec</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
                             <key>wmi.get[root\cimv2,select BytesTotalPersec from Win32_PerfFormattedData_Tcpip_NetworkInterface where Name='{#PHYSICAL_NETWORK_NAME_PERF}']</key>
-                            <delay>1m</delay>
+                            <delay>15s</delay>
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
@@ -2939,12 +3616,12 @@ last(&quot;perf_counter[\&quot;\Network Interface({#PNETWORK})\Bytes Sent/sec\&q
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Network Interface {#PHYSICAL_NETWORK_NAME} LinkSpeed</name>
+                            <name>Network Interface &quot;{#PHYSICAL_NETWORK_NAME}&quot; LinkSpeed</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
                             <key>wmi.get[root\cimv2,select CurrentBandwidth from Win32_PerfFormattedData_Tcpip_NetworkInterface where Name='{#PHYSICAL_NETWORK_NAME_PERF}']</key>
-                            <delay>1m</delay>
+                            <delay>5m</delay>
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
@@ -2981,7 +3658,7 @@ last(&quot;perf_counter[\&quot;\Network Interface({#PNETWORK})\Bytes Sent/sec\&q
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Network Interface {#PHYSICAL_NETWORK_NAME} MacAddress</name>
+                            <name>Network Interface &quot;{#PHYSICAL_NETWORK_NAME}&quot; MAC Address</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
@@ -3023,7 +3700,7 @@ last(&quot;perf_counter[\&quot;\Network Interface({#PNETWORK})\Bytes Sent/sec\&q
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Network Interface {#PHYSICAL_NETWORK_NAME} LinkStatus</name>
+                            <name>Network Interface &quot;{#PHYSICAL_NETWORK_NAME}&quot; LinkStatus</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
@@ -3067,7 +3744,7 @@ last(&quot;perf_counter[\&quot;\Network Interface({#PNETWORK})\Bytes Sent/sec\&q
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Network Interface {#PHYSICAL_NETWORK_NAME} Output Queue Length</name>
+                            <name>Network Interface &quot;{#PHYSICAL_NETWORK_NAME}&quot; Output Queue Length</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
@@ -3094,7 +3771,11 @@ last(&quot;perf_counter[\&quot;\Network Interface({#PNETWORK})\Bytes Sent/sec\&q
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description>perf_counter[&quot;\Network Interface({#PNETWORK})\Output Queue Length&quot;]</description>
+                            <description>perf_counter[&quot;\Network Interface({#PNETWORK})\Output Queue Length&quot;]&#13;
+&#13;
+“Output Queue Length is the length of the output packet queue (in packets). If this is longer than two, there are delays and the bottleneck should be found and eliminated, if possible. Since the requests are queued by the Network Driver Interface Specification (NDIS) in this implementation, this will always be 0.”&#13;
+&#13;
+https://blogs.technet.microsoft.com/yongrhee/2010/07/06/network-interface-output-queue-length-values-extremely-high/</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -3112,7 +3793,7 @@ last(&quot;perf_counter[\&quot;\Network Interface({#PNETWORK})\Bytes Sent/sec\&q
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Network Interface {#PHYSICAL_NETWORK_NAME} Packets Outbound Discarded</name>
+                            <name>Network Interface &quot;{#PHYSICAL_NETWORK_NAME}&quot; Packets Outbound Discarded</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
@@ -3139,7 +3820,11 @@ last(&quot;perf_counter[\&quot;\Network Interface({#PNETWORK})\Bytes Sent/sec\&q
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description>perf_counter[&quot;\Network Interface({#PNETWORK})\Packets Outbound Discarded&quot;]</description>
+                            <description>perf_counter[&quot;\Network Interface({#PNETWORK})\Packets Outbound Discarded&quot;]&#13;
+&#13;
+Shows the number of outbound packets to be discarded even though no errors had been detected to prevent transmission. One possible reason for discarding the a packet could be to free up buffer space.&#13;
+&#13;
+https://msdn.microsoft.com/en-us/library/ms803962.aspx</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -3159,10 +3844,10 @@ last(&quot;perf_counter[\&quot;\Network Interface({#PNETWORK})\Bytes Sent/sec\&q
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Template Active OS Windows:wmi.get[root\cimv2,select NetConnectionStatus from win32_networkadapter where InterfaceIndex='{#PHYSICAL_NETWORK_INTERFACEINDEX}'].diff(0)}&gt;0</expression>
+                            <expression>{Template OS Windows Active:wmi.get[root\cimv2,select NetConnectionStatus from win32_networkadapter where InterfaceIndex='{#PHYSICAL_NETWORK_INTERFACEINDEX}'].diff(0)}&gt;0</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
-                            <name>Network Interface {#PHYSICAL_NETWORK_NAME} Link Status changed</name>
+                            <name>Network Interface &quot;{#PHYSICAL_NETWORK_NAME}&quot; Link Status changed</name>
                             <correlation_mode>0</correlation_mode>
                             <correlation_tag/>
                             <url/>
@@ -3175,10 +3860,10 @@ last(&quot;perf_counter[\&quot;\Network Interface({#PNETWORK})\Bytes Sent/sec\&q
                             <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template Active OS Windows:wmi.get[root\cimv2,select MACAddress from win32_networkadapter where InterfaceIndex='{#PHYSICAL_NETWORK_INTERFACEINDEX}'].diff(0)}&gt;0</expression>
+                            <expression>{Template OS Windows Active:wmi.get[root\cimv2,select MACAddress from win32_networkadapter where InterfaceIndex='{#PHYSICAL_NETWORK_INTERFACEINDEX}'].diff(0)}&gt;0</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
-                            <name>Network Interface {#PHYSICAL_NETWORK_NAME} MAC Address changed</name>
+                            <name>Network Interface &quot;{#PHYSICAL_NETWORK_NAME}&quot; MAC Address changed</name>
                             <correlation_mode>0</correlation_mode>
                             <correlation_tag/>
                             <url/>
@@ -3191,10 +3876,10 @@ last(&quot;perf_counter[\&quot;\Network Interface({#PNETWORK})\Bytes Sent/sec\&q
                             <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template Active OS Windows:wmi.get[root\cimv2,select OutputQueueLength from Win32_PerfFormattedData_Tcpip_NetworkInterface where Name='{#PHYSICAL_NETWORK_NAME_PERF}'].last(#5)}&gt;2</expression>
+                            <expression>{Template OS Windows Active:wmi.get[root\cimv2,select OutputQueueLength from Win32_PerfFormattedData_Tcpip_NetworkInterface where Name='{#PHYSICAL_NETWORK_NAME_PERF}'].last(#5)}&gt;{$NETWORK_OUTPUT_QUEUE_LENGHT}</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
-                            <name>Network Interface {#PHYSICAL_NETWORK_NAME} Output Queue Length &gt; 2</name>
+                            <name>Network Interface &quot;{#PHYSICAL_NETWORK_NAME}&quot; Output Queue Length &gt; {$NETWORK_OUTPUT_QUEUE_LENGHT}</name>
                             <correlation_mode>0</correlation_mode>
                             <correlation_tag/>
                             <url/>
@@ -3208,10 +3893,10 @@ When reviewing Output Queue Length, it is important to review the active Network
                             <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template Active OS Windows:wmi.get[root\cimv2,select PacketsOutboundDiscarded from Win32_PerfFormattedData_Tcpip_NetworkInterface where Name='{#PHYSICAL_NETWORK_NAME_PERF}'].last(#1)}&gt;100</expression>
+                            <expression>{Template OS Windows Active:wmi.get[root\cimv2,select PacketsOutboundDiscarded from Win32_PerfFormattedData_Tcpip_NetworkInterface where Name='{#PHYSICAL_NETWORK_NAME_PERF}'].last(#1)}&gt;{$NETWORK_OUTPUT_DISCARDED}</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
-                            <name>Network Interface {#PHYSICAL_NETWORK_NAME} Packets Outbound Discarded &gt;100</name>
+                            <name>Network Interface &quot;{#PHYSICAL_NETWORK_NAME}&quot; Packets Outbound Discarded &gt;{$NETWORK_OUTPUT_DISCARDED}</name>
                             <correlation_mode>0</correlation_mode>
                             <correlation_tag/>
                             <url/>
@@ -3225,10 +3910,26 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                             <dependencies/>
                             <tags/>
                         </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{Template OS Windows Active:os.windows.active.networkinterface.utilization.percent[{#PHYSICAL_NETWORK_INTERFACEINDEX}].avg(6h)}&gt;{$NETWORK_MAX_UTILIZE}</expression>
+                            <recovery_mode>1</recovery_mode>
+                            <recovery_expression>{Template OS Windows Active:os.windows.active.networkinterface.utilization.percent[{#PHYSICAL_NETWORK_INTERFACEINDEX}].avg(6h)}&lt;{$NETWORK_MAX_UTILIZE}</recovery_expression>
+                            <name>Network Interface &quot;{#PHYSICAL_NETWORK_NAME}&quot; utilize &gt; {$NETWORK_MAX_UTILIZE}%</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
+                            <url/>
+                            <status>0</status>
+                            <priority>2</priority>
+                            <description/>
+                            <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies/>
+                            <tags/>
+                        </trigger_prototype>
                     </trigger_prototypes>
                     <graph_prototypes>
                         <graph_prototype>
-                            <name>Network traffic on {#PHYSICAL_NETWORK_NAME}</name>
+                            <name>Network traffic on &quot;{#PHYSICAL_NETWORK_NAME}&quot;</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
@@ -3253,7 +3954,7 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>Template Active OS Windows</host>
+                                        <host>Template OS Windows Active</host>
                                         <key>wmi.get[root\cimv2,select BytesSentPersec from Win32_PerfFormattedData_Tcpip_NetworkInterface where Name='{#PHYSICAL_NETWORK_NAME_PERF}']</key>
                                     </item>
                                 </graph_item>
@@ -3265,14 +3966,14 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>Template Active OS Windows</host>
+                                        <host>Template OS Windows Active</host>
                                         <key>wmi.get[root\cimv2,select BytesReceivedPersec from Win32_PerfFormattedData_Tcpip_NetworkInterface where Name='{#PHYSICAL_NETWORK_NAME_PERF}']</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
                         </graph_prototype>
                         <graph_prototype>
-                            <name>Network utilization % {#PHYSICAL_NETWORK_NAME}</name>
+                            <name>Network utilization % &quot;{#PHYSICAL_NETWORK_NAME}&quot;</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
@@ -3297,7 +3998,7 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>Template Active OS Windows</host>
+                                        <host>Template OS Windows Active</host>
                                         <key>os.windows.active.networkinterface.utilization.percent[{#PHYSICAL_NETWORK_INTERFACEINDEX}]</key>
                                     </item>
                                 </graph_item>
@@ -3403,7 +4104,7 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Template Active OS Windows:service.info[{#SERVICE.NAME},state].min(#3)}&lt;&gt;0</expression>
+                            <expression>{Template OS Windows Active:service.info[{#SERVICE.NAME},state].min(#3)}&lt;&gt;0</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
                             <name>Service &quot;{#SERVICE.NAME}&quot; ({#SERVICE.DISPLAYNAME}) is not running (startup type {#SERVICE.STARTUPNAME})</name>
@@ -3425,13 +4126,62 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                 </discovery_rule>
             </discovery_rules>
             <httptests/>
-            <macros/>
+            <macros>
+                <macro>
+                    <macro>{$CPU_MAX_LOAD}</macro>
+                    <value>85</value>
+                </macro>
+                <macro>
+                    <macro>{$LOGICAL_DISK_FREE_SPACE_DISASTER}</macro>
+                    <value>1G</value>
+                </macro>
+                <macro>
+                    <macro>{$LOGICAL_DISK_FREE_SPACE_HIGH}</macro>
+                    <value>10G</value>
+                </macro>
+                <macro>
+                    <macro>{$LOGICAL_DISK_FREE_SPACE_INFO}</macro>
+                    <value>25G</value>
+                </macro>
+                <macro>
+                    <macro>{$NETWORK_MAX_UTILIZE}</macro>
+                    <value>80</value>
+                </macro>
+                <macro>
+                    <macro>{$NETWORK_OUTPUT_DISCARDED}</macro>
+                    <value>100</value>
+                </macro>
+                <macro>
+                    <macro>{$NETWORK_OUTPUT_QUEUE_LENGHT}</macro>
+                    <value>2</value>
+                </macro>
+                <macro>
+                    <macro>{$PHYSICAL_DISK_AVG_READ}</macro>
+                    <value>0.25</value>
+                </macro>
+                <macro>
+                    <macro>{$PHYSICAL_DISK_AVG_WRITE}</macro>
+                    <value>0.25</value>
+                </macro>
+                <macro>
+                    <macro>{$PHYSICAL_MEMORY_MIN_FREE}</macro>
+                    <value>1Gb</value>
+                </macro>
+                <macro>
+                    <macro>{$WINDOWS_UPDATE_LAST_INSTALL_INFO}</macro>
+                    <value>90d</value>
+                </macro>
+                <macro>
+                    <macro>{$WINDOWS_UPDATE_LAST_INSTALL_WARN}</macro>
+                    <value>180d</value>
+                </macro>
+            </macros>
             <templates/>
             <screens>
                 <screen>
-                    <name>System performance</name>
-                    <hsize>3</hsize>
-                    <vsize>3</vsize>
+                    <name>System performance detailed</name>
+                    <hsize>2</hsize>
+                    <vsize>5</vsize>
                     <screen_items>
                         <screen_item>
                             <resourcetype>0</resourcetype>
@@ -3449,8 +4199,8 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                             <dynamic>0</dynamic>
                             <sort_triggers>0</sort_triggers>
                             <resource>
-                                <name>CPU Load</name>
-                                <host>Template Active OS Windows</host>
+                                <name>CPU</name>
+                                <host>Template OS Windows Active</host>
                             </resource>
                             <max_columns>3</max_columns>
                             <application/>
@@ -3472,7 +4222,7 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                             <sort_triggers>0</sort_triggers>
                             <resource>
                                 <name>Memory</name>
-                                <host>Template Active OS Windows</host>
+                                <host>Template OS Windows Active</host>
                             </resource>
                             <max_columns>3</max_columns>
                             <application/>
@@ -3481,7 +4231,102 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                             <resourcetype>20</resourcetype>
                             <width>400</width>
                             <height>100</height>
-                            <x>2</x>
+                            <x>0</x>
+                            <y>1</y>
+                            <colspan>2</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Network traffic on &quot;{#PHYSICAL_NETWORK_NAME}&quot;</name>
+                                <host>Template OS Windows Active</host>
+                            </resource>
+                            <max_columns>3</max_columns>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <width>250</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>2</y>
+                            <colspan>2</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Physical Disk &quot;{#PHYSICAL_DISK}&quot; ops/second</name>
+                                <host>Template OS Windows Active</host>
+                            </resource>
+                            <max_columns>5</max_columns>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <width>250</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>3</y>
+                            <colspan>2</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Physical Disk &quot;{#PHYSICAL_DISK}&quot; Disk bytes/second</name>
+                                <host>Template OS Windows Active</host>
+                            </resource>
+                            <max_columns>5</max_columns>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>4</y>
+                            <colspan>2</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Physical Disk &quot;{#PHYSICAL_DISK}&quot; overview</name>
+                                <host>Template OS Windows Active</host>
+                            </resource>
+                            <max_columns>3</max_columns>
+                            <application/>
+                        </screen_item>
+                    </screen_items>
+                </screen>
+                <screen>
+                    <name>System performance overview</name>
+                    <hsize>2</hsize>
+                    <vsize>2</vsize>
+                    <screen_items>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>400</width>
+                            <height>100</height>
+                            <x>0</x>
                             <y>0</y>
                             <colspan>1</colspan>
                             <rowspan>1</rowspan>
@@ -3493,19 +4338,41 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                             <dynamic>0</dynamic>
                             <sort_triggers>0</sort_triggers>
                             <resource>
-                                <name>Network traffic on {#PHYSICAL_NETWORK_NAME}</name>
-                                <host>Template Active OS Windows</host>
+                                <name>CPU</name>
+                                <host>Template OS Windows Active</host>
+                            </resource>
+                            <max_columns>3</max_columns>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>400</width>
+                            <height>100</height>
+                            <x>1</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Memory</name>
+                                <host>Template OS Windows Active</host>
                             </resource>
                             <max_columns>3</max_columns>
                             <application/>
                         </screen_item>
                         <screen_item>
                             <resourcetype>20</resourcetype>
-                            <width>250</width>
+                            <width>500</width>
                             <height>100</height>
                             <x>0</x>
                             <y>1</y>
-                            <colspan>3</colspan>
+                            <colspan>1</colspan>
                             <rowspan>1</rowspan>
                             <elements>0</elements>
                             <valign>0</valign>
@@ -3515,19 +4382,19 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                             <dynamic>0</dynamic>
                             <sort_triggers>0</sort_triggers>
                             <resource>
-                                <name>Physical Disk {#PHYSICAL_DISK} ops/second</name>
-                                <host>Template Active OS Windows</host>
+                                <name>Physical Disk &quot;{#PHYSICAL_DISK}&quot; overview</name>
+                                <host>Template OS Windows Active</host>
                             </resource>
-                            <max_columns>5</max_columns>
+                            <max_columns>3</max_columns>
                             <application/>
                         </screen_item>
                         <screen_item>
                             <resourcetype>20</resourcetype>
-                            <width>250</width>
+                            <width>400</width>
                             <height>100</height>
-                            <x>0</x>
-                            <y>2</y>
-                            <colspan>3</colspan>
+                            <x>1</x>
+                            <y>1</y>
+                            <colspan>1</colspan>
                             <rowspan>1</rowspan>
                             <elements>0</elements>
                             <valign>0</valign>
@@ -3537,10 +4404,10 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                             <dynamic>0</dynamic>
                             <sort_triggers>0</sort_triggers>
                             <resource>
-                                <name>Physical Disk {#PHYSICAL_DISK} Disk bytes/second</name>
-                                <host>Template Active OS Windows</host>
+                                <name>Network traffic on &quot;{#PHYSICAL_NETWORK_NAME}&quot;</name>
+                                <host>Template OS Windows Active</host>
                             </resource>
-                            <max_columns>5</max_columns>
+                            <max_columns>3</max_columns>
                             <application/>
                         </screen_item>
                     </screen_items>
@@ -3550,23 +4417,23 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
     </templates>
     <triggers>
         <trigger>
-            <expression>{Template Active OS Windows:wmi.get[root\cimv2,select PercentProcessorTime from Win32_PerfformattedData_PerfOS_Processor where Name='_Total'].avg(1h)}&gt;80</expression>
-            <recovery_mode>1</recovery_mode>
-            <recovery_expression>{Template Active OS Windows:wmi.get[root\cimv2,select PercentProcessorTime from Win32_PerfformattedData_PerfOS_Processor where Name='_Total'].avg(1h)}&lt;70</recovery_expression>
-            <name>% Processor Time is 80% or higher</name>
+            <expression>{Template OS Windows Active:system.uptime.change(0)}&lt;0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>&quot;{HOST.NAME}&quot; has just been restarted</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
             <status>0</status>
-            <priority>3</priority>
-            <description>If % Processor Time is 80% or higher, the first path to explore is determining if there is a legitimate need to increase CPU capacity of your Lync Servers. Windows Server 2008 introduced new Power Management settings (which are on by default) to help reduce carbon footprint produced from Servers by consuming less electricity by parking CPU cores that are lightly utilized by moving those tasks to other cores. What this means is that high Processor Time values no longer automatically mean the physical CPUs are approaching their hardware limits</description>
+            <priority>1</priority>
+            <description/>
             <type>0</type>
             <manual_close>0</manual_close>
             <dependencies/>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template Active OS Windows:os.windows.inventory.firewallstatus.diff(0)}&gt;0</expression>
+            <expression>{Template OS Windows Active:os.windows.inventory.firewallstatus.diff(0)}&gt;0</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Firewall status has just been changed</name>
@@ -3582,10 +4449,10 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template Active OS Windows:system.uname.diff(0)}&gt;0</expression>
+            <expression>{Template OS Windows Active:system.uname.diff(0)}&gt;0</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
-            <name>Host information was changed on {HOST.NAME}</name>
+            <name>Host information was changed on &quot;{HOST.NAME}&quot;</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
@@ -3598,15 +4465,31 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template Active OS Windows:wmi.get[root\cimv2,select FreePhysicalMemory from Win32_OperatingSystem].avg(30m)}&lt;1G</expression>
+            <expression>{Template OS Windows Active:wmi.get[root\cimv2,SELECT CommittedBytes FROM Win32_PerfRawData_PerfOS_Memory].avg(10m)} &gt;1.5 * {Template OS Windows Active:wmi.get[root\cimv2,select TotalPhysicalMemory from Win32_ComputerSystem].last()}</expression>
             <recovery_mode>1</recovery_mode>
-            <recovery_expression>{Template Active OS Windows:wmi.get[root\cimv2,select FreePhysicalMemory from Win32_OperatingSystem].avg(30m)}&gt;1G</recovery_expression>
-            <name>Memory Available Gb</name>
+            <recovery_expression>{Template OS Windows Active:wmi.get[root\cimv2,SELECT CommittedBytes FROM Win32_PerfRawData_PerfOS_Memory].avg(10m)} &lt; {Template OS Windows Active:wmi.get[root\cimv2,select TotalPhysicalMemory from Win32_ComputerSystem].last()}</recovery_expression>
+            <name>Physical memory commited bytes over than total memory</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
             <status>0</status>
-            <priority>2</priority>
+            <priority>1</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template OS Windows Active:wmi.get[root\cimv2,select FreePhysicalMemory from Win32_OperatingSystem].avg(30m)}&lt;{$PHYSICAL_MEMORY_MIN_FREE}</expression>
+            <recovery_mode>1</recovery_mode>
+            <recovery_expression>{Template OS Windows Active:wmi.get[root\cimv2,select FreePhysicalMemory from Win32_OperatingSystem].avg(30m)}&gt;{$PHYSICAL_MEMORY_MIN_FREE}</recovery_expression>
+            <name>Physical memory free &lt; {$PHYSICAL_MEMORY_MIN_FREE}</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
             <description>Available Megabytes is different from most other KHIs in the regard that you need to pay attention to two things:&#13;
 •	The trending direction is reversed (i.e. higher is better)&#13;
 •	Track the minimum and average, not maximum. &#13;
@@ -3618,7 +4501,122 @@ Lastly, if you discover SQL Server Express on Front-end Servers is the consumer 
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template Active OS Windows:os.windows.inventory.OSDaysFromLatestUpdatesInstalled.last()}&gt;90d and {Template Active OS Windows:os.windows.inventory.OSDaysFromLatestUpdatesInstalled.last()}&lt;180d</expression>
+            <expression>{Template OS Windows Active:wmi.get[root\cimv2, SELECT PercentUsagePeak FROM Win32_PerfFormattedData_PerfOS_PagingFile].avg(30m)}&gt;70</expression>
+            <recovery_mode>1</recovery_mode>
+            <recovery_expression>{Template OS Windows Active:wmi.get[root\cimv2, SELECT PercentUsagePeak FROM Win32_PerfFormattedData_PerfOS_PagingFile].avg(30m)}&#13;
+&lt;60</recovery_expression>
+            <name>Physical memory Page File Usage &gt; 70%</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>You could also confirm that it is on the most suitable disk, and if possible split the pagefile over two disks and thus improve access times.  (Note the object here is Page File not Memory)&#13;
+&#13;
+Because the changes are so gradual, you are better off using this Page File % Usage counter as an alert, rather than a log.  I suggest setting an alert on a limit of over 70.</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template OS Windows Active:wmi.get[root\cimv2, select PagesPersec FROM Win32_PerfFormattedData_PerfOS_Memory].avg(30m)}&gt;1000</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Physical memory pages per sec &gt; 1000</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>If the value is greater than 1,000, as a result of excessive paging, there may be a memory leak.</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template OS Windows Active:wmi.get[root\cimv2,SELECT FreeSystemPageTableEntries FROM Win32_PerfFormattedData_PerfOS_Memory].last()}&lt;5000</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Physical memory Page Table Entries &lt; 5000</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>If the number is less than 5,000, there may well be a memory leak.</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template OS Windows Active:wmi.get[root\cimv2,SELECT PoolNonpagedBytes FROM Win32_PerfFormattedData_PerfOS_Memory].avg(30m)}&gt;175M</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Physical memory Pool Non-paged &gt; 175 Mb</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>1</status>
+            <priority>2</priority>
+            <description>There is a possible memory leak if the value is greater than 175MB (or 100MB with the /3GB switch).</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template OS Windows Active:wmi.get[root\cimv2,SELECT PoolPagedBytes FROM Win32_PerfFormattedData_PerfOS_Memory].avg(30m)}&gt;250M</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Physical memory Pool paged &gt; 250 Mb</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>1</status>
+            <priority>2</priority>
+            <description>This is an area of system memory used for objects that can be written to disk when they are not being used. There may be a memory leak if this value is greater than 250MB (or 170MB with the /3GB switch).</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template OS Windows Active:wmi.get[root\cimv2,SELECT PercentInterruptTime FROM Win32_PerfFormattedData_PerfOS_Processor].avg(1h)}&gt;15</expression>
+            <recovery_mode>1</recovery_mode>
+            <recovery_expression>{Template OS Windows Active:wmi.get[root\cimv2,SELECT PercentInterruptTime FROM Win32_PerfFormattedData_PerfOS_Processor].avg(1h)}&lt;10</recovery_expression>
+            <name>Processor Interrupt Time &gt; 15%</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>possible hardware issue</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template OS Windows Active:wmi.get[root\cimv2,select PercentProcessorTime from Win32_PerfformattedData_PerfOS_Processor where Name='_Total'].avg(1h)}&gt;{$CPU_MAX_LOAD}</expression>
+            <recovery_mode>1</recovery_mode>
+            <recovery_expression>{Template OS Windows Active:wmi.get[root\cimv2,select PercentProcessorTime from Win32_PerfformattedData_PerfOS_Processor where Name='_Total'].avg(1h)}&lt;{$CPU_MAX_LOAD}</recovery_expression>
+            <name>Processor load &gt; {$CPU_MAX_LOAD}%</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description>If % Processor Time is 80% or higher, the first path to explore is determining if there is a legitimate need to increase CPU capacity of your Lync Servers. Windows Server 2008 introduced new Power Management settings (which are on by default) to help reduce carbon footprint produced from Servers by consuming less electricity by parking CPU cores that are lightly utilized by moving those tasks to other cores. What this means is that high Processor Time values no longer automatically mean the physical CPUs are approaching their hardware limits</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template OS Windows Active:os.windows.inventory.OSDaysFromLatestUpdatesInstalled.last()}&gt;{$WINDOWS_UPDATE_LAST_INSTALL_INFO} and {Template OS Windows Active:os.windows.inventory.OSDaysFromLatestUpdatesInstalled.last()}&lt;{$WINDOWS_UPDATE_LAST_INSTALL_WARN}</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Windows updates installed more than 90 days ago</name>
@@ -3634,7 +4632,7 @@ Lastly, if you discover SQL Server Express on Front-end Servers is the consumer 
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template Active OS Windows:os.windows.inventory.OSDaysFromLatestUpdatesInstalled.last()}&gt;180d</expression>
+            <expression>{Template OS Windows Active:os.windows.inventory.OSDaysFromLatestUpdatesInstalled.last()}&gt;{$WINDOWS_UPDATE_LAST_INSTALL_WARN}</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Windows updates installed more than 180 days ago</name>
@@ -3649,26 +4647,10 @@ Lastly, if you discover SQL Server Express on Front-end Servers is the consumer 
             <dependencies/>
             <tags/>
         </trigger>
-        <trigger>
-            <expression>{Template Active OS Windows:system.uptime.change(0)}&lt;0</expression>
-            <recovery_mode>0</recovery_mode>
-            <recovery_expression/>
-            <name>{HOST.NAME} has just been restarted</name>
-            <correlation_mode>0</correlation_mode>
-            <correlation_tag/>
-            <url/>
-            <status>0</status>
-            <priority>2</priority>
-            <description/>
-            <type>0</type>
-            <manual_close>0</manual_close>
-            <dependencies/>
-            <tags/>
-        </trigger>
     </triggers>
     <graphs>
         <graph>
-            <name>CPU Load</name>
+            <name>CPU</name>
             <width>900</width>
             <height>200</height>
             <yaxismin>0.0000</yaxismin>
@@ -3688,13 +4670,49 @@ Lastly, if you discover SQL Server Express on Front-end Servers is the consumer 
                 <graph_item>
                     <sortorder>0</sortorder>
                     <drawtype>0</drawtype>
-                    <color>1A7C11</color>
+                    <color>00EE00</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template Active OS Windows</host>
+                        <host>Template OS Windows Active</host>
                         <key>wmi.get[root\cimv2,select PercentProcessorTime from Win32_PerfformattedData_PerfOS_Processor where Name='_Total']</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>F63100</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template OS Windows Active</host>
+                        <key>wmi.get[root\cimv2,SELECT PercentInterruptTime FROM Win32_PerfFormattedData_PerfOS_Processor]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>0000EE</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template OS Windows Active</host>
+                        <key>wmi.get[root\cimv2,SELECT PercentUserTime FROM Win32_PerfFormattedData_PerfOS_Processor]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>3</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>A54F10</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template OS Windows Active</host>
+                        <key>wmi.get[root\cimv2, SELECT PercentPrivilegedTime FROM Win32_PerfFormattedData_PerfOS_Processor]</key>
                     </item>
                 </graph_item>
             </graph_items>
@@ -3707,62 +4725,77 @@ Lastly, if you discover SQL Server Express on Front-end Servers is the consumer 
             <yaxismax>100.0000</yaxismax>
             <show_work_period>1</show_work_period>
             <show_triggers>1</show_triggers>
-            <type>0</type>
+            <type>1</type>
             <show_legend>1</show_legend>
             <show_3d>0</show_3d>
             <percent_left>0.0000</percent_left>
             <percent_right>0.0000</percent_right>
             <ymin_type_1>0</ymin_type_1>
-            <ymax_type_1>0</ymax_type_1>
+            <ymax_type_1>2</ymax_type_1>
             <ymin_item_1>0</ymin_item_1>
-            <ymax_item_1>0</ymax_item_1>
+            <ymax_item_1>
+                <host>Template OS Windows Active</host>
+                <key>wmi.get[root\cimv2,select TotalPhysicalMemory from Win32_ComputerSystem]</key>
+            </ymax_item_1>
             <graph_items>
                 <graph_item>
                     <sortorder>0</sortorder>
-                    <drawtype>0</drawtype>
+                    <drawtype>1</drawtype>
+                    <color>FF3333</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template OS Windows Active</host>
+                        <key>wmi.get[root\cimv2,SELECT CommittedBytes FROM Win32_PerfRawData_PerfOS_Memory]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>1</drawtype>
                     <color>3333FF</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template Active OS Windows</host>
-                        <key>wmi.get[root\cimv2,select TotalPhysicalMemory from Win32_ComputerSystem]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>1</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>66FFFF</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Template Active OS Windows</host>
-                        <key>system.swap.size[,free]</key>
+                        <host>Template OS Windows Active</host>
+                        <key>wmi.get[root\cimv2,SELECT PoolNonpagedBytes FROM Win32_PerfFormattedData_PerfOS_Memory]</key>
                     </item>
                 </graph_item>
                 <graph_item>
                     <sortorder>2</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>FF33FF</color>
+                    <drawtype>1</drawtype>
+                    <color>FFFF33</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template Active OS Windows</host>
-                        <key>system.swap.size[,total]</key>
+                        <host>Template OS Windows Active</host>
+                        <key>wmi.get[root\cimv2,SELECT PoolPagedBytes FROM Win32_PerfFormattedData_PerfOS_Memory]</key>
                     </item>
                 </graph_item>
                 <graph_item>
                     <sortorder>3</sortorder>
                     <drawtype>0</drawtype>
-                    <color>A54F10</color>
+                    <color>33FF33</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template Active OS Windows</host>
+                        <host>Template OS Windows Active</host>
                         <key>wmi.get[root\cimv2,select FreePhysicalMemory from Win32_OperatingSystem]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>4</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>FC6EA3</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template OS Windows Active</host>
+                        <key>wmi.get[root\cimv2,SELECT CacheBytes FROM Win32_PerfFormattedData_PerfOS_Memory]</key>
                     </item>
                 </graph_item>
             </graph_items>
