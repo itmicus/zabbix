@@ -18,3 +18,6 @@ This template for Zabbix Monitoring template.
 {$WEBSITE_METRICS_DEBUG} - turn on debug information while script executing<br/>
 {$WEBSITE_METRICS_TIMEOUT} - timeout in seconds for web site check<br/>
 {$WEBSITE_METRICS_TIMEOUT_RECOVERY} - timeout in seconds for recovery<br/>
+
+# Post about this template
+https://itmicus.ru/zabbix-website-monitoring

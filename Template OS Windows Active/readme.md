@@ -33,3 +33,6 @@ UnsafeUserParameters=1
 
 5. Restart Zabbix Agent
 
+# Post about this template
+https://itmicus.ru/ru/zabbix-windows-monitoring
+
