@@ -30,8 +30,10 @@ active_os_windows.conf to \zabbix_agentd\
 
 Include=C:\Program Files\zabbix-agent\zabbix_agentd\\*.conf  
 UnsafeUserParameters=1  
+Timeout=10  
 
 5. Restart Zabbix Agent
+6. All critiacal triggers you may 
 
 # Post about this template
 https://itmicus.ru/zabbix-windows-monitoring
