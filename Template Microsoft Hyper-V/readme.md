@@ -37,9 +37,9 @@ Timeout=10
 
 
 
-# Template Microsoft Hyper-V
+## Template Microsoft Hyper-V
 Main template for discover Hyper-V infrastructure on cluster or standalone hypervisor.  
-## LLD  
+### LLD  
 Discover Hyper-V clusters  
 Name: hyperv[discover, cluster]   
 Type: Zabbix agent (Active)  
@@ -71,13 +71,13 @@ Host prototypes
 {#VM.NAME}  
 Template: Template Microsoft Hyper-V Vm  
   
-#Template Microsoft Hyper-V Cluster
+## Template Microsoft Hyper-V Cluster  
 Template for monitoring Microsoft Failover cluster with Hyper-V role.  
 
-#Template Microsoft Hyper-V Hypervisor
+## Template Microsoft Hyper-V Hypervisor  
 Template for monitoring node from Microsoft Failover cluster with Hyper-V role or standalone Hyper-V.  
 
-#Template Microsoft Hyper-V VMs
+## Template Microsoft Hyper-V VMs  
 Template for monitoring each VM in cluster or standalone.   
 
 
