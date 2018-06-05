@@ -2,11 +2,11 @@
 
 # Features
 
-Monitoring and LLD : Guest/Root CPU, RAM, Ratio CPU/RAM, Virtual Network adapters and switches 
+Monitoring and LLD : Guest/Root CPU, RAM, Ratio CPU/RAM, Virtual Network adapters and switches   
 Inventory:count VM,states, ratio, health  
 Screen System performance: CPU, Memory, Networks  
 Independent OS language  
-Setting configuring by User Macros
+Setting configuring by User Macros  
 
 # Requirements
 Hyper-V: Windows server 2008 R2 or higher  
@@ -31,7 +31,7 @@ UnsafeUserParameters=1
 Timeout=10  
 
 5. Restart Zabbix Agent
-6. All critiacal triggers you may change though user macros in host
+6. All triggers you may change through user macros in host
 
 # Articles for understanding how monitoring Hyper-V
 WMI:
