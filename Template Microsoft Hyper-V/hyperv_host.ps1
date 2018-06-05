@@ -61,7 +61,7 @@ if ($ActionType -eq "discover") {
     }
 
     # Discover physical network adapter for hyper-v virtual switches
-    if ($Key -eq "vswa") {	
+    if ($Key -eq "va") {	
 	
         $filter = "NetEnabled='True' and  PhysicalAdapter='True' 
                     AND PNPDeviceID LIKE 'ROOT\\%'"
@@ -69,13 +69,13 @@ if ($ActionType -eq "discover") {
         $result_json = [pscustomobject]@{
             'data' = @(
                 get-wmiobject win32_networkadapter -filter  $filter | ForEach-Object {
-                    $VIRTUAL_SWITCH_ADAPTER_NAME = $_.NetConnectionID;
-                    $VIRTUAL_SWITCH_ADAPTER_INTERFACEINDEX = $_.InterfaceIndex;
+                    $VIRTUAL_ADAPTER_NAME = $_.NetConnectionID;
+                    $VIRTUAL_ADAPTER_INTERFACEINDEX = $_.InterfaceIndex;
                     Get-WmiObject Win32_PnPEntity -Filter ("PNPDeviceID='$($_.PNPDeviceID)'" -Replace '\\', '\\') | ForEach-Object { 
                         [pscustomobject]@{
-                            '{#VIRTUAL_SWITCH_NETWORKADAPTER_NAME}'           = $VIRTUAL_SWITCH_ADAPTER_NAME;
-                            '{#VIRTUAL_SWITCH_NETWORKADAPTER_PERF}'           = $_.Name.Replace("/", "_").Replace("#", "_").Replace("(", "[").Replace(")", "]")
-                            '{#VIRTUAL_SWITCH_NETWORKADAPTER_INTERFACEINDEX}' = $VIRTUAL_SWITCH_ADAPTER_INTERFACEINDEX
+                            '{#VIRTUAL_NETWORKADAPTER_NAME}'           = $VIRTUAL_ADAPTER_NAME;
+                            '{#VIRTUAL_NETWORKADAPTER_PERF}'           = $_.Name.Replace("/", "_").Replace("#", "_").Replace("(", "[").Replace(")", "]")
+                            '{#VIRTUAL_NETWORKADAPTER_INTERFACEINDEX}' = $VIRTUAL_ADAPTER_INTERFACEINDEX
                         }
                     }
                 }					
@@ -85,13 +85,13 @@ if ($ActionType -eq "discover") {
     }
 
     # Discover hyper-v not clustered vms
-    if ($Key -eq "vms_notclustered") {	
+    if ($Key -eq "vm") {	
         $result_json = [pscustomobject]@{
             'data' = @(
                 get-vm | Where-Object {$_.IsClustered -eq $False} | ForEach-Object {
                     $vm_name = $_.Name;
                     [pscustomobject]@{
-                        '{#VM_NOTCLUSTERED_NAME}' = $vm_name;
+                        '{#VM_NAME}' = $vm_name;
                     }
                 }					
             )
@@ -104,7 +104,7 @@ if ($ActionType -eq "discover") {
 if ($ActionType -eq "get") {
 
     # Get data for physical network adapter by name
-    if ($Key -eq "vms_stat") {
+    if ($Key -eq "host_stat") {
         if ($Value -eq "all") {
 
             $VMs = Get-VM
@@ -117,10 +117,9 @@ if ($ActionType -eq "get") {
             $VMsStateOff = 0
             $VMsStateSaved = 0
             $VMsStatePaused = 0
-            $VMsStateOther= 0
+            $VMsStateOther = 0
 
-            foreach ($VM in $VMs) 
-            {  
+            foreach ($VM in $VMs) {  
                 if ($VM.DynamicMemoryEnabled -eq "True") {
                     $VMsMemoryMinimum += $VM.MemoryMinimum
                     $VMsMemoryMaximum += $VM.MemoryMaximum
@@ -154,7 +153,19 @@ if ($ActionType -eq "get") {
             $result | Add-Member -type NoteProperty -name VMsStatePaused  -Value $VMsStatePaused
             $result | Add-Member -type NoteProperty -name VMsStateOther  -Value $VMsStateOther
 
+            $result | ConvertTo-Json
+        }
+    }
 
+    if ($Key -eq "vm_stat") {
+        if ($Value -ne "") {
+
+            $VMs = Get-VM -Name $Value
+            $VMIS= 0
+
+            $result = New-Object PSCustomObject
+            $result | Add-Member -type NoteProperty -name VMsMemoryMinimum  -Value $VMIS
+   
             $result | ConvertTo-Json
         }
     }
