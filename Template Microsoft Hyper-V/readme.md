@@ -2,11 +2,12 @@
 
 # Features
 
-Monitoring and LLD : Guest/Root CPU, RAM, Ratio CPU/RAM, Virtual Network adapters and switches   
-Inventory:count VM,states, ratio, health  
+Monitoring and LLD : Guest/Root CPU, RAM, Ratio CPU/RAM, Host Virtual Network adapters and switches, Virtual machine storage and network
+Inventory:count VM, states, health  
 Screen System performance: CPU, Memory, Networks  
 Independent OS language  
 Setting configuring by User Macros  
+You can analyzing all performance data overall host and virtual machines
 
 # Requirements
 Hyper-V: Windows server 2008 R2 or higher  
@@ -34,17 +35,17 @@ Timeout=10
 6. All triggers you may change through user macros in host
 
 # Articles for understanding how monitoring Hyper-V
-WMI:
-http://wutils.com/wmi/root/cimv2/win32_perfrawdata/
+## WMI  
+http://wutils.com/wmi/root/cimv2/win32_perfrawdata/  
 
-Main concept get from this blog:
-https://blogs.msdn.microsoft.com/tvoellm/2009/04/22/monitoring-hyper-v-performance/
+## Main concept get from this blog  
+https://blogs.msdn.microsoft.com/tvoellm/2009/04/22/monitoring-hyper-v-performance/  
 
-CPU
-https://blogs.technet.microsoft.com/neales/2016/10/24/hyper-v-performance-cpu/
+## CPU  
+https://blogs.technet.microsoft.com/neales/2016/10/24/hyper-v-performance-cpu/  
 
-Memory
-https://blogs.technet.microsoft.com/neales/2016/11/22/hyper-v-performance-memory/
+## Memory  
+https://blogs.technet.microsoft.com/neales/2016/11/22/hyper-v-performance-memory/  
 
-Perf
-https://docs.microsoft.com/en-us/windows-server/administration/performance-tuning/role/hyper-v-server/detecting-virtualized-environment-bottlenecks
+## Perf    
+https://docs.microsoft.com/en-us/windows-server/administration/performance-tuning/role/hyper-v-server/detecting-virtualized-environment-bottlenecks  

@@ -99,6 +99,64 @@ if ($ActionType -eq "discover") {
         [Console]::WriteLine($result_json)
     }
  
+    # Discover in not clustered virtual machine's network adapters
+    if ($Key -eq "vm_na") {
+        $vms = get-vm | Where-Object {$_.IsClustered -eq $False} | Select-Object Name 
+        $networkadapters = Get-WmiObject Win32_PerfRawData_NvspNicStats_HyperVVirtualNetworkAdapter | Select-Object Name
+        $result = @()
+        foreach ($networkadapter in $networkadapters) {
+            foreach ($vm in $vms) {
+                if ($networkadapter.Name -Match $vm.Name) {
+                    $data = New-Object PSCustomObject
+                    $data | Add-Member -type NoteProperty -name Perf  -Value $networkadapter.Name
+                    $data | Add-Member -type NoteProperty -name Name  -Value $vm.Name
+                    $result += $data
+                }
+            }
+        }
+
+        $result_json = [pscustomobject]@{
+            'data' = @(
+                $result | ForEach-Object {
+                    [pscustomobject]@{
+                        '{#VM_NETWORKADAPTER_NAME}' = $_.Name;
+                        '{#VM_NETWORKADAPTER_PERF}' = $_.Perf;
+                    }
+                }					
+            )
+        }| ConvertTo-Json
+        [Console]::WriteLine($result_json)
+    }
+
+    # Discover in not clustered virtual machine's storage devices
+    if ($Key -eq "vm_sd") {
+        $vms = get-vm | Where-Object {$_.IsClustered -eq $False} | Select-Object Name 
+        $networkadapters = Get-WmiObject Win32_PerfFormattedData_Counters_HyperVVirtualStorageDevice | Select-Object Name
+        $result = @()
+        foreach ($networkadapter in $networkadapters) {
+            foreach ($vm in $vms) {
+                if ($networkadapter.Name -Match $vm.Name) {
+                    $data = New-Object PSCustomObject
+                    $data | Add-Member -type NoteProperty -name Perf  -Value $networkadapter.Name
+                    $data | Add-Member -type NoteProperty -name Name  -Value $vm.Name
+                    $result += $data
+                }
+            }
+        }
+
+        $result_json = [pscustomobject]@{
+            'data' = @(
+                $result | ForEach-Object {
+                    [pscustomobject]@{
+                        '{#VM_STORAGEDEVICE_NAME}' = $_.Name;
+                        '{#VM_STORAGEDEVICE_PERF}' = $_.Perf;
+                    }
+                }					
+            )
+        }| ConvertTo-Json
+        [Console]::WriteLine($result_json)
+        
+    }
 }
 
 if ($ActionType -eq "get") {
@@ -161,7 +219,7 @@ if ($ActionType -eq "get") {
         if ($Value -ne "") {
 
             $VMs = Get-VM -Name $Value
-            $VMIS= 0
+            $VMIS = 0
 
             $result = New-Object PSCustomObject
             $result | Add-Member -type NoteProperty -name VMsMemoryMinimum  -Value $VMIS
@@ -169,5 +227,7 @@ if ($ActionType -eq "get") {
             $result | ConvertTo-Json
         }
     }
+
+   
 }
 	
