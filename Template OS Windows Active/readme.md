@@ -12,7 +12,7 @@ Independent Physical and Virtual hardware
 # Requirements
 Windows 7 or higher  
 Windows server 2008 R2 or higher  
-PowerShell 3  
+PowerShell 3 or higher  
 
 # How install
 1. Import the template XML file using the Zabbix Templates Import feature.
@@ -33,7 +33,7 @@ UnsafeUserParameters=1
 Timeout=10  
 
 5. Restart Zabbix Agent
-6. All critiacal triggers you may 
+6. All triggers you may change through user macros in host
 
 # Post about this template
 https://itmicus.ru/zabbix-windows-monitoring
