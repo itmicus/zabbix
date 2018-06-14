@@ -5,7 +5,7 @@ All code is open source.
 Thank you!  
 
 Now you can download and use templates for:  
-## Microsoft Windows  
-## Microsoft Hyper-V  
-## Web site metrics  
+### Microsoft Windows  
+### Microsoft Hyper-V  
+### Web site metrics  
 
