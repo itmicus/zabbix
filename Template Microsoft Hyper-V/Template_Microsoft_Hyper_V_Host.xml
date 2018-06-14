@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.4</version>
-    <date>2018-06-05T10:55:32Z</date>
+    <date>2018-06-14T08:07:59Z</date>
     <groups>
         <group>
             <name>Templates/Virtualization</name>
@@ -10,13 +10,15 @@
     <templates>
         <template>
             <template>Template Microsoft Hyper-V Host</template>
-            <name>Template Microsoft Hyper-V Host</name>
-            <description>Template for monitoring node from Microsoft Failover cluster with Hyper-V role or standalone Hyper-V.&#13;
+            <name>Template Microsoft Hyper-V Host (itmicus.ru)</name>
+            <description>Template Microsoft Hyper-V Host (itmicus) Version: 1.0&#13;
 &#13;
-WMI:&#13;
-http://wutils.com/wmi/root/cimv2/win32_perfrawdata/&#13;
+Template for monitoring node from Microsoft Failover cluster with Hyper-V role or standalone Hyper-V.&#13;
 &#13;
-Main concept get from this blog:&#13;
+&#13;
+Read this before:&#13;
+&#13;
+Main concept&#13;
 https://blogs.msdn.microsoft.com/tvoellm/2009/04/22/monitoring-hyper-v-performance/&#13;
 &#13;
 CPU&#13;
@@ -25,8 +27,11 @@ https://blogs.technet.microsoft.com/neales/2016/10/24/hyper-v-performance-cpu/&#
 Memory&#13;
 https://blogs.technet.microsoft.com/neales/2016/11/22/hyper-v-performance-memory/&#13;
 &#13;
-Perf&#13;
-https://docs.microsoft.com/en-us/windows-server/administration/performance-tuning/role/hyper-v-server/detecting-virtualized-environment-bottlenecks</description>
+Performance&#13;
+https://docs.microsoft.com/en-us/windows-server/administration/performance-tuning/role/hyper-v-server/detecting-virtualized-environment-bottlenecks&#13;
+&#13;
+WMI classes&#13;
+http://wutils.com/wmi/root/cimv2/win32_perfrawdata/</description>
             <groups>
                 <group>
                     <name>Templates/Virtualization</name>
@@ -92,6 +97,50 @@ https://docs.microsoft.com/en-us/windows-server/administration/performance-tunin
                     <applications>
                         <application>
                             <name>Hyper-V Host Status</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Hyper-V Root memory assigned</name>
+                    <type>15</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>hyperv.hv.rootassignedmemory</key>
+                    <delay>10m</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>B</units>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params>last(&quot;wmi.get[root\cimv2,select TotalPhysicalMemory from Win32_ComputerSystem]&quot;)-last(&quot;hyperv.hv.vmsassignedmemory&quot;)-last(&quot;wmi.get[root\cimv2,select FreePhysicalMemory from Win32_OperatingSystem]&quot;)</params>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Hyper-V Host Memory</name>
+                        </application>
+                        <application>
+                            <name>Hyper-V Host overview</name>
                         </application>
                     </applications>
                     <valuemap/>
@@ -485,6 +534,50 @@ https://docs.microsoft.com/en-us/windows-server/administration/performance-tunin
                     </master_item>
                 </item>
                 <item>
+                    <name>Hyper-V Host total physical memory</name>
+                    <type>15</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>hyperv.hv.TotalPhysicalMemory</key>
+                    <delay>10m</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>B</units>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params>last(&quot;wmi.get[root\cimv2,select TotalPhysicalMemory from Win32_ComputerSystem]&quot;)</params>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Hyper-V Host Memory</name>
+                        </application>
+                        <application>
+                            <name>Hyper-V Host overview</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
                     <name>Hyper-V vCPU ratio</name>
                     <type>15</type>
                     <snmp_community/>
@@ -792,7 +885,7 @@ https://docs.microsoft.com/en-us/windows-server/administration/performance-tunin
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>wmi.get[root\cimv2, select HealthCritical FROM Win32_PerfRawData_VmmsVirtualMachineStats_HyperVVirtualMachineHealthSummary]</key>
+                    <key>wmi.get[root\cimv2, select HealthCritical FROM Win32_PerfFormattedData_VmmsVirtualMachineStats_HyperVVirtualMachineHealthSummary]</key>
                     <delay>1m</delay>
                     <history>1w</history>
                     <trends>365d</trends>
@@ -838,7 +931,7 @@ http://wutils.com/wmi/root/cimv2/win32_perfrawdata_vmmsvirtualmachinestats_hyper
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>wmi.get[root\cimv2, select HealthOk FROM Win32_PerfRawData_VmmsVirtualMachineStats_HyperVVirtualMachineHealthSummary]</key>
+                    <key>wmi.get[root\cimv2, select HealthOk FROM Win32_PerfFormattedData_VmmsVirtualMachineStats_HyperVVirtualMachineHealthSummary]</key>
                     <delay>1m</delay>
                     <history>1w</history>
                     <trends>365d</trends>
@@ -1580,11 +1673,11 @@ http://wutils.com/wmi/root/cimv2/win32_perfrawdata_vmmsvirtualmachinestats_hyper
                     <description/>
                     <item_prototypes>
                         <item_prototype>
-                            <name>Virtual network adapter &quot;{#VIRTUAL_NETWORKADAPTER_NAME}&quot; % Utilization</name>
+                            <name>Hyper-V network adapter &quot;{#HYPERV_NETWORKADAPTER_NAME}&quot; % Utilization</name>
                             <type>15</type>
                             <snmp_community/>
                             <snmp_oid/>
-                            <key>hyperv.hv.vswa.utilizationt[{#VIRTUAL_NETWORKADAPTER_INTERFACEINDEX}]</key>
+                            <key>hyperv.hv.vswa.utilizationt[{#HYPERV_NETWORKADAPTER_INTERFACEINDEX}]</key>
                             <delay>15s</delay>
                             <history>1w</history>
                             <trends>365d</trends>
@@ -1599,8 +1692,8 @@ http://wutils.com/wmi/root/cimv2/win32_perfrawdata_vmmsvirtualmachinestats_hyper
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <params>( (last(&quot;wmi.get[root\cimv2,select BytesTotalPersec from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#VIRTUAL_NETWORKADAPTER_PERF}']&quot;) *8) /&#13;
-last(&quot;wmi.get[root\cimv2,select CurrentBandwidth from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#VIRTUAL_NETWORKADAPTER_PERF}']&quot;))*100</params>
+                            <params>( (last(&quot;wmi.get[root\cimv2,select BytesTotalPersec from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#HYPERV_NETWORKADAPTER_PERF}']&quot;) *8) /&#13;
+last(&quot;wmi.get[root\cimv2,select CurrentBandwidth from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#HYPERV_NETWORKADAPTER_PERF}']&quot;))*100</params>
                             <ipmi_sensor/>
                             <authtype>0</authtype>
                             <username/>
@@ -1623,18 +1716,18 @@ last(&quot;wmi.get[root\cimv2,select CurrentBandwidth from Win32_PerfFormattedDa
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Virtual network adapter &quot;{#VIRTUAL_NETWORKADAPTER_NAME}&quot; Incoming Bytes/sec</name>
+                            <name>Hyper-V network adapter &quot;{#HYPERV_NETWORKADAPTER_NAME}&quot; Incoming Bytes/sec</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
-                            <key>wmi.get[root\cimv2,select BytesReceivedPersec from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#VIRTUAL_NETWORKADAPTER_PERF}']</key>
+                            <key>wmi.get[root\cimv2,select BytesReceivedPersec from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#HYPERV_NETWORKADAPTER_PERF}']</key>
                             <delay>15s</delay>
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units>bps</units>
+                            <units>Bps</units>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1665,18 +1758,18 @@ last(&quot;wmi.get[root\cimv2,select CurrentBandwidth from Win32_PerfFormattedDa
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Virtual network adapter &quot;{#VIRTUAL_NETWORKADAPTER_NAME}&quot; Outbound Bytes/sec</name>
+                            <name>Hyper-V network adapter &quot;{#HYPERV_NETWORKADAPTER_NAME}&quot; Outbound Bytes/sec</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
-                            <key>wmi.get[root\cimv2,select BytesSentPersec from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#VIRTUAL_NETWORKADAPTER_PERF}']</key>
+                            <key>wmi.get[root\cimv2,select BytesSentPersec from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#HYPERV_NETWORKADAPTER_PERF}']</key>
                             <delay>15s</delay>
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units>bps</units>
+                            <units>Bps</units>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1708,11 +1801,11 @@ Bytes Sent/sec is the rate at which bytes are sent over each network adapter, in
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Virtual network adapter &quot;{#VIRTUAL_NETWORKADAPTER_NAME}&quot; Total Bytes/sec</name>
+                            <name>Hyper-V network adapter &quot;{#HYPERV_NETWORKADAPTER_NAME}&quot; Total Bytes/sec</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
-                            <key>wmi.get[root\cimv2,select BytesTotalPersec from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#VIRTUAL_NETWORKADAPTER_PERF}']</key>
+                            <key>wmi.get[root\cimv2,select BytesTotalPersec from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#HYPERV_NETWORKADAPTER_PERF}']</key>
                             <delay>15s</delay>
                             <history>1w</history>
                             <trends>365d</trends>
@@ -1750,18 +1843,18 @@ Bytes Sent/sec is the rate at which bytes are sent over each network adapter, in
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Virtual network adapter &quot;{#VIRTUAL_NETWORKADAPTER_NAME}&quot; LinkSpeed</name>
+                            <name>Hyper-V network adapter &quot;{#HYPERV_NETWORKADAPTER_NAME}&quot; LinkSpeed</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
-                            <key>wmi.get[root\cimv2,select CurrentBandwidth from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#VIRTUAL_NETWORKADAPTER_PERF}']</key>
+                            <key>wmi.get[root\cimv2,select CurrentBandwidth from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#HYPERV_NETWORKADAPTER_PERF}']</key>
                             <delay>5m</delay>
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units>b</units>
+                            <units>B</units>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1792,11 +1885,11 @@ Bytes Sent/sec is the rate at which bytes are sent over each network adapter, in
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Virtual network adapter &quot;{#VIRTUAL_NETWORKADAPTER_NAME}&quot; Output Queue Length</name>
+                            <name>Hyper-V network adapter &quot;{#HYPERV_NETWORKADAPTER_NAME}&quot; Output Queue Length</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
-                            <key>wmi.get[root\cimv2,select OutputQueueLength from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#VIRTUAL_NETWORKADAPTER_PERF}']</key>
+                            <key>wmi.get[root\cimv2,select OutputQueueLength from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#HYPERV_NETWORKADAPTER_PERF}']</key>
                             <delay>1m</delay>
                             <history>1w</history>
                             <trends>365d</trends>
@@ -1838,11 +1931,11 @@ https://blogs.technet.microsoft.com/yongrhee/2010/07/06/network-interface-output
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Virtual network adapter &quot;{#VIRTUAL_NETWORKADAPTER_NAME}&quot; Packets Outbound Discarded</name>
+                            <name>Hyper-V network adapter &quot;{#HYPERV_NETWORKADAPTER_NAME}&quot; Packets Outbound Discarded</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
-                            <key>wmi.get[root\cimv2,select PacketsOutboundDiscarded from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#VIRTUAL_NETWORKADAPTER_PERF}']</key>
+                            <key>wmi.get[root\cimv2,select PacketsOutboundDiscarded from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#HYPERV_NETWORKADAPTER_PERF}']</key>
                             <delay>1m</delay>
                             <history>1w</history>
                             <trends>365d</trends>
@@ -1886,10 +1979,10 @@ https://msdn.microsoft.com/en-us/library/ms803962.aspx</description>
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Template Microsoft Hyper-V Host:hyperv.hv.vswa.utilizationt[{#VIRTUAL_NETWORKADAPTER_INTERFACEINDEX}].avg(6h)}&gt;{$NETWORK_MAX_UTILIZE}</expression>
+                            <expression>{Template Microsoft Hyper-V Host:hyperv.hv.vswa.utilizationt[{#HYPERV_NETWORKADAPTER_INTERFACEINDEX}].avg(6h)}&gt;{$NETWORK_MAX_UTILIZE}</expression>
                             <recovery_mode>1</recovery_mode>
-                            <recovery_expression>{Template Microsoft Hyper-V Host:hyperv.hv.vswa.utilizationt[{#VIRTUAL_NETWORKADAPTER_INTERFACEINDEX}].avg(6h)}&lt;{$HYPERV_NETWORK_MAX_UTILIZE}</recovery_expression>
-                            <name>Virtual network adapter &quot;&quot;{#VIRTUAL_NETWORKADAPTER_NAME}&quot; utilize &gt; {$HYPERV_NETWORK_MAX_UTILIZE}%</name>
+                            <recovery_expression>{Template Microsoft Hyper-V Host:hyperv.hv.vswa.utilizationt[{#HYPERV_NETWORKADAPTER_INTERFACEINDEX}].avg(6h)}&lt;{$HYPERV_NETWORK_MAX_UTILIZE}</recovery_expression>
+                            <name>Hyper-V network adapter &quot;&quot;{#HYPERV_NETWORKADAPTER_NAME}&quot; utilize &gt; {$HYPERV_NETWORK_MAX_UTILIZE}%</name>
                             <correlation_mode>0</correlation_mode>
                             <correlation_tag/>
                             <url/>
@@ -1902,10 +1995,10 @@ https://msdn.microsoft.com/en-us/library/ms803962.aspx</description>
                             <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template Microsoft Hyper-V Host:wmi.get[root\cimv2,select OutputQueueLength from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#VIRTUAL_NETWORKADAPTER_PERF}'].last(#5)}&gt; {$HYPERV_NETWORK_OUTPUT_QUEUE_LENGHT}</expression>
+                            <expression>{Template Microsoft Hyper-V Host:wmi.get[root\cimv2,select OutputQueueLength from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#HYPERV_NETWORKADAPTER_PERF}'].last(#5)}&gt; {$HYPERV_NETWORK_OUTPUT_QUEUE_LENGHT}</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
-                            <name>Virtual network adapter &quot;{#VIRTUAL_NETWORKADAPTER_NAME}&quot; Output Queue Length &gt;  {$HYPERV_NETWORK_OUTPUT_QUEUE_LENGHT}</name>
+                            <name>Hyper-V network adapter &quot;{#HYPERV_NETWORKADAPTER_NAME}&quot; Output Queue Length &gt;  {$HYPERV_NETWORK_OUTPUT_QUEUE_LENGHT}</name>
                             <correlation_mode>0</correlation_mode>
                             <correlation_tag/>
                             <url/>
@@ -1919,10 +2012,10 @@ When reviewing Output Queue Length, it is important to review the active Network
                             <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template Microsoft Hyper-V Host:wmi.get[root\cimv2,select PacketsOutboundDiscarded from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#VIRTUAL_NETWORKADAPTER_PERF}'].last(#1)}&gt;{$HYPERV_NETWORK_OUTPUT_DISCARDED}</expression>
+                            <expression>{Template Microsoft Hyper-V Host:wmi.get[root\cimv2,select PacketsOutboundDiscarded from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#HYPERV_NETWORKADAPTER_PERF}'].last(#1)}&gt;{$HYPERV_NETWORK_OUTPUT_DISCARDED}</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
-                            <name>Virtual network adapter &quot;{#VIRTUAL_NETWORKADAPTER_NAME}&quot; Packets Outbound Discarded &gt; {$HYPERV_NETWORK_OUTPUT_DISCARDED}</name>
+                            <name>Hyper-V network adapter &quot;{#HYPERV_NETWORKADAPTER_NAME}&quot; Packets Outbound Discarded &gt; {$HYPERV_NETWORK_OUTPUT_DISCARDED}</name>
                             <correlation_mode>0</correlation_mode>
                             <correlation_tag/>
                             <url/>
@@ -1939,7 +2032,7 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                     </trigger_prototypes>
                     <graph_prototypes>
                         <graph_prototype>
-                            <name>Virtual network adapter &quot;{#VIRTUAL_NETWORKADAPTER_NAME}&quot; % Utilization</name>
+                            <name>Hyper-V network adapter &quot;{#HYPERV_NETWORKADAPTER_NAME}&quot; % Utilization</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
@@ -1965,13 +2058,13 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                                     <type>0</type>
                                     <item>
                                         <host>Template Microsoft Hyper-V Host</host>
-                                        <key>hyperv.hv.vswa.utilizationt[{#VIRTUAL_NETWORKADAPTER_INTERFACEINDEX}]</key>
+                                        <key>hyperv.hv.vswa.utilizationt[{#HYPERV_NETWORKADAPTER_INTERFACEINDEX}]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
                         </graph_prototype>
                         <graph_prototype>
-                            <name>Virtual network adapter &quot;{#VIRTUAL_NETWORKADAPTER_NAME}&quot; traffic</name>
+                            <name>Hyper-V network adapter &quot;{#HYPERV_NETWORKADAPTER_NAME}&quot; traffic</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
@@ -1997,7 +2090,7 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                                     <type>0</type>
                                     <item>
                                         <host>Template Microsoft Hyper-V Host</host>
-                                        <key>wmi.get[root\cimv2,select BytesReceivedPersec from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#VIRTUAL_NETWORKADAPTER_PERF}']</key>
+                                        <key>wmi.get[root\cimv2,select BytesReceivedPersec from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#HYPERV_NETWORKADAPTER_PERF}']</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -2009,7 +2102,7 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                                     <type>0</type>
                                     <item>
                                         <host>Template Microsoft Hyper-V Host</host>
-                                        <key>wmi.get[root\cimv2,select BytesSentPersec from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#VIRTUAL_NETWORKADAPTER_PERF}']</key>
+                                        <key>wmi.get[root\cimv2,select BytesSentPersec from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#HYPERV_NETWORKADAPTER_PERF}']</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -2021,7 +2114,7 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                                     <type>0</type>
                                     <item>
                                         <host>Template Microsoft Hyper-V Host</host>
-                                        <key>wmi.get[root\cimv2,select OutputQueueLength from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#VIRTUAL_NETWORKADAPTER_PERF}']</key>
+                                        <key>wmi.get[root\cimv2,select OutputQueueLength from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#HYPERV_NETWORKADAPTER_PERF}']</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -2033,7 +2126,7 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                                     <type>0</type>
                                     <item>
                                         <host>Template Microsoft Hyper-V Host</host>
-                                        <key>wmi.get[root\cimv2,select PacketsOutboundDiscarded from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#VIRTUAL_NETWORKADAPTER_PERF}']</key>
+                                        <key>wmi.get[root\cimv2,select PacketsOutboundDiscarded from Win32_PerfFormattedData_Tcpip_NetworkAdapter where Name='{#HYPERV_NETWORKADAPTER_PERF}']</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
@@ -2198,13 +2291,13 @@ Check overall host available memory</description>
                     <jmx_endpoint/>
                 </discovery_rule>
                 <discovery_rule>
-                    <name>Hyper-V VM (High Availability) discover</name>
+                    <name>Hyper-V VM network adapter discover</name>
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>hyperv.host[discover,vm_ha]</key>
+                    <key>hyperv.host[discover,vm_na]</key>
                     <delay>1h</delay>
-                    <status>1</status>
+                    <status>0</status>
                     <allowed_hosts/>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
@@ -2227,8 +2320,341 @@ Check overall host available memory</description>
                         <conditions/>
                     </filter>
                     <lifetime>30d</lifetime>
-                    <description>Under constructions</description>
-                    <item_prototypes/>
+                    <description/>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>VM &quot;{#VM_NETWORKADAPTER_NAME}&quot; network adapter &quot;{#VM_NETWORKADAPTER_PERF}&quot; Incoming Bytes/sec</name>
+                            <type>7</type>
+                            <snmp_community/>
+                            <snmp_oid/>
+                            <key>wmi.get[root\cimv2,select BytesReceivedPersec from Win32_PerfFormattedData_NvspNicStats_HyperVVirtualNetworkAdapter where Name='{#VM_NETWORKADAPTER_PERF}']</key>
+                            <delay>15s</delay>
+                            <history>90d</history>
+                            <trends>365d</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>Bps</units>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Hyper-V Host VM</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>VM &quot;{#VM_NETWORKADAPTER_NAME}&quot; network adapter &quot;{#VM_NETWORKADAPTER_PERF}&quot; Outbound Bytes/sec</name>
+                            <type>7</type>
+                            <snmp_community/>
+                            <snmp_oid/>
+                            <key>wmi.get[root\cimv2,select BytesSentPersec from Win32_PerfFormattedData_NvspNicStats_HyperVVirtualNetworkAdapter where Name='{#VM_NETWORKADAPTER_PERF}']</key>
+                            <delay>15s</delay>
+                            <history>90d</history>
+                            <trends>365d</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>Bps</units>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Hyper-V Host VM</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype/>
+                        </item_prototype>
+                    </item_prototypes>
+                    <trigger_prototypes/>
+                    <graph_prototypes/>
+                    <host_prototypes/>
+                    <jmx_endpoint/>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>Hyper-V VM storage device discover</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>hyperv.host[discover,vm_sd]</key>
+                    <delay>1h</delay>
+                    <status>0</status>
+                    <allowed_hosts/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <filter>
+                        <evaltype>0</evaltype>
+                        <formula/>
+                        <conditions/>
+                    </filter>
+                    <lifetime>30d</lifetime>
+                    <description>Discover VHDX and get perforamnce</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>VM &quot;{#VM_STORAGEDEVICE_NAME}&quot; storage device &quot;{#VM_STORAGEDEVICE_PERF}&quot; Queue Length</name>
+                            <type>7</type>
+                            <snmp_community/>
+                            <snmp_oid/>
+                            <key>wmi.get[root\cimv2,select QueueLength  from Win32_PerfFormattedData_Counters_HyperVVirtualStorageDevice where Name='{#VM_STORAGEDEVICE_PERF}']</key>
+                            <delay>15s</delay>
+                            <history>90d</history>
+                            <trends>365d</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>This counter represents the current queue length on this virtual device.</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Hyper-V Host VM</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>VM &quot;{#VM_STORAGEDEVICE_NAME}&quot; storage device &quot;{#VM_STORAGEDEVICE_PERF}&quot; Read Bytes/sec</name>
+                            <type>7</type>
+                            <snmp_community/>
+                            <snmp_oid/>
+                            <key>wmi.get[root\cimv2,select ReadBytesPersec from Win32_PerfFormattedData_Counters_HyperVVirtualStorageDevice where Name='{#VM_STORAGEDEVICE_PERF}']</key>
+                            <delay>15s</delay>
+                            <history>90d</history>
+                            <trends>365d</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>Bps</units>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>This counter represents the total number of bytes that have been read per second on this virtual device</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Hyper-V Host VM</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>VM &quot;{#VM_STORAGEDEVICE_NAME}&quot; storage device &quot;{#VM_STORAGEDEVICE_PERF}&quot; Read Operations/sec</name>
+                            <type>7</type>
+                            <snmp_community/>
+                            <snmp_oid/>
+                            <key>wmi.get[root\cimv2,select ReadOperationsPerSec from Win32_PerfFormattedData_Counters_HyperVVirtualStorageDevice where Name='{#VM_STORAGEDEVICE_PERF}']</key>
+                            <delay>15s</delay>
+                            <history>90d</history>
+                            <trends>365d</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>ops/s</units>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>This counter represents the number of read operations that have occurred per second on this virtual device.</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Hyper-V Host VM</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>VM &quot;{#VM_STORAGEDEVICE_NAME}&quot; storage device &quot;{#VM_STORAGEDEVICE_PERF}&quot; Write Bytes/sec</name>
+                            <type>7</type>
+                            <snmp_community/>
+                            <snmp_oid/>
+                            <key>wmi.get[root\cimv2,select WriteBytesPersec from Win32_PerfFormattedData_Counters_HyperVVirtualStorageDevice where Name='{#VM_STORAGEDEVICE_PERF}']</key>
+                            <delay>15s</delay>
+                            <history>90d</history>
+                            <trends>365d</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>Bps</units>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>This counter represents the total number of bytes that have been written per second on this virtual device.</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Hyper-V Host VM</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>VM &quot;{#VM_STORAGEDEVICE_NAME}&quot; storage device &quot;{#VM_STORAGEDEVICE_PERF}&quot; Write Operations/sec</name>
+                            <type>7</type>
+                            <snmp_community/>
+                            <snmp_oid/>
+                            <key>wmi.get[root\cimv2,select WriteOperationsPerSec from Win32_PerfFormattedData_Counters_HyperVVirtualStorageDevice where Name='{#VM_STORAGEDEVICE_PERF}']</key>
+                            <delay>15s</delay>
+                            <history>90d</history>
+                            <trends>365d</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>ops/s</units>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>This counter represents the number of write operations that have occurred per second on this virtual device.</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Hyper-V Host VM</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype/>
+                        </item_prototype>
+                    </item_prototypes>
                     <trigger_prototypes/>
                     <graph_prototypes/>
                     <host_prototypes/>
@@ -2271,14 +2697,14 @@ Check overall host available memory</description>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
-                            <key>wmi.get[root\cimv2, select BytesPersec FROM Win32_PerfRawData_NvspSwitchStats_HyperVVirtualSwitch WHERE Name='{#VIRTUAL_SWITCH_NAME}']</key>
+                            <key>wmi.get[root\cimv2, select BytesPersec FROM Win32_PerfFormattedData_NvspSwitchStats_HyperVVirtualSwitch WHERE Name='{#VIRTUAL_SWITCH_NAME}']</key>
                             <delay>15s</delay>
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units>B</units>
+                            <units>Bps</units>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2309,18 +2735,18 @@ Check overall host available memory</description>
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Virtual Switch &quot;{#VIRTUAL_SWITCH_NAME}&quot; Total Incoming Bytes</name>
+                            <name>Virtual Switch &quot;{#VIRTUAL_SWITCH_NAME}&quot; Incoming Bytes/sec</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
-                            <key>wmi.get[root\cimv2, select BytesReceivedPersec FROM Win32_PerfRawData_NvspSwitchStats_HyperVVirtualSwitch  WHERE Name='{#VIRTUAL_SWITCH_NAME}']</key>
+                            <key>wmi.get[root\cimv2, select BytesReceivedPersec FROM Win32_PerfFormattedData_NvspSwitchStats_HyperVVirtualSwitch WHERE Name='{#VIRTUAL_SWITCH_NAME}']</key>
                             <delay>15s</delay>
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units>B</units>
+                            <units>Bps</units>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2351,18 +2777,18 @@ Check overall host available memory</description>
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Virtual Switch &quot;{#VIRTUAL_SWITCH_NAME}&quot; Total Outbound Bytes</name>
+                            <name>Virtual Switch &quot;{#VIRTUAL_SWITCH_NAME}&quot; Outbound Bytes/sec</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
-                            <key>wmi.get[root\cimv2, select BytesSentPersec FROM Win32_PerfRawData_NvspSwitchStats_HyperVVirtualSwitch  WHERE Name='{#VIRTUAL_SWITCH_NAME}']</key>
+                            <key>wmi.get[root\cimv2, select BytesSentPersec FROM Win32_PerfFormattedData_NvspSwitchStats_HyperVVirtualSwitch  WHERE Name='{#VIRTUAL_SWITCH_NAME}']</key>
                             <delay>15s</delay>
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units>B</units>
+                            <units>Bps</units>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2393,11 +2819,11 @@ Check overall host available memory</description>
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Virtual Switch &quot;{#VIRTUAL_SWITCH_NAME}&quot; Total Dropped Incoming Packets</name>
+                            <name>Virtual Switch &quot;{#VIRTUAL_SWITCH_NAME}&quot; Dropped Incoming Packets/sec</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
-                            <key>wmi.get[root\cimv2, select DroppedPacketsIncomingPersec FROM Win32_PerfRawData_NvspSwitchStats_HyperVVirtualSwitch  WHERE Name='{#VIRTUAL_SWITCH_NAME}']</key>
+                            <key>wmi.get[root\cimv2, select DroppedPacketsIncomingPersec FROM Win32_PerfFormattedData_NvspSwitchStats_HyperVVirtualSwitch WHERE Name='{#VIRTUAL_SWITCH_NAME}']</key>
                             <delay>15s</delay>
                             <history>1w</history>
                             <trends>365d</trends>
@@ -2435,11 +2861,11 @@ Check overall host available memory</description>
                             <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Virtual Switch &quot;{#VIRTUAL_SWITCH_NAME}&quot; Total Dropped Outgoing Packets</name>
+                            <name>Virtual Switch &quot;{#VIRTUAL_SWITCH_NAME}&quot; Dropped Outgoing Packets/sec</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
-                            <key>wmi.get[root\cimv2, select DroppedPacketsOutgoingPersec FROM Win32_PerfRawData_NvspSwitchStats_HyperVVirtualSwitch  WHERE Name='{#VIRTUAL_SWITCH_NAME}']</key>
+                            <key>wmi.get[root\cimv2, select DroppedPacketsOutgoingPersec FROM Win32_PerfFormattedData_NvspSwitchStats_HyperVVirtualSwitch WHERE Name='{#VIRTUAL_SWITCH_NAME}']</key>
                             <delay>15s</delay>
                             <history>1w</history>
                             <trends>365d</trends>
@@ -2478,7 +2904,76 @@ Check overall host available memory</description>
                         </item_prototype>
                     </item_prototypes>
                     <trigger_prototypes/>
-                    <graph_prototypes/>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>Hyper-V Virtual switch &quot;{#VIRTUAL_SWITCH_NAME}&quot; traffic</name>
+                            <width>900</width>
+                            <height>200</height>
+                            <yaxismin>0.0000</yaxismin>
+                            <yaxismax>100.0000</yaxismax>
+                            <show_work_period>1</show_work_period>
+                            <show_triggers>1</show_triggers>
+                            <type>0</type>
+                            <show_legend>1</show_legend>
+                            <show_3d>0</show_3d>
+                            <percent_left>0.0000</percent_left>
+                            <percent_right>0.0000</percent_right>
+                            <ymin_type_1>0</ymin_type_1>
+                            <ymax_type_1>0</ymax_type_1>
+                            <ymin_item_1>0</ymin_item_1>
+                            <ymax_item_1>0</ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>5</drawtype>
+                                    <color>33FF33</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template Microsoft Hyper-V Host</host>
+                                        <key>wmi.get[root\cimv2, select BytesReceivedPersec FROM Win32_PerfFormattedData_NvspSwitchStats_HyperVVirtualSwitch WHERE Name='{#VIRTUAL_SWITCH_NAME}']</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>5</drawtype>
+                                    <color>3333FF</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template Microsoft Hyper-V Host</host>
+                                        <key>wmi.get[root\cimv2, select BytesSentPersec FROM Win32_PerfFormattedData_NvspSwitchStats_HyperVVirtualSwitch  WHERE Name='{#VIRTUAL_SWITCH_NAME}']</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>2</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>2774A4</color>
+                                    <yaxisside>1</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template Microsoft Hyper-V Host</host>
+                                        <key>wmi.get[root\cimv2, select DroppedPacketsIncomingPersec FROM Win32_PerfFormattedData_NvspSwitchStats_HyperVVirtualSwitch WHERE Name='{#VIRTUAL_SWITCH_NAME}']</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>3</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>FC6EA3</color>
+                                    <yaxisside>1</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template Microsoft Hyper-V Host</host>
+                                        <key>wmi.get[root\cimv2, select DroppedPacketsOutgoingPersec FROM Win32_PerfFormattedData_NvspSwitchStats_HyperVVirtualSwitch WHERE Name='{#VIRTUAL_SWITCH_NAME}']</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
                     <host_prototypes/>
                     <jmx_endpoint/>
                 </discovery_rule>
@@ -2525,9 +3020,9 @@ Check overall host available memory</description>
             <templates/>
             <screens>
                 <screen>
-                    <name>Hyper-V CPU perf overview</name>
-                    <hsize>1</hsize>
-                    <vsize>3</vsize>
+                    <name>Hyper-V Host Overview</name>
+                    <hsize>2</hsize>
+                    <vsize>4</vsize>
                     <screen_items>
                         <screen_item>
                             <resourcetype>0</resourcetype>
@@ -2555,8 +3050,8 @@ Check overall host available memory</description>
                             <resourcetype>0</resourcetype>
                             <width>500</width>
                             <height>100</height>
-                            <x>0</x>
-                            <y>1</y>
+                            <x>1</x>
+                            <y>0</y>
                             <colspan>1</colspan>
                             <rowspan>1</rowspan>
                             <elements>0</elements>
@@ -2578,7 +3073,7 @@ Check overall host available memory</description>
                             <width>500</width>
                             <height>100</height>
                             <x>0</x>
-                            <y>2</y>
+                            <y>1</y>
                             <colspan>1</colspan>
                             <rowspan>1</rowspan>
                             <elements>0</elements>
@@ -2589,19 +3084,79 @@ Check overall host available memory</description>
                             <dynamic>0</dynamic>
                             <sort_triggers>0</sort_triggers>
                             <resource>
-                                <name>Hyper-V Root CPU (Host) perf</name>
+                                <name>Hyper-V Host Memory used</name>
+                                <host>Template Microsoft Hyper-V Host</host>
+                            </resource>
+                            <max_columns>3</max_columns>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>1</x>
+                            <y>1</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Hyper-V VMs Memory used</name>
+                                <host>Template Microsoft Hyper-V Host</host>
+                            </resource>
+                            <max_columns>3</max_columns>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>2</y>
+                            <colspan>2</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Hyper-V network adapter &quot;{#HYPERV_NETWORKADAPTER_NAME}&quot; traffic</name>
+                                <host>Template Microsoft Hyper-V Host</host>
+                            </resource>
+                            <max_columns>3</max_columns>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>3</y>
+                            <colspan>2</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Hyper-V Virtual switch &quot;{#VIRTUAL_SWITCH_NAME}&quot; traffic</name>
                                 <host>Template Microsoft Hyper-V Host</host>
                             </resource>
                             <max_columns>3</max_columns>
                             <application/>
                         </screen_item>
                     </screen_items>
-                </screen>
-                <screen>
-                    <name>Hyper-V Host Overview</name>
-                    <hsize>1</hsize>
-                    <vsize>1</vsize>
-                    <screen_items/>
                 </screen>
             </screens>
         </template>
@@ -2624,7 +3179,7 @@ Check overall host available memory</description>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template Microsoft Hyper-V Host:wmi.get[root\cimv2, select HealthOk FROM Win32_PerfRawData_VmmsVirtualMachineStats_HyperVVirtualMachineHealthSummary].last()}=0</expression>
+            <expression>{Template Microsoft Hyper-V Host:wmi.get[root\cimv2, select HealthOk FROM Win32_PerfFormattedData_VmmsVirtualMachineStats_HyperVVirtualMachineHealthSummary].last()}=0</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Hyper-V host has 0 VMs in OK state</name>
@@ -2640,9 +3195,9 @@ Check overall host available memory</description>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template Microsoft Hyper-V Host:wmi.get[root\cimv2, select HealthCritical FROM Win32_PerfRawData_VmmsVirtualMachineStats_HyperVVirtualMachineHealthSummary].last()}&gt;0</expression>
+            <expression>{Template Microsoft Hyper-V Host:wmi.get[root\cimv2, select HealthCritical FROM Win32_PerfFormattedData_VmmsVirtualMachineStats_HyperVVirtualMachineHealthSummary].last()}&gt;0</expression>
             <recovery_mode>1</recovery_mode>
-            <recovery_expression>{Template Microsoft Hyper-V Host:wmi.get[root\cimv2, select HealthCritical FROM Win32_PerfRawData_VmmsVirtualMachineStats_HyperVVirtualMachineHealthSummary].last()}=0</recovery_expression>
+            <recovery_expression>{Template Microsoft Hyper-V Host:wmi.get[root\cimv2, select HealthCritical FROM Win32_PerfFormattedData_VmmsVirtualMachineStats_HyperVVirtualMachineHealthSummary].last()}=0</recovery_expression>
             <name>Hyper-V host has critical VMs</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
@@ -2771,51 +3326,66 @@ For general administration, use remote management tools instead of locally or vi
     </triggers>
     <graphs>
         <graph>
-            <name>Hyper-V CPU perf</name>
+            <name>Hyper-V Host Memory used</name>
             <width>900</width>
             <height>200</height>
             <yaxismin>0.0000</yaxismin>
             <yaxismax>100.0000</yaxismax>
-            <show_work_period>1</show_work_period>
-            <show_triggers>1</show_triggers>
-            <type>0</type>
+            <show_work_period>0</show_work_period>
+            <show_triggers>0</show_triggers>
+            <type>1</type>
             <show_legend>1</show_legend>
             <show_3d>0</show_3d>
             <percent_left>0.0000</percent_left>
             <percent_right>0.0000</percent_right>
             <ymin_type_1>0</ymin_type_1>
-            <ymax_type_1>0</ymax_type_1>
+            <ymax_type_1>2</ymax_type_1>
             <ymin_item_1>0</ymin_item_1>
-            <ymax_item_1>0</ymax_item_1>
+            <ymax_item_1>
+                <host>Template Microsoft Hyper-V Host</host>
+                <key>hyperv.hv.TotalPhysicalMemory</key>
+            </ymax_item_1>
             <graph_items>
                 <graph_item>
                     <sortorder>0</sortorder>
                     <drawtype>5</drawtype>
-                    <color>3333FF</color>
+                    <color>DDDD00</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
                         <host>Template Microsoft Hyper-V Host</host>
-                        <key>wmi.get[root\cimv2, select PercentTotalRunTime FROM Win32_PerfFormattedData_HvStats_HyperVHypervisorRootVirtualProcessor WHERE Name='_Total']</key>
+                        <key>hyperv.hv.rootassignedmemory</key>
                     </item>
                 </graph_item>
                 <graph_item>
                     <sortorder>1</sortorder>
                     <drawtype>5</drawtype>
-                    <color>66FF66</color>
+                    <color>F63100</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
                         <host>Template Microsoft Hyper-V Host</host>
-                        <key>wmi.get[root\cimv2, select PercentTotalRunTime FROM Win32_PerfFormattedData_HvStats_HyperVHypervisorVirtualProcessor WHERE Name='_Total']</key>
+                        <key>hyperv.hv.vmsassignedmemory</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>33FF33</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template Microsoft Hyper-V Host</host>
+                        <key>wmi.get[root\cimv2, select AvailableMemory FROM Win32_PerfFormattedData_BalancerStats_HyperVDynamicMemoryBalancer]</key>
                     </item>
                 </graph_item>
             </graph_items>
         </graph>
         <graph>
-            <name>Hyper-V Host Memory</name>
+            <name>Hyper-V Logical CPU perf</name>
             <width>900</width>
             <height>200</height>
             <yaxismin>0.0000</yaxismin>
@@ -2841,33 +3411,13 @@ For general administration, use remote management tools instead of locally or vi
                     <type>0</type>
                     <item>
                         <host>Template Microsoft Hyper-V Host</host>
-                        <key>hyperv.hv.vmsmemorypercent</key>
+                        <key>wmi.get[root\cimv2, select PercentTotalRunTime FROM Win32_PerfFormattedData_HvStats_HyperVHypervisorLogicalProcessor WHERE Name='_Total']</key>
                     </item>
                 </graph_item>
-            </graph_items>
-        </graph>
-        <graph>
-            <name>Hyper-V Logical CPU perf</name>
-            <width>900</width>
-            <height>200</height>
-            <yaxismin>0.0000</yaxismin>
-            <yaxismax>100.0000</yaxismax>
-            <show_work_period>1</show_work_period>
-            <show_triggers>1</show_triggers>
-            <type>0</type>
-            <show_legend>1</show_legend>
-            <show_3d>0</show_3d>
-            <percent_left>0.0000</percent_left>
-            <percent_right>0.0000</percent_right>
-            <ymin_type_1>0</ymin_type_1>
-            <ymax_type_1>0</ymax_type_1>
-            <ymin_item_1>0</ymin_item_1>
-            <ymax_item_1>0</ymax_item_1>
-            <graph_items>
                 <graph_item>
-                    <sortorder>0</sortorder>
-                    <drawtype>2</drawtype>
-                    <color>66FF66</color>
+                    <sortorder>1</sortorder>
+                    <drawtype>5</drawtype>
+                    <color>33FF33</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
@@ -2877,27 +3427,15 @@ For general administration, use remote management tools instead of locally or vi
                     </item>
                 </graph_item>
                 <graph_item>
-                    <sortorder>1</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>FF6666</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Template Microsoft Hyper-V Host</host>
-                        <key>wmi.get[root\cimv2, select PercentHypervisorRunTime FROM Win32_PerfFormattedData_HvStats_HyperVHypervisorLogicalProcessor WHERE Name='_Total']</key>
-                    </item>
-                </graph_item>
-                <graph_item>
                     <sortorder>2</sortorder>
-                    <drawtype>5</drawtype>
+                    <drawtype>0</drawtype>
                     <color>3333FF</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
                         <host>Template Microsoft Hyper-V Host</host>
-                        <key>wmi.get[root\cimv2, select PercentTotalRunTime FROM Win32_PerfFormattedData_HvStats_HyperVHypervisorLogicalProcessor WHERE Name='_Total']</key>
+                        <key>wmi.get[root\cimv2, select PercentHypervisorRunTime FROM Win32_PerfFormattedData_HvStats_HyperVHypervisorLogicalProcessor WHERE Name='_Total']</key>
                     </item>
                 </graph_item>
             </graph_items>
@@ -2922,7 +3460,7 @@ For general administration, use remote management tools instead of locally or vi
             <graph_items>
                 <graph_item>
                     <sortorder>0</sortorder>
-                    <drawtype>0</drawtype>
+                    <drawtype>5</drawtype>
                     <color>3333FF</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
@@ -3010,6 +3548,77 @@ For general administration, use remote management tools instead of locally or vi
                     <item>
                         <host>Template Microsoft Hyper-V Host</host>
                         <key>wmi.get[root\cimv2, select PercentRemoteRunTime FROM Win32_PerfFormattedData_HvStats_HyperVHypervisorVirtualProcessor WHERE Name='_Total']</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Hyper-V VMs Memory used</name>
+            <width>900</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>0</show_work_period>
+            <show_triggers>0</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>0</ymin_type_1>
+            <ymax_type_1>2</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>
+                <host>Template Microsoft Hyper-V Host</host>
+                <key>hyperv.hv.TotalPhysicalMemory</key>
+            </ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>F63100</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template Microsoft Hyper-V Host</host>
+                        <key>hyperv.hv.vmsassignedmemory</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>4</drawtype>
+                    <color>A54F10</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template Microsoft Hyper-V Host</host>
+                        <key>hyperv.hv.stat.vmsmemorydemand</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>4</drawtype>
+                    <color>33FFFF</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template Microsoft Hyper-V Host</host>
+                        <key>hyperv.hv.stat.vmsmemorymaximum</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>3</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>6C59DC</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template Microsoft Hyper-V Host</host>
+                        <key>hyperv.hv.stat.vmsmemoryminimum</key>
                     </item>
                 </graph_item>
             </graph_items>

@@ -69,13 +69,13 @@ if ($ActionType -eq "discover") {
         $result_json = [pscustomobject]@{
             'data' = @(
                 get-wmiobject win32_networkadapter -filter  $filter | ForEach-Object {
-                    $VIRTUAL_ADAPTER_NAME = $_.NetConnectionID;
-                    $VIRTUAL_ADAPTER_INTERFACEINDEX = $_.InterfaceIndex;
+                    $HYPERV_ADAPTER_NAME = $_.NetConnectionID;
+                    $HYPERV_ADAPTER_INTERFACEINDEX = $_.InterfaceIndex;
                     Get-WmiObject Win32_PnPEntity -Filter ("PNPDeviceID='$($_.PNPDeviceID)'" -Replace '\\', '\\') | ForEach-Object { 
                         [pscustomobject]@{
-                            '{#VIRTUAL_NETWORKADAPTER_NAME}'           = $VIRTUAL_ADAPTER_NAME;
-                            '{#VIRTUAL_NETWORKADAPTER_PERF}'           = $_.Name.Replace("/", "_").Replace("#", "_").Replace("(", "[").Replace(")", "]")
-                            '{#VIRTUAL_NETWORKADAPTER_INTERFACEINDEX}' = $VIRTUAL_ADAPTER_INTERFACEINDEX
+                            '{#HYPERV_NETWORKADAPTER_NAME}'           = $HYPERV_ADAPTER_NAME;
+                            '{#HYPERV_NETWORKADAPTER_PERF}'           = $_.Name.Replace("/", "_").Replace("#", "_").Replace("(", "[").Replace(")", "]")
+                            '{#HYPERV_NETWORKADAPTER_INTERFACEINDEX}' = $HYPERV_ADAPTER_INTERFACEINDEX
                         }
                     }
                 }					
@@ -215,15 +215,20 @@ if ($ActionType -eq "get") {
         }
     }
 
+    # get vm statistics
     if ($Key -eq "vm_stat") {
         if ($Value -ne "") {
 
-            $VMs = Get-VM -Name $Value
-            $VMIS = 0
-
+            $VM = Get-VM -Name $Value
+            # status , integration service, hearbeat, state, 
             $result = New-Object PSCustomObject
-            $result | Add-Member -type NoteProperty -name VMsMemoryMinimum  -Value $VMIS
-   
+            $result | Add-Member -type NoteProperty -name Status  -Value $VM.Status
+            $result | Add-Member -type NoteProperty -name State  -Value $VM.State
+            $result | Add-Member -type NoteProperty -name IntegrationServicesVersion  -Value $VM.IntegrationServicesVersion
+            $result | Add-Member -type NoteProperty -name ReplicationHealth  -Value $VM.ReplicationHealth
+            $result | Add-Member -type NoteProperty -name ReplicationMode  -Value $VM.ReplicationMode
+            $result | Add-Member -type NoteProperty -name ReplicationState  -Value $VM.ReplicationState
+            $result | Add-Member -type NoteProperty -name VirtualMachineSubType  -Value $VM.VirtualMachineSubType
             $result | ConvertTo-Json
         }
     }

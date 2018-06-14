@@ -4,7 +4,7 @@
 
 Monitoring and LLD : Guest/Root CPU, RAM, Ratio CPU/RAM, Host Virtual Network adapters and switches, Virtual machine storage and network
 Inventory:count VM, states, health  
-Screen System performance: CPU, Memory, Networks  
+Screen System performance: CPU, Memory, Networks, VHDX 
 Independent OS language  
 Setting configuring by User Macros  
 You can analyzing all performance data overall host and virtual machines
@@ -33,6 +33,10 @@ Timeout=10
 
 5. Restart Zabbix Agent
 6. All triggers you may change through user macros in host
+
+# Post about this template
+https://itmicus.ru/hyper-v-zabbix-monitoring
+
 
 # Articles for understanding how monitoring Hyper-V
 ## WMI  
