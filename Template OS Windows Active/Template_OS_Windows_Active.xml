@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.4</version>
-    <date>2018-05-14T08:28:21Z</date>
+    <date>2018-06-15T06:49:28Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -10,8 +10,12 @@
     <templates>
         <template>
             <template>Template OS Windows Active</template>
-            <name>Template OS Windows Active</name>
-            <description>CPU&#13;
+            <name>Template OS Windows Active (itmicus.ru)</name>
+            <description>Template OS Windows Active (itmicus) Version: 1.1&#13;
+&#13;
+Template for monitoring OS Windows: Clients (7/8/10) and Servers (2008/2012/2016)&#13;
+&#13;
+CPU&#13;
 Memory&#13;
 Physical and logical Disk&#13;
 Network&#13;
@@ -1208,6 +1212,56 @@ Firewall status</description>
                     </master_item>
                 </item>
                 <item>
+                    <name>Operating System Pending Reboot</name>
+                    <type>18</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>os.windows.inventory.PendingReboot</key>
+                    <delay>0</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>OS Pending Reboot, after install updates</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Inventory: OS</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Microsoft Windows Pending Reboot</name>
+                    </valuemap>
+                    <logtimefmt/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.PendingReboot</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint/>
+                    <master_item>
+                        <key>os.windows.active[get,inventory]</key>
+                    </master_item>
+                </item>
+                <item>
                     <name>PowerShell Remoting is Active</name>
                     <type>18</type>
                     <snmp_community/>
@@ -1785,10 +1839,9 @@ The Memory performance object consists of counters that describe the behavior of
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>Memory Available Megabytes&#13;
-perf_counter[\Memory\% Committed Bytes]&#13;
+                    <description>\Memory\% Committed Bytes&#13;
 &#13;
-in Use This measures the ratio of Committed Bytes to the Commit Limit—in other words, the amount of virtual memory in use. This indicates insufficient memory if the number is greater than 80 percent. The obvious solution for this is to add more memory.</description>
+Memory Available Megabytes in Use This measures the ratio of Committed Bytes to the Commit Limit—in other words, the amount of virtual memory in use. This indicates insufficient memory if the number is greater than 80 percent. The obvious solution for this is to add more memory.</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -1835,8 +1888,9 @@ in Use This measures the ratio of Committed Bytes to the Commit Limit—in other
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>Memory Available Megabytes&#13;
-perf_counter[\Memory\Available Bytes]</description>
+                    <description>\Memory\Available Bytes&#13;
+&#13;
+Memory Available Megabytes</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -1888,7 +1942,9 @@ perf_counter[\Memory\Available Bytes]</description>
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>Memory\Free System Page Table Entries This indicates the number of page table entries not currently in use by the system. If the number is less than 5,000, there may well be a memory leak.</description>
+                    <description>Memory\Free System Page Table Entries&#13;
+&#13;
+This indicates the number of page table entries not currently in use by the system. If the number is less than 5,000, there may well be a memory leak.</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -1917,7 +1973,7 @@ perf_counter[\Memory\Available Bytes]</description>
                     <history>1w</history>
                     <trends>365d</trends>
                     <status>0</status>
-                    <value_type>0</value_type>
+                    <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
                     <snmpv3_contextname/>
@@ -1987,6 +2043,7 @@ The Memory performance object consists of counters that describe the behavior of
                     <privatekey/>
                     <port/>
                     <description>Memory\Pages per Second &#13;
+&#13;
 This measures the rate at which pages are read from or written to disk to resolve hard page faults. If the value is greater than 1,000, as a result of excessive paging, there may be a memory leak.</description>
                     <inventory_link>0</inventory_link>
                     <applications>
@@ -2079,7 +2136,7 @@ This measures the time the processor spends receiving and servicing hardware int
                     <port/>
                     <description>Processor\% Privileged Time&#13;
 &#13;
- is the percentage of elapsed time that the process threads spent executing code in privileged mode. When a Windows system service in called, the service will often run in privileged mode to gain access to system-private data. Such data is protected from access by threads executing in user mode. Calls to the system can be explicit or implicit, such as page faults or interrupts. Unlike some early operating systems, Windows uses process boundaries for subsystem protection in addition to the traditional protection of user and privileged modes. Some work done by Windows on behalf of the application might appear in other subsystem processes in addition to the privileged time in the process.&#13;
+This is the percentage of elapsed time that the process threads spent executing code in privileged mode. When a Windows system service in called, the service will often run in privileged mode to gain access to system-private data. Such data is protected from access by threads executing in user mode. Calls to the system can be explicit or implicit, such as page faults or interrupts. Unlike some early operating systems, Windows uses process boundaries for subsystem protection in addition to the traditional protection of user and privileged modes. Some work done by Windows on behalf of the application might appear in other subsystem processes in addition to the privileged time in the process.&#13;
 &#13;
 The Processor performance object consists of counters that measure aspects of processor activity The processor is the part of the computer that performs arithmetic and logical computations, initiates operations on peripherals, and runs the threads of processes. A computer can have multiple processors. The processor object represents each processor as an instance of the object.</description>
                     <inventory_link>0</inventory_link>
@@ -2122,8 +2179,7 @@ The Processor performance object consists of counters that measure aspects of pr
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>perf_counter&quot;[\Processor Information(_Total)\% Processor Time&quot;]&#13;
-perf_counter[&quot;\238(_Total)\240&quot;]</description>
+                    <description>\Processor Information(_Total)\% Processor Time</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -2170,7 +2226,7 @@ perf_counter[&quot;\238(_Total)\240&quot;]</description>
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>The peak usage of the Page File instance in percent. S&#13;
+                    <description>The peak usage of the Page File instance in percent. &#13;
 &#13;
 The Paging File performance object consists of counters that monitor the paging file(s) on the computer. The paging file is a reserved space on disk that backs up committed physical memory on the computer.</description>
                     <inventory_link>0</inventory_link>
@@ -2403,7 +2459,7 @@ This indicates the number of threads in the processor queue. The server doesn't 
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>Total physical memory</description>
+                    <description/>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -3008,15 +3064,13 @@ This indicates the number of threads in the processor queue. The server doesn't 
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description>perf_counter[&quot;\PhysicalDisk({#PHYSICAL_DISK})\Avg. Disk sec/Read&quot;]&#13;
+                            <description>\PhysicalDisk({#PHYSICAL_DISK})\Avg. Disk sec/Read&#13;
 &#13;
 Displays the average time the disk transfers took to complete, in seconds. Although the scale is seconds, the counter has millisecond precision, meaning a value of 0.004 indicates the average time for disk transfers to complete was 4 milliseconds. &#13;
 This is the counter in Perfmon used to measure IO latency. &#13;
 I wrote a blog specifically about measuring latency with Perfmon. For details got to “Measuring Disk Latency with Windows Performance Monitor”. &#13;
 &#13;
-http://blogs.technet.com/b/askcore/archive/2012/02/07/measuring-disk-latency-with-windows-performance-monitor-perfmon.aspx&#13;
-&#13;
-Счетчик производительности Avg. Disk sec/Read указывает среднее время считывания данных с диска в секундах. Среднее значение счетчика производительности Avg. Disk sec/Read не должно превышать 10 миллисекунд. Максимальное значение счетчика производительности Avg. Disk sec/Read не должно превышать 50 миллисекунд.</description>
+http://blogs.technet.com/b/askcore/archive/2012/02/07/measuring-disk-latency-with-windows-performance-monitor-perfmon.aspx</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -3061,13 +3115,10 @@ http://blogs.technet.com/b/askcore/archive/2012/02/07/measuring-disk-latency-wit
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description>perf_counter[&quot;\PhysicalDisk({#PHYSICAL_DISK})\Avg. Disk sec/Write&quot;]&#13;
+                            <description>\PhysicalDisk({#PHYSICAL_DISK})\Avg. Disk sec/Write&#13;
 &#13;
 Displays the average time the disk transfers took to complete, in seconds. Although the scale is seconds, the counter has millisecond precision, meaning a value of 0.004 indicates the average time for disk transfers to complete was 4 milliseconds. &#13;
-This is the counter in Perfmon used to measure IO latency. &#13;
-&#13;
-&#13;
-Счетчик производительности Avg. Disk sec/Read указывает среднее время считывания данных с диска в секундах. Среднее значение счетчика производительности Avg. Disk sec/Read не должно превышать 10 миллисекунд. Максимальное значение счетчика производительности Avg. Disk sec/Read не должно превышать 50 миллисекунд.</description>
+This is the counter in Perfmon used to measure IO latency.</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -3096,7 +3147,7 @@ This is the counter in Perfmon used to measure IO latency. &#13;
                             <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts/>
-                            <units>B</units>
+                            <units>Bps</units>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3117,7 +3168,7 @@ This is the counter in Perfmon used to measure IO latency. &#13;
 Perfmon captures the total number of bytes sent to the disk (write) and retrieved from the disk (read) over a period of one second. If the Perfmon capture interval is set for anything greater than one second, the average of the values captured is presented. &#13;
 The Disk Read Bytes/sec and the Disk Write Bytes/sec counters break down the results displaying only read bytes or only write bytes, respectively. &#13;
 &#13;
-Средняя скорость обмена данными с диском, или скорость чтения\записи. Показывает общее количество байт, отправленных на диск (запись) и с диска (чтение) в течении одной секунды, тем самым позволяя оценить пропускную способность дисковой системы. Складывается из значений Disk Read Bytes/sec (скорость чтения) и Disk Write Bytes/sec (скорость записи). Предельные значения сильно зависят от типа диска: к примеру для одиночного жесткого диска максимальная скорость чтения\записи лежит в пределах 160-250Mb/s, для одиночного SSD — около 550-600Mb/s.</description>
+The average speed of data exchange with the disk, or the speed of reading / writing. Shows the total number of bytes sent to disk (write) and disk (read) for one second, thereby allowing you to estimate the throughput of the disk system. It is built from the values Disk Read Bytes / sec (read speed) and Disk Write Bytes / sec (write speed). Limit values strongly depend on the type of disk: for example, for a single hard drive, the maximum read / write speed is 160-250Mb / s, for a single SSD, about 550-600Mb / s.</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -3168,7 +3219,7 @@ Disk Transfers/sec is the rate of read and write operations on the disk.&#13;
 &#13;
 The Physical Disk performance object consists of counters that monitor hard or fixed disk drive on a computer. Disks are used to store file, program, and paging data and are read to retrieve these items, and written to record changes to them. The values of physical disk counters are sums of the values of the logical disks (or partitions) into which they are divided.&#13;
 &#13;
-Основной показатель интенсивности запросов к диску. Показывает общее количество операций ввода\вывода, обработанных (завершенных) диском в течении 1 секунды (Input/Output Operations Per Second, IOPS). Этот счетчик позволяет примерно оценить, насколько нагрузка на диски близка к предельной. Для дисков, работающих в нормальном режиме, можно ориентироваться на следующие значения: 80-160 IOPS для одиночного жесткого диска SATA или SAS, 1800-5000 IOPS для одиночного SSD диска. Для уточнения можно воспользоваться счетчиками Disk Reads/sec (количество обработанных за секунду запросов на чтение) и Disk Writes/sec (количество обработанных за секунду запросов на запись).</description>
+The main indicator of the intensity of requests to the disk. Shows the total number of I / O operations processed (completed) by the disk for 1 second (Input / Output Operations Per Second, IOPS). This counter allows you to roughly estimate how much the load on the disks is close to the limit. For disks running in normal mode, you can focus on the following values: 80-160 IOPS for a single SATA or SAS hard drive, 1800-5000 IOPS for a single SSD drive. To clarify, you can use Disk Reads / sec counters (the number of read requests processed per second) and Disk Writes / sec (the number of write requests processed per second).</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -3197,7 +3248,7 @@ The Physical Disk performance object consists of counters that monitor hard or f
                             <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts/>
-                            <units>B</units>
+                            <units>Bps</units>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3218,7 +3269,7 @@ The Physical Disk performance object consists of counters that monitor hard or f
 Perfmon captures the total number of bytes sent to the disk (write) and retrieved from the disk (read) over a period of one second. If the Perfmon capture interval is set for anything greater than one second, the average of the values captured is presented. &#13;
 The Disk Read Bytes/sec and the Disk Write Bytes/sec counters break down the results displaying only read bytes or only write bytes, respectively. &#13;
 &#13;
-Средняя скорость обмена данными с диском, или скорость чтения\записи. Показывает общее количество байт, отправленных на диск (запись) и с диска (чтение) в течении одной секунды, тем самым позволяя оценить пропускную способность дисковой системы. Складывается из значений Disk Read Bytes/sec (скорость чтения) и Disk Write Bytes/sec (скорость записи). Предельные значения сильно зависят от типа диска: к примеру для одиночного жесткого диска максимальная скорость чтения\записи лежит в пределах 160-250Mb/s, для одиночного SSD — около 550-600Mb/s.</description>
+The average speed of data exchange with the disk, or the speed of reading / writing. Shows the total number of bytes sent to disk (write) and disk (read) for one second, thereby allowing you to estimate the throughput of the disk system. It is built from the values Disk Read Bytes / sec (read speed) and Disk Write Bytes / sec (write speed). Limit values strongly depend on the type of disk: for example, for a single hard drive, the maximum read / write speed is 160-250Mb / s, for a single SSD, about 550-600Mb / s.</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -3291,7 +3342,7 @@ The Disk Read Bytes/sec and the Disk Write Bytes/sec counters break down the res
                             <graph_items>
                                 <graph_item>
                                     <sortorder>0</sortorder>
-                                    <drawtype>1</drawtype>
+                                    <drawtype>5</drawtype>
                                     <color>EE0000</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
@@ -3303,7 +3354,7 @@ The Disk Read Bytes/sec and the Disk Write Bytes/sec counters break down the res
                                 </graph_item>
                                 <graph_item>
                                     <sortorder>1</sortorder>
-                                    <drawtype>1</drawtype>
+                                    <drawtype>5</drawtype>
                                     <color>0000EE</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
@@ -3335,7 +3386,7 @@ The Disk Read Bytes/sec and the Disk Write Bytes/sec counters break down the res
                             <graph_items>
                                 <graph_item>
                                     <sortorder>0</sortorder>
-                                    <drawtype>1</drawtype>
+                                    <drawtype>5</drawtype>
                                     <color>2774A4</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
@@ -3492,9 +3543,9 @@ last(&quot;wmi.get[root\cimv2,select CurrentBandwidth from Win32_PerfFormattedDa
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
-                            <value_type>0</value_type>
+                            <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units>bps</units>
+                            <units>Bps</units>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3510,7 +3561,7 @@ last(&quot;wmi.get[root\cimv2,select CurrentBandwidth from Win32_PerfFormattedDa
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description>perf_counter[&quot;\Network Interface({#PNETWORK})\Bytes Received/sec&quot;]</description>
+                            <description>\Network Interface({#PNETWORK})\Bytes Received/sec</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -3537,9 +3588,9 @@ last(&quot;wmi.get[root\cimv2,select CurrentBandwidth from Win32_PerfFormattedDa
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
-                            <value_type>0</value_type>
+                            <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units>bps</units>
+                            <units>Bps</units>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3555,7 +3606,7 @@ last(&quot;wmi.get[root\cimv2,select CurrentBandwidth from Win32_PerfFormattedDa
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description>perf_counter[&quot;\Network Interface({#PNETWORK})\Bytes Sent/sec&quot;]</description>
+                            <description>\Network Interface({#PNETWORK})\Bytes Sent/sec</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -3582,9 +3633,9 @@ last(&quot;wmi.get[root\cimv2,select CurrentBandwidth from Win32_PerfFormattedDa
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
-                            <value_type>0</value_type>
+                            <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units>bps</units>
+                            <units>Bps</units>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3625,9 +3676,9 @@ last(&quot;perf_counter[\&quot;\Network Interface({#PNETWORK})\Bytes Sent/sec\&q
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
-                            <value_type>0</value_type>
+                            <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units>b</units>
+                            <units>B</units>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3753,7 +3804,7 @@ last(&quot;perf_counter[\&quot;\Network Interface({#PNETWORK})\Bytes Sent/sec\&q
                             <history>1w</history>
                             <trends>365d</trends>
                             <status>0</status>
-                            <value_type>0</value_type>
+                            <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
                             <snmpv3_contextname/>
@@ -3771,7 +3822,7 @@ last(&quot;perf_counter[\&quot;\Network Interface({#PNETWORK})\Bytes Sent/sec\&q
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description>perf_counter[&quot;\Network Interface({#PNETWORK})\Output Queue Length&quot;]&#13;
+                            <description>\Network Interface({#PNETWORK})\Output Queue Length&#13;
 &#13;
 “Output Queue Length is the length of the output packet queue (in packets). If this is longer than two, there are delays and the bottleneck should be found and eliminated, if possible. Since the requests are queued by the Network Driver Interface Specification (NDIS) in this implementation, this will always be 0.”&#13;
 &#13;
@@ -3820,7 +3871,7 @@ https://blogs.technet.microsoft.com/yongrhee/2010/07/06/network-interface-output
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description>perf_counter[&quot;\Network Interface({#PNETWORK})\Packets Outbound Discarded&quot;]&#13;
+                            <description>\Network Interface({#PNETWORK})\Packets Outbound Discarded&#13;
 &#13;
 Shows the number of outbound packets to be discarded even though no errors had been detected to prevent transmission. One possible reason for discarding the a packet could be to free up buffer space.&#13;
 &#13;
@@ -3948,7 +3999,7 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                             <graph_items>
                                 <graph_item>
                                     <sortorder>0</sortorder>
-                                    <drawtype>1</drawtype>
+                                    <drawtype>5</drawtype>
                                     <color>0000EE</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
@@ -3960,7 +4011,7 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                                 </graph_item>
                                 <graph_item>
                                     <sortorder>1</sortorder>
-                                    <drawtype>1</drawtype>
+                                    <drawtype>5</drawtype>
                                     <color>EE0000</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
@@ -3968,6 +4019,18 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
                                     <item>
                                         <host>Template OS Windows Active</host>
                                         <key>wmi.get[root\cimv2,select BytesReceivedPersec from Win32_PerfFormattedData_Tcpip_NetworkInterface where Name='{#PHYSICAL_NETWORK_NAME_PERF}']</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>2</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>FFFF66</color>
+                                    <yaxisside>1</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template OS Windows Active</host>
+                                        <key>os.windows.active.networkinterface.utilization.percent[{#PHYSICAL_NETWORK_INTERFACEINDEX}]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
@@ -4465,6 +4528,22 @@ Depending on the Network Interface manufacture, the receive and transmit buffers
             <tags/>
         </trigger>
         <trigger>
+            <expression>{Template OS Windows Active:os.windows.inventory.PendingReboot.last()}=1</expression>
+            <recovery_mode>1</recovery_mode>
+            <recovery_expression>{Template OS Windows Active:os.windows.inventory.PendingReboot.last()}=0</recovery_expression>
+            <name>Operation System pending reboot</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>1</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
             <expression>{Template OS Windows Active:wmi.get[root\cimv2,SELECT CommittedBytes FROM Win32_PerfRawData_PerfOS_Memory].avg(10m)} &gt;1.5 * {Template OS Windows Active:wmi.get[root\cimv2,select TotalPhysicalMemory from Win32_ComputerSystem].last()}</expression>
             <recovery_mode>1</recovery_mode>
             <recovery_expression>{Template OS Windows Active:wmi.get[root\cimv2,SELECT CommittedBytes FROM Win32_PerfRawData_PerfOS_Memory].avg(10m)} &lt; {Template OS Windows Active:wmi.get[root\cimv2,select TotalPhysicalMemory from Win32_ComputerSystem].last()}</recovery_expression>
@@ -4669,7 +4748,7 @@ Because the changes are so gradual, you are better off using this Page File % Us
             <graph_items>
                 <graph_item>
                     <sortorder>0</sortorder>
-                    <drawtype>0</drawtype>
+                    <drawtype>5</drawtype>
                     <color>00EE00</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
@@ -4681,7 +4760,7 @@ Because the changes are so gradual, you are better off using this Page File % Us
                 </graph_item>
                 <graph_item>
                     <sortorder>1</sortorder>
-                    <drawtype>0</drawtype>
+                    <drawtype>5</drawtype>
                     <color>F63100</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
@@ -4693,7 +4772,7 @@ Because the changes are so gradual, you are better off using this Page File % Us
                 </graph_item>
                 <graph_item>
                     <sortorder>2</sortorder>
-                    <drawtype>0</drawtype>
+                    <drawtype>5</drawtype>
                     <color>0000EE</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
@@ -4705,7 +4784,7 @@ Because the changes are so gradual, you are better off using this Page File % Us
                 </graph_item>
                 <graph_item>
                     <sortorder>3</sortorder>
-                    <drawtype>0</drawtype>
+                    <drawtype>5</drawtype>
                     <color>A54F10</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
@@ -4856,6 +4935,19 @@ Because the changes are so gradual, you are better off using this Page File % Us
                 <mapping>
                     <value>12</value>
                     <newvalue>Credentials Required</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>Microsoft Windows Pending Reboot</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>No</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Need reboot</newvalue>
                 </mapping>
             </mappings>
         </value_map>
