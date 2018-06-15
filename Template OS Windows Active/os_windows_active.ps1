@@ -165,7 +165,18 @@ function Get-LatestUpdate {
 
     return $LastInstalledUpdate.Date
 }
-	
+    
+#Adapted from https://gist.github.com/altrive/5329377
+#Based on <http://gallery.technet.microsoft.com/scriptcenter/Get-PendingReboot-Query-bdb79542>
+function Test-PendingReboot {
+    if (Get-ChildItem "HKLM:\Software\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootPending" -EA Ignore) { return $True }
+    if (Get-Item "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired" -EA Ignore) { return $True }
+    # PendingFileRenameOperations also one of the signal for need reboot, but it often false signal
+    # if (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager" -Name PendingFileRenameOperations -EA Ignore) { return $true }
+
+    return $False
+}
+
 if ($ActionType -eq "discover") {
     # Discover physical disk
     if ($Key -eq "pdisk") {
@@ -345,6 +356,8 @@ if ($ActionType -eq "get") {
         $update_latest_date = Get-LatestUpdate
         $StartDate = (GET-DATE)
         $update_latest_seconds = [math]::Round(($StartDate - $update_latest_date).TotalSeconds)
+        $pending_reboot = Test-PendingReboot
+        $pending_reboot = [System.Convert]::ToInt32($pending_reboot)
 
         $result | Add-Member -type NoteProperty -name OSVendor -Value $os_vendor
         $result | Add-Member -type NoteProperty -name OSBuildversion -Value $os_buildversion
@@ -354,7 +367,8 @@ if ($ActionType -eq "get") {
         $result | Add-Member -type NoteProperty -name OSLatestUpdatesInstalled -Value $update_latest_date.tostring("dd.MM.yyyy")
         $result | Add-Member -type NoteProperty -name OSSecondsFromLatestUpdatesInstalled -Value $update_latest_seconds
         $result | Add-Member -type NoteProperty -name OSUptime  -Value  $Uptime
-
+        $result | Add-Member -type NoteProperty -name PendingReboot -Value $pending_reboot 
+        
         ###################### cpu
         $cpu_atchitecture = $ENV:PROCESSOR_ARCHITECTURE
         $cpu_model = (Get-WmiObject -class win32_processor).Name
