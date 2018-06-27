@@ -50,18 +50,21 @@ if ($ActionType -eq "discover") {
         # filter by 
         $result_json = [pscustomobject]@{
             'data' = @(
-                Get-ChildItem -Path Cert:\LocalMachine\My\ | ForEach-Object {
-                    $CN = $_.Subject.Split(",")[0].Split("=")[1]
-                    [pscustomobject]@{
-                        '{#LM_CERT_SUBJECT}' = $_.Subject
-                        '{#LM_CERT_CN}' = $CN 
-                        '{#LM_CERT_FRIENDLYNAME}' = $_.FriendlyName
-                        '{#LM_CERT_THUMBPRINT}' = $_.Thumbprint
-                        '{#LM_CERT_SERIALNUMBER}' = $_.SerialNumber
+                Get-ChildItem -Path Cert:\LocalMachine\My\  | ForEach-Object {
+                    # get only valid certificates
+                    if ((New-TimeSpan -End $_.NotAfter).Days -gt 0) {
+                        $CN = $_.Subject.Split(",")[0].Split("=")[1]
+                        [pscustomobject]@{
+                            '{#LM_CERT_SUBJECT}'      = $_.Subject
+                            '{#LM_CERT_CN}'           = $CN 
+                            '{#LM_CERT_FRIENDLYNAME}' = $_.FriendlyName
+                            '{#LM_CERT_THUMBPRINT}'   = $_.Thumbprint
+                            '{#LM_CERT_SERIALNUMBER}' = $_.SerialNumber
+                        }
                     }
                 }					
             )
-        }| ConvertTo-Json
+        } | ConvertTo-Json
         [Console]::WriteLine($result_json)
     }
 
@@ -73,15 +76,15 @@ if ($ActionType -eq "get") {
         # value is Thumbprint
         if ($Value -ne $null) {
 
-            $cert =   Get-ChildItem -Path Cert:\LocalMachine\My\ | Where-Object {$_.Thumbprint -eq $Value}
+            $cert = Get-ChildItem -Path Cert:\LocalMachine\My\ | Where-Object {$_.Thumbprint -eq $Value}
             $daystoexpire = (New-TimeSpan -End $cert.NotAfter).Days
             # need get cert status
 
             $result = New-Object PSCustomObject
-            $result | Add-Member -type NoteProperty -name daystoexpire  -Value $daystoexpire
-            $result | Add-Member -type NoteProperty -name issuedby  -Value $cert.IssuerName
-            $result | Add-Member -type NoteProperty -name issueddate  -Value $cert.NotBefore
-            $result | Add-Member -type NoteProperty -name expiredate  -Value $cert.NotAfter
+            $result | Add-Member -type NoteProperty -name DaysToExpire  -Value $daystoexpire
+            $result | Add-Member -type NoteProperty -name IssuedBy  -Value $cert.IssuerName
+            $result | Add-Member -type NoteProperty -name IssuedDate  -Value $cert.NotBefore
+            $result | Add-Member -type NoteProperty -name ExpireDate  -Value $cert.NotAfter
             #$result | Add-Member -type NoteProperty -name status  -Value
 
             $result | ConvertTo-Json
