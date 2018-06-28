@@ -34,4 +34,3 @@ Timeout=10
 5. Restart Zabbix Agent
 6. All triggers you may change through user macros in host
 
-# Post about this template
