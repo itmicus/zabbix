@@ -2,7 +2,8 @@
 
 # Features
 
-Monitoring and LLD : local machine certificates, days to expire
+Monitoring and LLD : get all certificates in local machine, and get days to expire certificate
+Triggers for days to expire
 Independent OS language  
 Setting configuring by User Macros  
 
