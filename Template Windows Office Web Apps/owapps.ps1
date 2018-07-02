@@ -62,7 +62,21 @@ function GetHTTPStatus([string]$url) {
 
 
 if ($ActionType -eq "discover") {
-   
+    if ($Key -eq "officewebfarm") {	
+        # filter by Subject
+        $farm = Get-OfficeWebAppsFarm -WarningAction silentlyContinue
+        $result = New-Object PSCustomObject
+        $result | Add-Member -type NoteProperty -name InternalURL -Value $internal_url_status
+        $result | Add-Member -type NoteProperty -name ExternalURL -Value $external_url_status
+            
+       
+        $result_json = [pscustomobject]@{
+            'data' = @(
+                $result 
+            )
+        }	| ConvertTo-Json    
+        [Console]::WriteLine($result_json)
+    }
 }
 
 if ($ActionType -eq "get") {
@@ -89,8 +103,9 @@ if ($ActionType -eq "get") {
             
             
         $farm_cert_name = $farm.CertificateName
-        $cert = Get-ChildItem -Path cert:\ | Where-Object { $_.FriendlyName -eq $farm_cert_name } 
-        $days_to_expr = ($cert.NotAfter - [DateTime]::Now).Days
+        $cert = Get-ChildItem -Path Cert:\LocalMachine\My\ | Where-Object { $_.FriendlyName -eq $farm_cert_name } 
+        $days_to_expr = (New-TimeSpan -End $cert.NotAfter).Days 
+  
             
         $url_internal = $farm.InternalURL.AbsoluteUri + "/hosting/discovery"
         $url_external = $farm.ExternalURL.AbsoluteUri + "/hosting/discovery"

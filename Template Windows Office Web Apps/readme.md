@@ -1,11 +1,10 @@
-# Template Microsoft Windows Certificates
+# Template Microsoft Office Web Apps 2013
 
 # Features
 
-Monitoring and LLD : get all certificates in local machine, and get days to expire certificate
-Triggers for days to expire
+Monitoring: office farm certificate, external and internal URL of farm, machine health, event logs (Microsoft Office Web Apps)
 Independent OS language  
-Setting configuring by User Macros  
+Setting configuring by User Macros: External URL, Internal URL of office web apps 
 
 
 # Requirements
@@ -22,8 +21,8 @@ PowerShell 3 or higher
 \scripts\  
 \zabbix_agentd\  
 and copy the files  
-windows_certs.ps1 to \scripts\  
-windows_certs.conf to \zabbix_agentd\  
+owapps.ps1 to \scripts\  
+owapps.conf to \zabbix_agentd\  
 
 4. Add lines to zabbix.conf
 
