@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.4</version>
-    <date>2018-07-03T07:17:01Z</date>
+    <date>2018-07-04T14:22:00Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -30,11 +30,11 @@ version 1.0</description>
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>eventlog[Microsoft Office Web Apps,,&quot;Warning|Error&quot;]</key>
-                    <delay>5m</delay>
-                    <history>30d</history>
+                    <key>eventlog[Microsoft Office Web Apps,,&quot;Error&quot;]</key>
+                    <delay>1m</delay>
+                    <history>1w</history>
                     <trends>0</trends>
-                    <status>0</status>
+                    <status>1</status>
                     <value_type>2</value_type>
                     <allowed_hosts/>
                     <units/>
@@ -53,7 +53,7 @@ version 1.0</description>
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description/>
+                    <description>this item working not correctly, and now disabled</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -67,7 +67,7 @@ version 1.0</description>
                     <master_item/>
                 </item>
                 <item>
-                    <name>Office Web Apps Certificate day to expire</name>
+                    <name>Office Web Apps Certificate days to expire</name>
                     <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
@@ -78,7 +78,7 @@ version 1.0</description>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
-                    <units/>
+                    <units>s</units>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -94,7 +94,7 @@ version 1.0</description>
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>Day to expire certificate in Office web apps farm</description>
+                    <description>Days to expire certificate in Office web apps farm</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -107,6 +107,10 @@ version 1.0</description>
                         <step>
                             <type>12</type>
                             <params>$.CertificatDayToExpired</params>
+                        </step>
+                        <step>
+                            <type>1</type>
+                            <params>86400</params>
                         </step>
                     </preprocessing>
                     <jmx_endpoint/>
@@ -150,7 +154,9 @@ Locally check</description>
                             <name>Office Web Apps</name>
                         </application>
                     </applications>
-                    <valuemap/>
+                    <valuemap>
+                        <name>Service state</name>
+                    </valuemap>
                     <logtimefmt/>
                     <preprocessing>
                         <step>
@@ -199,7 +205,9 @@ Locally check</description>
                             <name>Office Web Apps</name>
                         </application>
                     </applications>
-                    <valuemap/>
+                    <valuemap>
+                        <name>Service state</name>
+                    </valuemap>
                     <logtimefmt/>
                     <preprocessing>
                         <step>
@@ -220,9 +228,9 @@ Locally check</description>
                     <key>owapps.farm.version</key>
                     <delay>0</delay>
                     <history>3w</history>
-                    <trends>3d</trends>
+                    <trends>0</trends>
                     <status>0</status>
-                    <value_type>3</value_type>
+                    <value_type>4</value_type>
                     <allowed_hosts/>
                     <units/>
                     <snmpv3_contextname/>
@@ -654,7 +662,7 @@ C:\ProgramData\Microsoft\OfficeWebApps\Data\Logs\ULS</description>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template Microsoft Office Web Apps:eventlog[Microsoft Office Web Apps,,&quot;Warning|Error&quot;].logseverity()}=4</expression>
+            <expression>{Template Microsoft Office Web Apps:eventlog[Microsoft Office Web Apps,,&quot;Error&quot;].logseverity()}=4</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Office Web Apps log error</name>
@@ -670,7 +678,7 @@ C:\ProgramData\Microsoft\OfficeWebApps\Data\Logs\ULS</description>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template Microsoft Office Web Apps:eventlog[Microsoft Office Web Apps,,&quot;Warning|Error&quot;].logseverity()}=2</expression>
+            <expression>{Template Microsoft Office Web Apps:eventlog[Microsoft Office Web Apps,,&quot;Error&quot;].logseverity()}=2</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Office Web Apps log warning</name>
@@ -771,6 +779,19 @@ C:\ProgramData\Microsoft\OfficeWebApps\Data\Logs\ULS</description>
                 <mapping>
                     <value>1</value>
                     <newvalue>OK</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>Service state</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Down</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Up</newvalue>
                 </mapping>
             </mappings>
         </value_map>

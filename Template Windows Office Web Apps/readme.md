@@ -4,7 +4,7 @@
 
 Monitoring: office farm certificate, external and internal URL of farm, machine health, event logs (Microsoft Office Web Apps)
 Independent OS language  
-Setting configuring by User Macros: External URL, Internal URL of office web apps 
+Setting configuring by User Macros: External URL, Internal URL of web farm 
 
 
 # Requirements
