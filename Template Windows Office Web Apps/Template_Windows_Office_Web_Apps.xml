@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>3.4</version>
+    <date>2018-07-04T14:22:00Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template Microsoft Office Web Apps</template>
+            <name>Template Microsoft Office Web Apps (itmicus.ru)</name>
+            <description>Microsoft Office Web Apps 2013&#13;
+&#13;
+version 1.0</description>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Office Web Apps</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>Office Web Apps Logs</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>eventlog[Microsoft Office Web Apps,,&quot;Error&quot;]</key>
+                    <delay>1m</delay>
+                    <history>1w</history>
+                    <trends>0</trends>
+                    <status>1</status>
+                    <value_type>2</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>this item working not correctly, and now disabled</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Office Web Apps</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Office Web Apps Certificate days to expire</name>
+                    <type>18</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>owapps.farm.cert.daystoexpire</key>
+                    <delay>0</delay>
+                    <history>3w</history>
+                    <trends>3d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>s</units>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Days to expire certificate in Office web apps farm</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Office Web Apps</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.CertificatDayToExpired</params>
+                        </step>
+                        <step>
+                            <type>1</type>
+                            <params>86400</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint/>
+                    <master_item>
+                        <key>owapps[get,farm_status]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>Office Web Apps External URL &quot;{$OWAPPS_EXTERNAL_URL}&quot; Status</name>
+                    <type>18</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>owapps.farm.externalurl.status</key>
+                    <delay>0</delay>
+                    <history>3d</history>
+                    <trends>1w</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Office web App external url status&#13;
+Locally check</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Office Web Apps</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Service state</name>
+                    </valuemap>
+                    <logtimefmt/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.ExternalURLStatus</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint/>
+                    <master_item>
+                        <key>owapps[get,machine_status]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>Office Web Apps Internal URL &quot;{$OWAPPS_EXTERNAL_URL}&quot; Status</name>
+                    <type>18</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>owapps.farm.internalurl.status</key>
+                    <delay>0</delay>
+                    <history>3d</history>
+                    <trends>1w</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Office web App internal url status&#13;
+Locally check</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Office Web Apps</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Service state</name>
+                    </valuemap>
+                    <logtimefmt/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.InternalURLStatus</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint/>
+                    <master_item>
+                        <key>owapps[get,machine_status]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>Office Web Apps Version</name>
+                    <type>18</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>owapps.farm.version</key>
+                    <delay>0</delay>
+                    <history>3w</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Day to expire certificate in Office web apps farm</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Office Web Apps</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.Version</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint/>
+                    <master_item>
+                        <key>owapps[get,farm_status]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>Office Web Apps Machine Health</name>
+                    <type>18</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>owapps.machine.health</key>
+                    <delay>0</delay>
+                    <history>7d</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Check ULS Logs here:&#13;
+C:\ProgramData\Microsoft\OfficeWebApps\Data\Logs\ULS</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Office Web Apps</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Microsoft Office Web Apps Machine status</name>
+                    </valuemap>
+                    <logtimefmt/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.MachineHealth</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint/>
+                    <master_item>
+                        <key>owapps[get,machine_status]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>Office Web Apps Farm Status</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>owapps[get,farm_status]</key>
+                    <delay>12h</delay>
+                    <history>1w</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>1</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Get farm status: certificate, version</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Office Web Apps</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Office Web Apps Machine Status</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>owapps[get,machine_status]</key>
+                    <delay>1m</delay>
+                    <history>3d</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>1</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Get machine status: health,  url</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Office Web Apps</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Office Web Apps Active Sessions Count</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>wmi.get[root\cimv2, select MetBroadcastActiveSessionsCount FROM Win32_PerfFormattedData_OfficeWebAppsMeetings_OfficeWebAppsMeetings]</key>
+                    <delay>1m</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Office Web Apps</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+            </items>
+            <discovery_rules/>
+            <httptests>
+                <httptest>
+                    <name>Office Web Apps External URL &quot;{$OWAPPS_EXTERNAL_URL}&quot;</name>
+                    <application>
+                        <name>Office Web Apps</name>
+                    </application>
+                    <delay>1m</delay>
+                    <attempts>1</attempts>
+                    <agent>Zabbix</agent>
+                    <http_proxy/>
+                    <variables/>
+                    <headers/>
+                    <status>0</status>
+                    <authentication>0</authentication>
+                    <http_user/>
+                    <http_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <steps>
+                        <step>
+                            <name>{$OWAPPS_EXTERNAL_URL}</name>
+                            <url>{$OWAPPS_EXTERNAL_URL}/hosting/discovery</url>
+                            <query_fields/>
+                            <posts/>
+                            <variables/>
+                            <headers/>
+                            <follow_redirects>1</follow_redirects>
+                            <retrieve_mode>0</retrieve_mode>
+                            <timeout>15s</timeout>
+                            <required>&lt;wopi-discovery&gt;</required>
+                            <status_codes>200</status_codes>
+                        </step>
+                    </steps>
+                </httptest>
+                <httptest>
+                    <name>Office Web Apps Internal URL &quot;{$OWAPPS_INTERNAL_URL}&quot;</name>
+                    <application>
+                        <name>Office Web Apps</name>
+                    </application>
+                    <delay>1m</delay>
+                    <attempts>1</attempts>
+                    <agent>Zabbix</agent>
+                    <http_proxy/>
+                    <variables/>
+                    <headers/>
+                    <status>0</status>
+                    <authentication>0</authentication>
+                    <http_user/>
+                    <http_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <steps>
+                        <step>
+                            <name>{$OWAPPS_INTERNAL_URL}</name>
+                            <url>{$OWAPPS_INTERNAL_URL}/hosting/discovery</url>
+                            <query_fields/>
+                            <posts/>
+                            <variables/>
+                            <headers/>
+                            <follow_redirects>1</follow_redirects>
+                            <retrieve_mode>0</retrieve_mode>
+                            <timeout>15s</timeout>
+                            <required>&lt;wopi-discovery&gt;</required>
+                            <status_codes>200</status_codes>
+                        </step>
+                    </steps>
+                </httptest>
+            </httptests>
+            <macros>
+                <macro>
+                    <macro>{$OWAPPS_EXTERNAL_URL}</macro>
+                    <value/>
+                </macro>
+                <macro>
+                    <macro>{$OWAPPS_INTERNAL_URL}</macro>
+                    <value/>
+                </macro>
+            </macros>
+            <templates/>
+            <screens/>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>{Template Microsoft Office Web Apps:owapps.farm.cert.daystoexpire.last()}=0</expression>
+            <recovery_mode>1</recovery_mode>
+            <recovery_expression>{Template Microsoft Office Web Apps:owapps.farm.cert.daystoexpire.last()}&lt;&gt;0</recovery_expression>
+            <name>Office Web Apps Certificate is expired</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>5</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template Microsoft Office Web Apps:owapps.farm.cert.daystoexpire.last()}&lt;=7</expression>
+            <recovery_mode>1</recovery_mode>
+            <recovery_expression>{Template Microsoft Office Web Apps:owapps.farm.cert.daystoexpire.last()}&gt;7</recovery_expression>
+            <name>Office Web Apps Certificate is expiring to 7 days ({ITEM.LASTVALUE1} left)</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template Microsoft Office Web Apps:owapps.farm.cert.daystoexpire.last()}&lt;=30</expression>
+            <recovery_mode>1</recovery_mode>
+            <recovery_expression>{Template Microsoft Office Web Apps:owapps.farm.cert.daystoexpire.last()}&gt;30</recovery_expression>
+            <name>Office Web Apps Certificate is expiring to 30 days ({ITEM.LASTVALUE1} left)</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template Microsoft Office Web Apps:owapps.farm.cert.daystoexpire.last()}=1</expression>
+            <recovery_mode>1</recovery_mode>
+            <recovery_expression>{Template Microsoft Office Web Apps:owapps.farm.cert.daystoexpire.last()}&gt;1</recovery_expression>
+            <name>Office Web Apps Certificate is expiring today</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template Microsoft Office Web Apps:web.test.rspcode[Office Web Apps External URL &quot;{$OWAPPS_EXTERNAL_URL}&quot;,{$OWAPPS_EXTERNAL_URL}].avg(#5)}&lt;&gt;200</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Office Web Apps External URL</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template Microsoft Office Web Apps:owapps.farm.externalurl.status.avg(5m)}&lt;&gt;200</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Office Web Apps External URL unavailable from local server</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template Microsoft Office Web Apps:web.test.rspcode[Office Web Apps Internal URL &quot;{$OWAPPS_INTERNAL_URL}&quot;,{$OWAPPS_INTERNAL_URL}].avg(#5)}&lt;&gt;200</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Office Web Apps Internal URL</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template Microsoft Office Web Apps:owapps.farm.internalurl.status.avg(5m)}&lt;&gt;200</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Office Web Apps Internal URL unavailable from local server</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template Microsoft Office Web Apps:eventlog[Microsoft Office Web Apps,,&quot;Error&quot;].logseverity()}=4</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Office Web Apps log error</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>1</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template Microsoft Office Web Apps:eventlog[Microsoft Office Web Apps,,&quot;Error&quot;].logseverity()}=2</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Office Web Apps log warning</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>1</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template Microsoft Office Web Apps:owapps.machine.health.avg(5m)}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Office Web Apps Machine Unhealth</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+    </triggers>
+    <graphs>
+        <graph>
+            <name>Office Web Apps Performance</name>
+            <width>900</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>1</show_work_period>
+            <show_triggers>1</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>0</ymin_type_1>
+            <ymax_type_1>0</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>5</drawtype>
+                    <color>33FF33</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template Microsoft Office Web Apps</host>
+                        <key>web.test.time[Office Web Apps External URL &quot;{$OWAPPS_EXTERNAL_URL}&quot;,{$OWAPPS_EXTERNAL_URL},resp]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>5</drawtype>
+                    <color>3333FF</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template Microsoft Office Web Apps</host>
+                        <key>web.test.time[Office Web Apps Internal URL &quot;{$OWAPPS_INTERNAL_URL}&quot;,{$OWAPPS_INTERNAL_URL},resp]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>2</drawtype>
+                    <color>FF33FF</color>
+                    <yaxisside>1</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template Microsoft Office Web Apps</host>
+                        <key>wmi.get[root\cimv2, select MetBroadcastActiveSessionsCount FROM Win32_PerfFormattedData_OfficeWebAppsMeetings_OfficeWebAppsMeetings]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
+    <value_maps>
+        <value_map>
+            <name>Microsoft Office Web Apps Machine status</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Unhealthy</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>OK</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>Service state</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Down</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Up</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>
