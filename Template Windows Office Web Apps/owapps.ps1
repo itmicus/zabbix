@@ -44,6 +44,20 @@ $ActionType = $ActionType.ToLower()
 $Key = $Key.ToLower()
 $Value = $Value.ToLower()
 
+
+if ([System.Diagnostics.EventLog]::SourceExists("Zabbix script") -eq $False) {
+    New-EventLog -LogName "Application" -Source "Zabbix script"
+}
+$SCRIPT_DESCRIPTION = 'Tempalte Microsoft Office Web Apps';
+$SCRIPT_NAME = 'owapps.ps1';
+$sessionId = (Get-Process -PID $pid).SessionID
+$ScriptName = $MyInvocation.MyCommand.Name
+$PowershellVerText = ($PSVersionTable.PSVersion.major).ToString() + "." + ($PSVersionTable.PSVersion.minor).ToString()
+$whoami = whoami
+$Random = Get-Random
+$StartTime = Get-Date
+$start_event_message = "Start script=$SCRIPT_NAME;$SCRIPT_DESCRIPTION with arguments ActionType=$ActionType, Key=$Key, Value=$Value, current_user=$whoami, PowerShell=$PowershellVerText, PowerShellSessionId=$sessionId, RunId=$Random"
+Write-EventLog -LogName Application -Source "Zabbix script" -EntryType Information -EventId 100 -Message "$start_event_message"
 # it is need for correct cyrilic symbols in old OS
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
@@ -80,7 +94,8 @@ if ($ActionType -eq "discover") {
 }
 
 if ($ActionType -eq "get") {
-    if ($Key -eq "farm_status") {
+
+    if ($Key -eq "machine_status") {
         
         $farm = Get-OfficeWebAppsFarm -WarningAction silentlyContinue
 
@@ -100,24 +115,54 @@ if ($ActionType -eq "get") {
         else {
             $result | Add-Member -type NoteProperty -name MachineHealth -Value 1
         }
+    
+        $url_internal = $farm.InternalURL.AbsoluteUri + "/hosting/discovery"
+        $url_external = $farm.ExternalURL.AbsoluteUri + "/hosting/discovery"
+
+        $internal_url_status = GetHTTPStatus -url $url_internal
+        if ($internal_url_status -eq 200) {
+            $internal_url_status = 1
+        }
+        else {
+            $internal_url_status = 0
+        }
+        
+        $external_url_status = GetHTTPStatus -url $url_external
+        if ($external_url_status -eq 200) {
+            $external_url_status = 1
+        }
+        else {
+            $external_url_status = 0
+        }
             
+        $result | Add-Member -type NoteProperty -name InternalURLStatus -Value $internal_url_status
+        $result | Add-Member -type NoteProperty -name ExternalURLStatus -Value $external_url_status
+        $result | Add-Member -type NoteProperty -name MachineName -Value $current_machine_name
+
+        Write-EventLog -LogName Application -Source "Zabbix script" -EntryType Information -EventId 200 -Message "$result"
+
+        $result | ConvertTo-Json
+    }   
+
+    if ($Key -eq "farm_status") {
+        
+        $farm = Get-OfficeWebAppsFarm -WarningAction silentlyContinue
+
+        $result = New-Object PSCustomObject
             
+        $inc = Get-Content "C:\ProgramData\Microsoft\OfficeWebApps\Data\local\OfficeVersion.inc" | ConvertFrom-StringData
+        $version = "{0}.{1}.{2}.{3}" -f $inc.RMJ, $inc.RMM, $inc.RUP, $inc.RPR
+        
         $farm_cert_name = $farm.CertificateName
         $cert = Get-ChildItem -Path Cert:\LocalMachine\My\ | Where-Object { $_.FriendlyName -eq $farm_cert_name } 
         $days_to_expr = (New-TimeSpan -End $cert.NotAfter).Days 
-  
-            
-        $url_internal = $farm.InternalURL.AbsoluteUri + "/hosting/discovery"
-        $url_external = $farm.ExternalURL.AbsoluteUri + "/hosting/discovery"
-            
-        $internal_url_status = GetHTTPStatus -url $url_internal
-        $external_url_status = GetHTTPStatus -url $url_external 
             
         $result | Add-Member -type NoteProperty -name CertificatDayToExpired -Value $days_to_expr 
-        $result | Add-Member -type NoteProperty -name InternalURLStatus -Value $internal_url_status
-        $result | Add-Member -type NoteProperty -name ExternalURLStatus -Value $external_url_status
-            
+        $result | Add-Member -type NoteProperty -name Version -Value $version
+  
+        Write-EventLog -LogName Application -Source "Zabbix script" -EntryType Information -EventId 200 -Message "$result"
+
         $result | ConvertTo-Json
     }   
+
 }
-	
