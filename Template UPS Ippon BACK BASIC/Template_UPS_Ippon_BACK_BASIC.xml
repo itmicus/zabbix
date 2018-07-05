@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.4</version>
-    <date>2018-07-05T08:22:26Z</date>
+    <date>2018-07-05T10:48:03Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -14,14 +14,8 @@
             <description>Monitoring UPS Ippon BACK BASIC 650/850/1050 , version 1.0&#13;
 &#13;
 After install Ippon Winpower Manager from http://ippon.ru/support/documentation/ &#13;
-you can find file with data&#13;
-&quot;C:\Program Files (x86)\MonitorSoftware\UPSDATA.CSV&quot;&#13;
-&#13;
-It easy, parse it&#13;
-&#13;
-DATE,TIME,PORT,MODEL,PROTOCOL,IN-V(R),IN-V(S),IN-V(T),OUT-V(R),OUT-V(S),OUT-V(T),BATT-V(+),IN-F,LOAD,TEMP,OUT-F,BATT-V(-),BPS-V(R),BPS-V(S),BPS-V(T),BPS-F&#13;
-&#13;
-06/29/2018,11:32:12,USB,LINE-INT,4,219.0,999,999,219.0,999,999,013.8,50.3,014,025.0</description>
+you can find file with data, parse it&#13;
+&quot;C:\Program Files (x86)\MonitorSoftware\UPSDATA.CSV&quot;</description>
             <groups>
                 <group>
                     <name>Templates</name>
@@ -38,7 +32,7 @@ DATE,TIME,PORT,MODEL,PROTOCOL,IN-V(R),IN-V(S),IN-V(T),OUT-V(R),OUT-V(S),OUT-V(T)
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>log[{$IPPON_UPS_DATA},&quot;.{35}(.{5}).*&quot;,,,,&quot;\1&quot;]</key>
+                    <key>log[{$UPS_IPPON_FILE_DATA},&quot;.{35}(.{5}).*&quot;,,,,&quot;\1&quot;]</key>
                     <delay>1m</delay>
                     <history>1w</history>
                     <trends>365d</trends>
@@ -79,7 +73,7 @@ DATE,TIME,PORT,MODEL,PROTOCOL,IN-V(R),IN-V(S),IN-V(T),OUT-V(R),OUT-V(S),OUT-V(T)
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>log[{$IPPON_UPS_DATA},&quot;.{49}(.{5}).*&quot;,,,,&quot;\1&quot;]</key>
+                    <key>log[{$UPS_IPPON_FILE_DATA},&quot;.{49}(.{5}).*&quot;,,,,&quot;\1&quot;]</key>
                     <delay>1m</delay>
                     <history>1w</history>
                     <trends>365d</trends>
@@ -120,7 +114,7 @@ DATE,TIME,PORT,MODEL,PROTOCOL,IN-V(R),IN-V(S),IN-V(T),OUT-V(R),OUT-V(S),OUT-V(T)
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>log[{$IPPON_UPS_DATA},&quot;.{63}(.{5}).*&quot;,,,,&quot;\1&quot;]</key>
+                    <key>log[{$UPS_IPPON_FILE_DATA},&quot;.{63}(.{5}).*&quot;,,,,&quot;\1&quot;]</key>
                     <delay>1m</delay>
                     <history>1w</history>
                     <trends>365d</trends>
@@ -161,7 +155,7 @@ DATE,TIME,PORT,MODEL,PROTOCOL,IN-V(R),IN-V(S),IN-V(T),OUT-V(R),OUT-V(S),OUT-V(T)
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>log[{$IPPON_UPS_DATA},&quot;.{69}(.{4}).*&quot;,,,,&quot;\1&quot;]</key>
+                    <key>log[{$UPS_IPPON_FILE_DATA},&quot;.{69}(.{4}).*&quot;,,,,&quot;\1&quot;]</key>
                     <delay>1m</delay>
                     <history>1w</history>
                     <trends>365d</trends>
@@ -202,7 +196,7 @@ DATE,TIME,PORT,MODEL,PROTOCOL,IN-V(R),IN-V(S),IN-V(T),OUT-V(R),OUT-V(S),OUT-V(T)
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>log[{$IPPON_UPS_DATA},&quot;.{74}([0-9]+).*&quot;,,,,&quot;\1&quot;]</key>
+                    <key>log[{$UPS_IPPON_FILE_DATA},&quot;.{74}([0-9]+).*&quot;,,,,&quot;\1&quot;]</key>
                     <delay>1m</delay>
                     <history>1w</history>
                     <trends>365d</trends>
@@ -243,7 +237,7 @@ DATE,TIME,PORT,MODEL,PROTOCOL,IN-V(R),IN-V(S),IN-V(T),OUT-V(R),OUT-V(S),OUT-V(T)
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>log[{$IPPON_UPS_DATA},&quot;.{78}(.{5})&quot;,,,,&quot;\1&quot;]</key>
+                    <key>log[{$UPS_IPPON_FILE_DATA},&quot;.{78}(.{5})&quot;,,,,&quot;\1&quot;]</key>
                     <delay>1m</delay>
                     <history>1w</history>
                     <trends>365d</trends>
@@ -284,7 +278,7 @@ DATE,TIME,PORT,MODEL,PROTOCOL,IN-V(R),IN-V(S),IN-V(T),OUT-V(R),OUT-V(S),OUT-V(T)
             <httptests/>
             <macros>
                 <macro>
-                    <macro>{$IPPON_UPS_DATA}</macro>
+                    <macro>{$UPS_IPPON_FILE_DATA}</macro>
                     <value>C:\Program Files (x86)\MonitorSoftware\UPSDATA.CSV</value>
                 </macro>
             </macros>
@@ -294,9 +288,9 @@ DATE,TIME,PORT,MODEL,PROTOCOL,IN-V(R),IN-V(S),IN-V(T),OUT-V(R),OUT-V(S),OUT-V(T)
     </templates>
     <triggers>
         <trigger>
-            <expression>{Template UPS Ippon BACK BASIC:log[{$IPPON_UPS_DATA},&quot;.{78}(.{5})&quot;,,,,&quot;\1&quot;].avg(5m)}&gt;40</expression>
+            <expression>{Template UPS Ippon BACK BASIC:log[{$UPS_IPPON_FILE_DATA},&quot;.{78}(.{5})&quot;,,,,&quot;\1&quot;].avg(5m)}&gt;40</expression>
             <recovery_mode>1</recovery_mode>
-            <recovery_expression>{Template UPS Ippon BACK BASIC:log[{$IPPON_UPS_DATA},&quot;.{78}(.{5})&quot;,,,,&quot;\1&quot;].avg(5m)}&lt;40</recovery_expression>
+            <recovery_expression>{Template UPS Ippon BACK BASIC:log[{$UPS_IPPON_FILE_DATA},&quot;.{78}(.{5})&quot;,,,,&quot;\1&quot;].avg(5m)}&lt;40</recovery_expression>
             <name>High battery temperature on {HOST.NAME}</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
@@ -310,9 +304,9 @@ DATE,TIME,PORT,MODEL,PROTOCOL,IN-V(R),IN-V(S),IN-V(T),OUT-V(R),OUT-V(S),OUT-V(T)
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template UPS Ippon BACK BASIC:log[{$IPPON_UPS_DATA},&quot;.{74}([0-9]+).*&quot;,,,,&quot;\1&quot;].avg(10m)}&gt;80</expression>
+            <expression>{Template UPS Ippon BACK BASIC:log[{$UPS_IPPON_FILE_DATA},&quot;.{74}([0-9]+).*&quot;,,,,&quot;\1&quot;].avg(10m)}&gt;80</expression>
             <recovery_mode>1</recovery_mode>
-            <recovery_expression>{Template UPS Ippon BACK BASIC:log[{$IPPON_UPS_DATA},&quot;.{74}([0-9]+).*&quot;,,,,&quot;\1&quot;].avg(10m)}&lt;70</recovery_expression>
+            <recovery_expression>{Template UPS Ippon BACK BASIC:log[{$UPS_IPPON_FILE_DATA},&quot;.{74}([0-9]+).*&quot;,,,,&quot;\1&quot;].avg(10m)}&lt;70</recovery_expression>
             <name>Output load warning on {HOST.NAME}</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
@@ -326,7 +320,7 @@ DATE,TIME,PORT,MODEL,PROTOCOL,IN-V(R),IN-V(S),IN-V(T),OUT-V(R),OUT-V(S),OUT-V(T)
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template UPS Ippon BACK BASIC:log[{$IPPON_UPS_DATA},&quot;.{63}(.{5}).*&quot;,,,,&quot;\1&quot;].avg(6h)}&gt;14 and {Template UPS Ippon BACK BASIC:log[{$IPPON_UPS_DATA},&quot;.{63}(.{5}).*&quot;,,,,&quot;\1&quot;].avg(6h)}&lt;10.5</expression>
+            <expression>{Template UPS Ippon BACK BASIC:log[{$UPS_IPPON_FILE_DATA},&quot;.{63}(.{5}).*&quot;,,,,&quot;\1&quot;].avg(6h)}&gt;14 and {Template UPS Ippon BACK BASIC:log[{$UPS_IPPON_FILE_DATA},&quot;.{63}(.{5}).*&quot;,,,,&quot;\1&quot;].avg(6h)}&lt;10.5</expression>
             <recovery_mode>2</recovery_mode>
             <recovery_expression/>
             <name>UPS battery is broken on {HOST.NAME}</name>
@@ -342,9 +336,9 @@ DATE,TIME,PORT,MODEL,PROTOCOL,IN-V(R),IN-V(S),IN-V(T),OUT-V(R),OUT-V(S),OUT-V(T)
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template UPS Ippon BACK BASIC:log[{$IPPON_UPS_DATA},&quot;.{35}(.{5}).*&quot;,,,,&quot;\1&quot;].avg(3m)}&lt;190 or {Template UPS Ippon BACK BASIC:log[{$IPPON_UPS_DATA},&quot;.{35}(.{5}).*&quot;,,,,&quot;\1&quot;].avg(3m)}&gt;240</expression>
+            <expression>{Template UPS Ippon BACK BASIC:log[{$UPS_IPPON_FILE_DATA},&quot;.{35}(.{5}).*&quot;,,,,&quot;\1&quot;].avg(3m)}&lt;190 or {Template UPS Ippon BACK BASIC:log[{$UPS_IPPON_FILE_DATA},&quot;.{35}(.{5}).*&quot;,,,,&quot;\1&quot;].avg(3m)}&gt;240</expression>
             <recovery_mode>1</recovery_mode>
-            <recovery_expression>{Template UPS Ippon BACK BASIC:log[{$IPPON_UPS_DATA},&quot;.{35}(.{5}).*&quot;,,,,&quot;\1&quot;].avg(3m)}&gt;210 and {Template UPS Ippon BACK BASIC:log[{$IPPON_UPS_DATA},&quot;.{35}(.{5}).*&quot;,,,,&quot;\1&quot;].avg(3m)}&lt;235</recovery_expression>
+            <recovery_expression>{Template UPS Ippon BACK BASIC:log[{$UPS_IPPON_FILE_DATA},&quot;.{35}(.{5}).*&quot;,,,,&quot;\1&quot;].avg(3m)}&gt;210 and {Template UPS Ippon BACK BASIC:log[{$UPS_IPPON_FILE_DATA},&quot;.{35}(.{5}).*&quot;,,,,&quot;\1&quot;].avg(3m)}&lt;235</recovery_expression>
             <name>UPS input voltage dangerous on {HOST.NAME}</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
@@ -386,7 +380,7 @@ DATE,TIME,PORT,MODEL,PROTOCOL,IN-V(R),IN-V(S),IN-V(T),OUT-V(R),OUT-V(S),OUT-V(T)
                     <type>0</type>
                     <item>
                         <host>Template UPS Ippon BACK BASIC</host>
-                        <key>log[{$IPPON_UPS_DATA},&quot;.{74}([0-9]+).*&quot;,,,,&quot;\1&quot;]</key>
+                        <key>log[{$UPS_IPPON_FILE_DATA},&quot;.{74}([0-9]+).*&quot;,,,,&quot;\1&quot;]</key>
                     </item>
                 </graph_item>
             </graph_items>
@@ -418,7 +412,7 @@ DATE,TIME,PORT,MODEL,PROTOCOL,IN-V(R),IN-V(S),IN-V(T),OUT-V(R),OUT-V(S),OUT-V(T)
                     <type>0</type>
                     <item>
                         <host>Template UPS Ippon BACK BASIC</host>
-                        <key>log[{$IPPON_UPS_DATA},&quot;.{78}(.{5})&quot;,,,,&quot;\1&quot;]</key>
+                        <key>log[{$UPS_IPPON_FILE_DATA},&quot;.{78}(.{5})&quot;,,,,&quot;\1&quot;]</key>
                     </item>
                 </graph_item>
             </graph_items>
@@ -450,7 +444,7 @@ DATE,TIME,PORT,MODEL,PROTOCOL,IN-V(R),IN-V(S),IN-V(T),OUT-V(R),OUT-V(S),OUT-V(T)
                     <type>0</type>
                     <item>
                         <host>Template UPS Ippon BACK BASIC</host>
-                        <key>log[{$IPPON_UPS_DATA},&quot;.{35}(.{5}).*&quot;,,,,&quot;\1&quot;]</key>
+                        <key>log[{$UPS_IPPON_FILE_DATA},&quot;.{35}(.{5}).*&quot;,,,,&quot;\1&quot;]</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -462,7 +456,7 @@ DATE,TIME,PORT,MODEL,PROTOCOL,IN-V(R),IN-V(S),IN-V(T),OUT-V(R),OUT-V(S),OUT-V(T)
                     <type>0</type>
                     <item>
                         <host>Template UPS Ippon BACK BASIC</host>
-                        <key>log[{$IPPON_UPS_DATA},&quot;.{49}(.{5}).*&quot;,,,,&quot;\1&quot;]</key>
+                        <key>log[{$UPS_IPPON_FILE_DATA},&quot;.{49}(.{5}).*&quot;,,,,&quot;\1&quot;]</key>
                     </item>
                 </graph_item>
             </graph_items>
