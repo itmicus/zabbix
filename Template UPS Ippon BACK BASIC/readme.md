@@ -14,7 +14,7 @@ Windows server 2008 R2 or higher
 
 3. Install on host Winpower Manager http://ippon.ru/support/documentation/  
 
-4. If you install Winpower Manager to diffrenet location, change macros in host {$UPS_IPPON_FILE_DATA}
+4. If you install Winpower Manager to differenet location, change macros in host {$UPS_IPPON_FILE_DATA}
 
 
 # Post about this template
