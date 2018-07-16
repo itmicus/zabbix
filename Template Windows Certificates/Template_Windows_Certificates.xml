@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.4</version>
-    <date>2018-06-28T11:58:15Z</date>
+    <date>2018-07-16T06:10:38Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -69,7 +69,7 @@ Version: 1.0</description>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units/>
+                            <units>s</units>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -98,6 +98,10 @@ Version: 1.0</description>
                                 <step>
                                     <type>12</type>
                                     <params>$.DaysToExpire</params>
+                                </step>
+                                <step>
+                                    <type>1</type>
+                                    <params>86400</params>
                                 </step>
                             </preprocessing>
                             <jmx_endpoint/>
@@ -254,7 +258,7 @@ Version: 1.0</description>
                             </master_item_prototype>
                         </item_prototype>
                         <item_prototype>
-                            <name>Сertificate &quot;{#LM_CERT_CN} ({#LM_CERT_FRIENDLYNAME})&quot; run checks</name>
+                            <name>Certificate &quot;{#LM_CERT_CN} ({#LM_CERT_FRIENDLYNAME})&quot; run checks</name>
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
