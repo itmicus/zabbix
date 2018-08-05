@@ -137,8 +137,8 @@ class WebSiteCheck:
         port = 443
 
         if hostname is None:
-            print("Check URL address, https://test.com")
-            return
+            print("Check URL address, https://example.com/")
+            return None
 
         if o.port is not None:
             port = o.port
@@ -215,9 +215,15 @@ class WebSiteCheck:
         if expire_in.days > 0:
             days_to_expire = expire_in.days
 
+        #fix for ru-centr registrar
+        if str(domain_info['registrar']['name']) != "None":
+            registrar = domain_info['registrar']['name']
+        else:
+            registrar = domain_info['registrar']['id']
+
         data = {
             'domain_name': domain_info['domain'],
-            'registrar': domain_info['registrar']['name'],
+            'registrar': registrar,
             'creation_date': str(notBefore),
             'expiration_date': str(expire_date),
             'days_to_expire': days_to_expire,
@@ -226,7 +232,7 @@ class WebSiteCheck:
         return data
 
     def website_get_status(self, url, search_phrase, timeout_value=15):
-        logging.debug('website_get_status: url='+str(url)+", search_phrase="+search_phrase+", timeout_value="+str(timeout_value))
+        logging.debug('website_get_status: url='+str(url)+", search_phrase="+str(search_phrase)+", timeout_value="+str(timeout_value))
         user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.78 Safari/537.36"
         headers = {'User-Agent': user_agent}
         phrase_status = 0
@@ -235,8 +241,13 @@ class WebSiteCheck:
                 url, headers=headers, timeout=(timeout_value, timeout_value))
             time = round(response.elapsed.total_seconds(), 2)
             code = response.status_code
-            text = response.text
-            logging.debug('Text:'+str(text))
+
+            if isinstance(response.text, str): #if python3, it's already in unicode
+                text = response.text
+            else:
+                text = response.text.encode('utf8') # encode, if python2
+
+            #logging.debug('Text:'+str(text)) #too many noise, disable
             length = len(response.content)
             speed = round(length/time)
             status = 1
@@ -251,7 +262,7 @@ class WebSiteCheck:
             time = 0
             speed = 0
             status = 0
-            message = e
+            message = 'Error: ' + str(e)
             speed = 0
             logging.debug('Error: ' + str(e))
 
@@ -434,7 +445,6 @@ def main():
             return 1
         except:
             return 0
-
 
 if __name__ == '__main__':
     main()
