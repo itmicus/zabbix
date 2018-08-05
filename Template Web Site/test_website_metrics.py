@@ -21,8 +21,8 @@ class Test_website_metrics(unittest.TestCase):
 
     @unpack
     @data({'url': 'https://gmail.com:4444/dsaq?wer=34&wer', 'domain': 'gmail.com'},
+          {'url': 'http://facebook.com', 'domain': 'facebook.com'},
           {'url': 'http://yandex.ru', 'domain': 'yandex.ru'},
-          {'url': 'http://www.zoovet.ru/', 'domain': 'zoovet.ru'}
           )
     def test_discovery_domain(self, url, domain):
         result = self.web_checks.discovery_domain(url)
@@ -31,7 +31,7 @@ class Test_website_metrics(unittest.TestCase):
     @unpack
     @data({'url': 'https://gmail.com:', 'ssl_url': 'https://gmail.com:443'},
           {'url': 'http://facebook.com', 'ssl_url': 'https://facebook.com:443'},
-          {'url': 'http://www.zoovet.ru/', 'ssl_url': 'https://www.zoovet.ru:443'}
+          {'url': 'http://yandex.ru/', 'ssl_url': 'https://yandex.ru:443'}
           )
     def test_discovery_ssl(self, url, ssl_url):
         result = self.web_checks.discovery_ssl(url)
