@@ -129,7 +129,7 @@ class WebSiteCheck:
 
     def discovery_domain(self, url):
         domain_name = tldextract.extract(url)
-        return '.'.join(domain_name)
+        return domain_name.registered_domain #check main domain
 
     def discovery_ssl(self, url):
         o = urlparse(url)
