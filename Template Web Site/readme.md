@@ -20,4 +20,5 @@ This template for Zabbix Monitoring template.
 {$WEBSITE_METRICS_TIMEOUT_RECOVERY} - timeout in seconds for recovery<br/>
 
 # Post about this template
-https://itmicus.ru/zabbix-website-monitoring
+https://itmicus.ru/news/zabbix-website-monitoring/
+

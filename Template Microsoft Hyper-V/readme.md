@@ -35,7 +35,7 @@ Timeout=10
 6. All triggers you may change through user macros in host
 
 # Post about this template
-https://itmicus.ru/hyper-v-zabbix-monitoring
+https://itmicus.ru/news/monitoring-microsoft-hyper-v-zabbix/
 
 
 # Articles for understanding how monitoring Hyper-V

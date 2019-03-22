@@ -36,5 +36,6 @@ Timeout=10
 6. All triggers you may change through user macros in host
 
 # Post about this template
-https://itmicus.ru/zabbix-windows-monitoring
+https://itmicus.ru/news/zabbix-windows-monitoring/
+
 

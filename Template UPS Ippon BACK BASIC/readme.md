@@ -18,6 +18,7 @@ Windows server 2008 R2 or higher
 
 
 # Post about this template
-https://itmicus.ru/ups-ippon-back-basic-zabbix-monitoring  
+https://itmicus.ru/news/monitoring-ippon-back-basic-650-850-1050-zabbix/
+
 
 
