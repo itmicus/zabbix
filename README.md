@@ -1,16 +1,13 @@
 # Zabbix
 Zabbix Templates  
-This is official repo from Itmicus LLC.  
+This is official repo from [Itmicus LLC](https://itmicus.ru).    
 All code is open source.  
 Thank you!  
 
 Now you can download and use templates for:  
-### Microsoft Windows  
-### Microsoft Hyper-V  
-### Microsoft Windows Certificates
-### Microsoft Office Web Apps 2013
+**Templates/OS** - for server and client operating systems (Windows, Linux)  
+**Templates/App** - for Application  
 
-### Web site metrics  
+## Feedback
 
-### UPS Ippon BACK BASIC
-
+Email: [Itmicus](mailto:info@itmicus.ru)
