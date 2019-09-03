@@ -1,6 +1,9 @@
 # Template OS Windows by Zabbix agent active
 
 ## Overview
+
+This template works only Zabbix server 4.2 or higher
+
 - Monitoring Windows components: CPU, Memory, Disk, Network, Inventory
 - Templates follow Zabbix template guidelines (https://www.zabbix.com/documentation/4.4/manual/appendix/templates/template_guidelines)
   
@@ -9,7 +12,6 @@
 - Windows 7 or later with latest service pack  
 - Windows Server 2008 or later with latest service pack  
 - **PowerShell 3 or higher**  
-- Zabbix server 4.2
 
 ## Setup
 

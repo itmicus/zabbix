@@ -2,6 +2,8 @@
 
 ## Overview
 
+This template works only Zabbix server 4.2 or higher
+
 - Monitoring Linux components: CPU, Memory, Disk, Network, Inventory
 - Templates follow Zabbix template guidelines (https://www.zabbix.com/documentation/4.4/manual/appendix/templates/template_guidelines)
   
