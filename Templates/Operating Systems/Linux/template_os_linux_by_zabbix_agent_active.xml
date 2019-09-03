@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.2</version>
-    <date>2019-09-01T16:48:03Z</date>
+    <date>2019-09-03T04:45:51Z</date>
     <groups>
         <group>
             <name>Templates/Operating Systems</name>
@@ -103,7 +103,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)&
             </applications>
             <items>
                 <item>
-                    <name>CPU busy time</name>
+                    <name>CPU: busy time</name>
                     <type>15</type>
                     <snmp_community/>
                     <snmp_oid/>
@@ -2198,7 +2198,7 @@ https://github.com/krom/zabbix_template_md</description>
                 </macro>
                 <macro>
                     <macro>{$DISK.MOUNTPOINT.DISCOVERY.EXCLUDE}</macro>
-                    <value>(/var/lib/docker/devicemapper/.*|/var/lib/docker/containers/.*)</value>
+                    <value>(.*/docker/aufs/mnt/.*|/var/lib/docker/devicemapper/.*|/var/lib/docker/containers/.*)</value>
                 </macro>
             </macros>
             <templates>
@@ -4146,7 +4146,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)&
                     <master_item/>
                 </item>
                 <item>
-                    <name>System: uptime</name>
+                    <name>OS: uptime</name>
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
@@ -7176,8 +7176,8 @@ https://habr.com/ru/post/216827/</description>
                         <conditions>
                             <condition>
                                 <macro>{#IFNAME}</macro>
-                                <value>{$NETWORK.INTERFACE.FILTER.INCLUDE}</value>
-                                <operator>8</operator>
+                                <value>{$NETWORK.INTERFACE.FILTER.EXCLUDE}</value>
+                                <operator>9</operator>
                                 <formulaid>A</formulaid>
                             </condition>
                         </conditions>
@@ -8057,7 +8057,7 @@ include/uapi/linux/if_arp.h for all possible values.</description>
             <httptests/>
             <macros>
                 <macro>
-                    <macro>{$NETWORK.INTERFACE.FILTER.INCLUDE}</macro>
+                    <macro>{$NETWORK.INTERFACE.FILTER.EXCLUDE}</macro>
                     <value>((In)?[Ll]oop[Bb]ack[0-9._]*|Software Loopback Interface|NULL[0-9.]*|[Ll]o[0-9.]*|[Ss]ystem|Nu[0-9.]*)</value>
                 </macro>
             </macros>

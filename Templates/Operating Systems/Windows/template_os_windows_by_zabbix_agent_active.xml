@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.2</version>
-    <date>2019-09-01T11:12:23Z</date>
+    <date>2019-09-03T04:46:58Z</date>
     <groups>
         <group>
-            <name>Templates/Itmicus/General</name>
+            <name>Templates/Operating Systems</name>
         </group>
     </groups>
     <templates>
@@ -38,10 +38,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)&
 For explanation:</description>
             <groups>
                 <group>
-                    <name>Templates/Itmicus/General</name>
+                    <name>Templates/Operating Systems</name>
                 </group>
             </groups>
-            <applications/>
+            <applications>
+                <application>
+                    <name>Filesystem</name>
+                </application>
+            </applications>
             <items/>
             <discovery_rules/>
             <httptests/>
@@ -76,7 +80,7 @@ For explanation:</description>
             <name>Template OS Windows CPU by Zabbix agent active</name>
             <description>Name: Template OS Windows CPU by Zabbix agent active&#13;
 &#13;
-Description:Template for monitoring Windos CPU&#13;
+Description:Template for monitoring Windows CPU&#13;
 &#13;
 Homepage: https://github.com/itmicus/zabbix&#13;
 &#13;
@@ -103,7 +107,7 @@ https://wutils.com/wmi/root/cimv2/&#13;
 https://docs.microsoft.com/en-us/windows-hardware/test/wpt/cpu-analysis</description>
             <groups>
                 <group>
-                    <name>Templates/Itmicus/General</name>
+                    <name>Templates/Operating Systems</name>
                 </group>
             </groups>
             <applications>
@@ -653,14 +657,10 @@ http://toncigrgin.blogspot.com/2015/11/windows-perf-counters-blog5.html&#13;
 https://wutils.com/wmi/root/cimv2/</description>
             <groups>
                 <group>
-                    <name>Templates/Itmicus/General</name>
+                    <name>Templates/Operating Systems</name>
                 </group>
             </groups>
-            <applications>
-                <application>
-                    <name>Filesystem</name>
-                </application>
-            </applications>
+            <applications/>
             <items/>
             <discovery_rules>
                 <discovery_rule>
@@ -738,11 +738,7 @@ https://wutils.com/wmi/root/cimv2/</description>
                             <port/>
                             <description/>
                             <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Filesystem</name>
-                                </application>
-                            </applications>
+                            <applications/>
                             <valuemap/>
                             <logtimefmt/>
                             <preprocessing/>
@@ -802,11 +798,7 @@ https://wutils.com/wmi/root/cimv2/</description>
                             <port/>
                             <description/>
                             <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Filesystem</name>
-                                </application>
-                            </applications>
+                            <applications/>
                             <valuemap/>
                             <logtimefmt/>
                             <preprocessing/>
@@ -866,11 +858,7 @@ https://wutils.com/wmi/root/cimv2/</description>
                             <port/>
                             <description/>
                             <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Filesystem</name>
-                                </application>
-                            </applications>
+                            <applications/>
                             <valuemap/>
                             <logtimefmt/>
                             <preprocessing/>
@@ -930,11 +918,7 @@ https://wutils.com/wmi/root/cimv2/</description>
                             <port/>
                             <description/>
                             <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Filesystem</name>
-                                </application>
-                            </applications>
+                            <applications/>
                             <valuemap/>
                             <logtimefmt/>
                             <preprocessing/>
@@ -994,11 +978,7 @@ https://wutils.com/wmi/root/cimv2/</description>
                             <port/>
                             <description/>
                             <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Filesystem</name>
-                                </application>
-                            </applications>
+                            <applications/>
                             <valuemap/>
                             <logtimefmt/>
                             <preprocessing/>
@@ -1058,11 +1038,7 @@ https://wutils.com/wmi/root/cimv2/</description>
                             <port/>
                             <description/>
                             <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Filesystem</name>
-                                </application>
-                            </applications>
+                            <applications/>
                             <valuemap/>
                             <logtimefmt/>
                             <preprocessing/>
@@ -1240,7 +1216,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)&
 - Templates follow Zabbix template guidelines (https://www.zabbix.com/documentation/4.4/manual/appendix/templates/template_guidelines)</description>
             <groups>
                 <group>
-                    <name>Templates/Itmicus/General</name>
+                    <name>Templates/Operating Systems</name>
                 </group>
             </groups>
             <applications/>
@@ -1780,7 +1756,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)&
 - Templates follow Zabbix template guidelines (https://www.zabbix.com/documentation/4.4/manual/appendix/templates/template_guidelines)</description>
             <groups>
                 <group>
-                    <name>Templates/Itmicus/General</name>
+                    <name>Templates/Operating Systems</name>
                 </group>
             </groups>
             <applications>
@@ -2089,7 +2065,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)&
                     <master_item/>
                 </item>
                 <item>
-                    <name>Host: name</name>
+                    <name>OS: hostname</name>
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
@@ -2148,7 +2124,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)&
                     <master_item/>
                 </item>
                 <item>
-                    <name>Host: system time</name>
+                    <name>OS: system time</name>
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
@@ -2266,7 +2242,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)&
                     <master_item/>
                 </item>
                 <item>
-                    <name>Host: uptime</name>
+                    <name>OS: uptime</name>
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
@@ -2394,7 +2370,7 @@ https://wutils.com/wmi/root/cimv2/&#13;
 http://perfbasics.blogspot.com/2017/03/windows-monitoring.html</description>
             <groups>
                 <group>
-                    <name>Templates/Itmicus/General</name>
+                    <name>Templates/Operating Systems</name>
                 </group>
             </groups>
             <applications>
@@ -3339,7 +3315,7 @@ http://toncigrgin.blogspot.com/2015/11/windows-perf-counters-blog5.html&#13;
 https://wutils.com/wmi/root/cimv2/</description>
             <groups>
                 <group>
-                    <name>Templates/Itmicus/General</name>
+                    <name>Templates/Operating Systems</name>
                 </group>
             </groups>
             <applications/>

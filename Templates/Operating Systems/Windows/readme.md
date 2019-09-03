@@ -17,15 +17,14 @@
 
 2. Create host and set Template OS Windows by Zabbix agent active
 
-3. Create new folder `zabbix_agentd` in <path_to_your_zabbix_agent_folder>\zabbix_agentd\:
+3. Create new folder `zabbix_agent.d` in <path_to_your_zabbix_agent_folder>\
 
-4. Copy all files *.conf to \zabbix_agentd\  
+4. Copy all files *.conf to <path_to_your_zabbix_agent_folder>\zabbix_agent.d\  
 
 5. Add lines to zabbix.conf
 
     ```
-    Include=<path_to_your_zabbix_agent_folder>\zabbix_agentd\\*.conf  
-    UnsafeUserParameters=1  
+    Include=<path_to_your_zabbix_agent_folder>\zabbix_agent.d\  
     Timeout=5
     ```
 

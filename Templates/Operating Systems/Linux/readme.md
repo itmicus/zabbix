@@ -15,15 +15,14 @@
 
 2. Create host and set Template OS Linux by Zabbix agent active
 
-3. Create new folder `zabbix_agentd` in <path_to_your_zabbix_agent_folder>\zabbix_agentd\:
+3. Create new folder `zabbix_agent.d` in /etc/zabbix/
 
-4. Copy all files *.conf to \zabbix_agentd\  
+4. Copy all files *.conf to /etc/zabbix/zabbix_agent.d/  
 
 5. Add lines to zabbix.conf
 
     ```
-    Include=<path_to_your_zabbix_agent_folder>\zabbix_agentd\\*.conf  
-    UnsafeUserParameters=1  
+    Include=Include=/etc/zabbix/zabbix_agentd.d  
     Timeout=5
     ```
 
