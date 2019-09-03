@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.2</version>
-    <date>2019-09-03T04:46:58Z</date>
+    <date>2019-09-03T16:15:00Z</date>
     <groups>
         <group>
             <name>Templates/Operating Systems</name>
@@ -692,15 +692,9 @@ https://wutils.com/wmi/root/cimv2/</description>
                         <formula/>
                         <conditions>
                             <condition>
-                                <macro>{#FSTYPE}</macro>
-                                <value>@File systems for discovery</value>
-                                <operator>8</operator>
-                                <formulaid>B</formulaid>
-                            </condition>
-                            <condition>
                                 <macro>{#FSNAME}</macro>
-                                <value>@Mount point Names for discovery</value>
-                                <operator>8</operator>
+                                <value>{$DISK.MOUNTPOINT.DISCOVERY.EXCLUDE}</value>
+                                <operator>9</operator>
                                 <formulaid>A</formulaid>
                             </condition>
                         </conditions>
@@ -1172,8 +1166,16 @@ https://wutils.com/wmi/root/cimv2/</description>
             <httptests/>
             <macros>
                 <macro>
+                    <macro>{$DISK.FILESYSTEM.DISCOVERY}</macro>
+                    <value>(btrfs|ext2|ext3|ext4|reiser|xfs|ffs|ufs|jfs|jfs2|vxfs|hfs|apfs|refs|ntfs|fat32|zfs)</value>
+                </macro>
+                <macro>
                     <macro>{$DISK.FILESYSTEM.SPACE.LIMIT}</macro>
                     <value>5G</value>
+                </macro>
+                <macro>
+                    <macro>{$DISK.MOUNTPOINT.DISCOVERY.EXCLUDE}</macro>
+                    <value>(A.*|B.*)</value>
                 </macro>
             </macros>
             <templates>
