@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.2</version>
-    <date>2019-09-03T16:15:00Z</date>
+    <date>2019-09-04T08:42:51Z</date>
     <groups>
         <group>
             <name>Templates/Operating Systems</name>
@@ -41,11 +41,7 @@ For explanation:</description>
                     <name>Templates/Operating Systems</name>
                 </group>
             </groups>
-            <applications>
-                <application>
-                    <name>Filesystem</name>
-                </application>
-            </applications>
+            <applications/>
             <items/>
             <discovery_rules/>
             <httptests/>
@@ -1167,7 +1163,7 @@ https://wutils.com/wmi/root/cimv2/</description>
             <macros>
                 <macro>
                     <macro>{$DISK.FILESYSTEM.DISCOVERY}</macro>
-                    <value>(btrfs|ext2|ext3|ext4|reiser|xfs|ffs|ufs|jfs|jfs2|vxfs|hfs|apfs|refs|ntfs|fat32|zfs)</value>
+                    <value>^(btrfs|ext2|ext3|ext4|reiser|xfs|ffs|ufs|jfs|jfs2|vxfs|hfs|apfs|refs|ntfs|fat32|zfs)$</value>
                 </macro>
                 <macro>
                     <macro>{$DISK.FILESYSTEM.SPACE.LIMIT}</macro>
@@ -1175,7 +1171,7 @@ https://wutils.com/wmi/root/cimv2/</description>
                 </macro>
                 <macro>
                     <macro>{$DISK.MOUNTPOINT.DISCOVERY.EXCLUDE}</macro>
-                    <value>(A.*|B.*)</value>
+                    <value>^(A.*|B.*)$</value>
                 </macro>
             </macros>
             <templates>
@@ -3956,7 +3952,7 @@ last(&quot;wmi.get[root\cimv2,select CurrentBandwidth from Win32_PerfFormattedDa
             <macros>
                 <macro>
                     <macro>{$NETWORK.INTERFACE.FILTER.EXCLUDE}</macro>
-                    <value>(WAN Miniport.*|veth.*|Teredo Tunneling Pseudo-Interface|Microsoft (ISATAP|Wi-Fi Direct Virtual|Kernel Debug Network) Adapter.*|(In)?[Ll]oop[Bb]ack[0-9._]*|Software Loopback Interface|.*Virtual Switch Extension Adapter)</value>
+                    <value>^(WAN Miniport.*|veth.*|Teredo Tunneling Pseudo-Interface|Microsoft (ISATAP|Wi-Fi Direct Virtual|Kernel Debug Network) Adapter.*|(In)?[Ll]oop[Bb]ack[0-9._]*|Software Loopback Interface|.*Virtual Switch Extension Adapter)$</value>
                 </macro>
             </macros>
             <templates/>
