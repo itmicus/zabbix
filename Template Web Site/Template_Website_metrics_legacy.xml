@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
-    <version>2.0</version>
-    <date>2018-04-28T08:00:37Z</date>
+    <version>3.4</version>
+    <date>2019-11-03T22:28:16Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -9,8 +9,9 @@
     </groups>
     <templates>
         <template>
-            <template>Template Website metrics legacy</template>
-            <name>Template Website metrics legacy</name>
+            <template>Template Website metrics</template>
+            <name>Template Website metrics (itmicus.ru)</name>
+            <description>Website monitoring: domain name, SSL certificate, website availability version 1.0</description>
             <groups>
                 <group>
                     <name>Templates</name>
@@ -32,230 +33,18 @@
             </applications>
             <items>
                 <item>
-                    <name>Web &quot;{$WEBSITE_METRICS_URL}&quot; download speed</name>
-                    <type>2</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>website_metrics.test.speed</key>
-                    <delay>0</delay>
-                    <history>7</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units>bps</units>
-                    <delta>0</delta>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>Web site</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                </item>
-                <item>
-                    <name>Web &quot;{$WEBSITE_METRICS_URL}&quot; last fail code</name>
-                    <type>2</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>website_metrics.test.fail</key>
-                    <delay>0</delay>
-                    <history>7</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <delta>0</delta>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>Web site</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                </item>
-                <item>
-                    <name>Web &quot;{$WEBSITE_METRICS_URL}&quot; message</name>
-                    <type>2</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>website_metrics.test.message</key>
-                    <delay>0</delay>
-                    <history>7</history>
-                    <trends>0</trends>
-                    <status>0</status>
-                    <value_type>4</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <delta>0</delta>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>Web site</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                </item>
-                <item>
-                    <name>Web &quot;{$WEBSITE_METRICS_URL}&quot; response code</name>
-                    <type>2</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>website_metrics.test.code</key>
-                    <delay>0</delay>
-                    <history>7</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <delta>0</delta>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>Web site</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                </item>
-                <item>
-                    <name>Web &quot;{$WEBSITE_METRICS_URL}&quot; response time</name>
-                    <type>2</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>website_metrics.test.time</key>
-                    <delay>0</delay>
-                    <history>7</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>0</value_type>
-                    <allowed_hosts/>
-                    <units>s</units>
-                    <delta>0</delta>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>Web site</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                </item>
-                <item>
                     <name>Web &quot;{$WEBSITE_METRICS_URL}&quot; run tests</name>
                     <type>10</type>
                     <snmp_community/>
-                    <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>website_metrics.py[&quot;--hostname&quot;,{HOST.HOST},&quot;--testsite&quot;,{$WEBSITE_METRICS_URL},&quot;--testphrase&quot;,{$WEBSITE_METRICS_PHRASE},&quot;--timeout&quot;,{$WEBSITE_METRICS_TIMEOUT},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
-                    <delay>180</delay>
-                    <history>7</history>
+                    <key>website_metrics.py[&quot;--testsite&quot;,{$WEBSITE_METRICS_URL},&quot;--testphrase&quot;,{$WEBSITE_METRICS_PHRASE},&quot;--timeout&quot;,{$WEBSITE_METRICS_TIMEOUT},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                    <delay>3m</delay>
+                    <history>0</history>
                     <trends>0</trends>
                     <status>0</status>
                     <value_type>4</value_type>
                     <allowed_hosts/>
                     <units/>
-                    <delta>0</delta>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -263,11 +52,8 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
-                    <data_type>0</data_type>
                     <authtype>0</authtype>
                     <username/>
                     <password/>
@@ -282,22 +68,24 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
                 </item>
                 <item>
-                    <name>Web &quot;{$WEBSITE_METRICS_URL}&quot; test phrase</name>
-                    <type>2</type>
+                    <name>Web &quot;{$WEBSITE_METRICS_URL}&quot; response code</name>
+                    <type>18</type>
                     <snmp_community/>
-                    <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>website_metrics.test.phrase_status</key>
+                    <key>website_metrics.test.code</key>
                     <delay>0</delay>
-                    <history>7</history>
-                    <trends>365</trends>
+                    <history>1w</history>
+                    <trends>365d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
-                    <delta>0</delta>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -305,11 +93,104 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
-                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Web site</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.test_code</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint/>
+                    <master_item>
+                        <key>website_metrics.py[&quot;--testsite&quot;,{$WEBSITE_METRICS_URL},&quot;--testphrase&quot;,{$WEBSITE_METRICS_PHRASE},&quot;--timeout&quot;,{$WEBSITE_METRICS_TIMEOUT},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>Web &quot;{$WEBSITE_METRICS_URL}&quot; message</name>
+                    <type>18</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>website_metrics.test.message</key>
+                    <delay>0</delay>
+                    <history>1w</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Web site</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.test_message</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint/>
+                    <master_item>
+                        <key>website_metrics.py[&quot;--testsite&quot;,{$WEBSITE_METRICS_URL},&quot;--testphrase&quot;,{$WEBSITE_METRICS_PHRASE},&quot;--timeout&quot;,{$WEBSITE_METRICS_TIMEOUT},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>Web &quot;{$WEBSITE_METRICS_URL}&quot; test phrase</name>
+                    <type>18</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>website_metrics.test.phrase_status</key>
+                    <delay>0</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
                     <authtype>0</authtype>
                     <username/>
                     <password/>
@@ -324,24 +205,33 @@
                         </application>
                     </applications>
                     <valuemap>
-                        <name>Service state</name>
+                        <name>Template website status</name>
                     </valuemap>
+                    <logtimefmt/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.test_phrase_status</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint/>
+                    <master_item>
+                        <key>website_metrics.py[&quot;--testsite&quot;,{$WEBSITE_METRICS_URL},&quot;--testphrase&quot;,{$WEBSITE_METRICS_PHRASE},&quot;--timeout&quot;,{$WEBSITE_METRICS_TIMEOUT},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                    </master_item>
                 </item>
                 <item>
-                    <name>Web &quot;{$WEBSITE_METRICS_URL}&quot; test status</name>
-                    <type>2</type>
+                    <name>Web &quot;{$WEBSITE_METRICS_URL}&quot; download speed</name>
+                    <type>18</type>
                     <snmp_community/>
-                    <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>website_metrics.test.status</key>
+                    <key>website_metrics.test.speed</key>
                     <delay>0</delay>
-                    <history>7</history>
-                    <trends>365</trends>
+                    <history>1w</history>
+                    <trends>365d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
-                    <units/>
-                    <delta>0</delta>
+                    <units>bps</units>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -349,11 +239,56 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
-                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Web site</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.test_speed</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint/>
+                    <master_item>
+                        <key>website_metrics.py[&quot;--testsite&quot;,{$WEBSITE_METRICS_URL},&quot;--testphrase&quot;,{$WEBSITE_METRICS_PHRASE},&quot;--timeout&quot;,{$WEBSITE_METRICS_TIMEOUT},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>Web &quot;{$WEBSITE_METRICS_URL}&quot; test status</name>
+                    <type>18</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>website_metrics.test.status</key>
+                    <delay>0</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
                     <authtype>0</authtype>
                     <username/>
                     <password/>
@@ -371,8 +306,67 @@
                         </application>
                     </applications>
                     <valuemap>
-                        <name>Service state</name>
+                        <name>Template website status</name>
                     </valuemap>
+                    <logtimefmt/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.test_status</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint/>
+                    <master_item>
+                        <key>website_metrics.py[&quot;--testsite&quot;,{$WEBSITE_METRICS_URL},&quot;--testphrase&quot;,{$WEBSITE_METRICS_PHRASE},&quot;--timeout&quot;,{$WEBSITE_METRICS_TIMEOUT},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>Web &quot;{$WEBSITE_METRICS_URL}&quot; response time</name>
+                    <type>18</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>website_metrics.test.time</key>
+                    <delay>0</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units>s</units>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Web site</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.test_time</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint/>
+                    <master_item>
+                        <key>website_metrics.py[&quot;--testsite&quot;,{$WEBSITE_METRICS_URL},&quot;--testphrase&quot;,{$WEBSITE_METRICS_PHRASE},&quot;--timeout&quot;,{$WEBSITE_METRICS_TIMEOUT},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                    </master_item>
                 </item>
             </items>
             <discovery_rules>
@@ -382,7 +376,7 @@
                     <snmp_community/>
                     <snmp_oid/>
                     <key>website_metrics.py[&quot;--discoverydomain&quot;,{$WEBSITE_METRICS_URL},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
-                    <delay>43200</delay>
+                    <delay>10m</delay>
                     <status>0</status>
                     <allowed_hosts/>
                     <snmpv3_contextname/>
@@ -392,7 +386,6 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
                     <authtype>0</authtype>
@@ -401,25 +394,27 @@
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <filter/>
-                    <lifetime>7</lifetime>
+                    <filter>
+                        <evaltype>0</evaltype>
+                        <formula/>
+                        <conditions/>
+                    </filter>
+                    <lifetime>1w</lifetime>
                     <description/>
                     <item_prototypes>
                         <item_prototype>
                             <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; creation date</name>
-                            <type>2</type>
+                            <type>18</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>website_metrics.domain.creationdate[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}]</key>
                             <delay>0</delay>
-                            <history>7</history>
+                            <history>1w</history>
                             <trends>0</trends>
                             <status>0</status>
                             <value_type>4</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -427,11 +422,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -446,22 +438,32 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>12</type>
+                                    <params>$.domain_creationdate</params>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype>
+                                <key>website_metrics.py[&quot;--testdomain&quot;,{#WEBSITE_METRICS_LLD_DOMAIN_NAME},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                            </master_item_prototype>
                         </item_prototype>
                         <item_prototype>
                             <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; days to expire</name>
-                            <type>2</type>
+                            <type>18</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}]</key>
                             <delay>0</delay>
-                            <history>7</history>
-                            <trends>365</trends>
+                            <history>1w</history>
+                            <trends>90d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -469,11 +471,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -491,22 +490,32 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>12</type>
+                                    <params>$.domain_daystoexpire</params>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype>
+                                <key>website_metrics.py[&quot;--testdomain&quot;,{#WEBSITE_METRICS_LLD_DOMAIN_NAME},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                            </master_item_prototype>
                         </item_prototype>
                         <item_prototype>
                             <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; expire date</name>
-                            <type>2</type>
+                            <type>18</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>website_metrics.domain.expiredate[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}]</key>
                             <delay>0</delay>
-                            <history>7</history>
+                            <history>1w</history>
                             <trends>0</trends>
                             <status>0</status>
                             <value_type>4</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -514,11 +523,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -533,22 +539,32 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>12</type>
+                                    <params>$.domain_expiredate</params>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype>
+                                <key>website_metrics.py[&quot;--testdomain&quot;,{#WEBSITE_METRICS_LLD_DOMAIN_NAME},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                            </master_item_prototype>
                         </item_prototype>
                         <item_prototype>
                             <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; registrar</name>
-                            <type>2</type>
+                            <type>18</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>website_metrics.domain.registrar[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}]</key>
                             <delay>0</delay>
-                            <history>7</history>
+                            <history>1w</history>
                             <trends>0</trends>
                             <status>0</status>
                             <value_type>4</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -556,11 +572,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -575,64 +588,32 @@
                                 </application>
                             </applications>
                             <valuemap/>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; run check</name>
-                            <type>10</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>website_metrics.py[&quot;--hostname&quot;,{HOST.HOST},&quot;--testdomain&quot;,{#WEBSITE_METRICS_LLD_DOMAIN_NAME},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
-                            <delay>43200</delay>
-                            <history>7</history>
-                            <trends>0</trends>
-                            <status>0</status>
-                            <value_type>4</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description>Fake item for periodical run of tests.</description>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Domain name</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>12</type>
+                                    <params>$.domain_registrar</params>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype>
+                                <key>website_metrics.py[&quot;--testdomain&quot;,{#WEBSITE_METRICS_LLD_DOMAIN_NAME},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                            </master_item_prototype>
                         </item_prototype>
                         <item_prototype>
                             <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; status</name>
-                            <type>2</type>
+                            <type>18</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>website_metrics.domain.status[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}]</key>
                             <delay>0</delay>
-                            <history>7</history>
-                            <trends>7</trends>
+                            <history>1w</history>
+                            <trends>1w</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -640,11 +621,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -662,59 +640,167 @@
                                 </application>
                             </applications>
                             <valuemap>
-                                <name>Service state</name>
+                                <name>Template website status</name>
                             </valuemap>
+                            <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>12</type>
+                                    <params>$.domain_status</params>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype>
+                                <key>website_metrics.py[&quot;--testdomain&quot;,{#WEBSITE_METRICS_LLD_DOMAIN_NAME},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                            </master_item_prototype>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; run check</name>
+                            <type>10</type>
+                            <snmp_community/>
+                            <snmp_oid/>
+                            <key>website_metrics.py[&quot;--testdomain&quot;,{#WEBSITE_METRICS_LLD_DOMAIN_NAME},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                            <delay>1h</delay>
+                            <history>1w</history>
+                            <trends>0</trends>
+                            <status>0</status>
+                            <value_type>4</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>Fake item for periodical run of tests.</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Domain name</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype/>
                         </item_prototype>
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Template Website metrics legacy:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}=0 &amp; {Template Website metrics legacy:website_metrics.domain.status[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].sum(#3)}=1</expression>
+                            <expression>{Template - SSL metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}=0</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
                             <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; is expired</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
                             <url/>
                             <status>0</status>
                             <priority>5</priority>
                             <description/>
                             <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies/>
+                            <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template Website metrics legacy:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}=1 &amp; {Template Website metrics legacy:website_metrics.domain.status[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].sum(#3)}=1</expression>
+                            <expression>{Template - SSL metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}=1</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
                             <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; is expiring to 1 day</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
                             <url/>
                             <status>0</status>
                             <priority>3</priority>
                             <description/>
                             <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies>
+                                <dependency>
+                                    <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; is expired</name>
+                                    <expression>{Template - SSL metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}=0</expression>
+                                    <recovery_expression/>
+                                </dependency>
+                            </dependencies>
+                            <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template Website metrics legacy:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}&lt;8 &amp; {Template Website metrics legacy:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}&gt;1 &amp; {Template Website metrics legacy:website_metrics.domain.status[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].sum(#3)}=1</expression>
+                            <expression>{Template - SSL metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}&lt;=7</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
                             <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; is expiring to 7 days ({ITEM.LASTVALUE1} left)</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
                             <url/>
                             <status>0</status>
                             <priority>2</priority>
                             <description/>
                             <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies>
+                                <dependency>
+                                    <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; is expiring to 1 day</name>
+                                    <expression>{Template - SSL metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}=1</expression>
+                                    <recovery_expression/>
+                                </dependency>
+                            </dependencies>
+                            <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template Website metrics legacy:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}&lt;31 &amp; {Template Website metrics legacy:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}&gt;7 &amp; {Template Website metrics legacy:website_metrics.domain.status[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].sum(#3)}=1</expression>
+                            <expression>{Template - SSL metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}&lt;=30</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
                             <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; is expiring to 30 days ({ITEM.LASTVALUE1} left)</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
                             <url/>
                             <status>0</status>
                             <priority>1</priority>
                             <description/>
                             <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies>
+                                <dependency>
+                                    <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; is expiring to 7 days ({ITEM.LASTVALUE1} left)</name>
+                                    <expression>{Template - SSL metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}&lt;=7</expression>
+                                    <recovery_expression/>
+                                </dependency>
+                            </dependencies>
+                            <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template Website metrics legacy:website_metrics.domain.status[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].sum(#3)}=0</expression>
+                            <expression>{Template - SSL metrics:website_metrics.domain.status[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].sum(#3)}=0</expression>
+                            <recovery_mode>1</recovery_mode>
+                            <recovery_expression>{Template - SSL metrics:website_metrics.domain.status[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].sum(#3)}=1</recovery_expression>
                             <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; is invalid</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
                             <url/>
                             <status>0</status>
                             <priority>4</priority>
                             <description/>
                             <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies/>
+                            <tags/>
                         </trigger_prototype>
                     </trigger_prototypes>
                     <graph_prototypes/>
                     <host_prototypes/>
+                    <jmx_endpoint/>
                 </discovery_rule>
                 <discovery_rule>
                     <name>SSL certificate discovery</name>
@@ -722,7 +808,7 @@
                     <snmp_community/>
                     <snmp_oid/>
                     <key>website_metrics.py[&quot;--discoveryssl&quot;,{$WEBSITE_METRICS_URL},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
-                    <delay>43200</delay>
+                    <delay>10m</delay>
                     <status>0</status>
                     <allowed_hosts/>
                     <snmpv3_contextname/>
@@ -732,7 +818,6 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
                     <authtype>0</authtype>
@@ -741,25 +826,27 @@
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <filter/>
-                    <lifetime>7</lifetime>
+                    <filter>
+                        <evaltype>0</evaltype>
+                        <formula/>
+                        <conditions/>
+                    </filter>
+                    <lifetime>1w</lifetime>
                     <description/>
                     <item_prototypes>
                         <item_prototype>
-                            <name>SSL &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; days to expire</name>
-                            <type>2</type>
+                            <name>SSL &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; run check</name>
+                            <type>10</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}]</key>
-                            <delay>0</delay>
-                            <history>7</history>
-                            <trends>365</trends>
+                            <key>website_metrics.py[&quot;--testssl&quot;,{#WEBSITE_METRICS_LLD_SSL_URL},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                            <delay>1h</delay>
+                            <history>0</history>
+                            <trends>0</trends>
                             <status>0</status>
-                            <value_type>3</value_type>
+                            <value_type>4</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -767,11 +854,50 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>Fake item for periodical run of tests.</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>SSL</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSL &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; days to expire</name>
+                            <type>18</type>
+                            <snmp_community/>
+                            <snmp_oid/>
+                            <key>website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}]</key>
+                            <delay>0</delay>
+                            <history>1w</history>
+                            <trends>90d</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <params/>
+                            <ipmi_sensor/>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -789,22 +915,32 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>12</type>
+                                    <params>$.ssl_daystoexpire</params>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype>
+                                <key>website_metrics.py[&quot;--testssl&quot;,{#WEBSITE_METRICS_LLD_SSL_URL},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                            </master_item_prototype>
                         </item_prototype>
                         <item_prototype>
                             <name>SSL &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; expire date</name>
-                            <type>2</type>
+                            <type>18</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>website_metrics.ssl.expiredate[{#WEBSITE_METRICS_LLD_SSL_URL}]</key>
                             <delay>0</delay>
-                            <history>7</history>
+                            <history>1w</history>
                             <trends>0</trends>
                             <status>0</status>
                             <value_type>4</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -812,11 +948,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -831,22 +964,32 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>12</type>
+                                    <params>$.ssl_expiredate</params>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype>
+                                <key>website_metrics.py[&quot;--testssl&quot;,{#WEBSITE_METRICS_LLD_SSL_URL},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                            </master_item_prototype>
                         </item_prototype>
                         <item_prototype>
                             <name>SSL &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; Issued by</name>
-                            <type>2</type>
+                            <type>18</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>website_metrics.ssl.issuedby[{#WEBSITE_METRICS_LLD_SSL_URL}]</key>
                             <delay>0</delay>
-                            <history>7</history>
+                            <history>1w</history>
                             <trends>0</trends>
                             <status>0</status>
                             <value_type>4</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -854,11 +997,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -873,22 +1013,32 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>12</type>
+                                    <params>$.ssl_issuedby</params>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype>
+                                <key>website_metrics.py[&quot;--testssl&quot;,{#WEBSITE_METRICS_LLD_SSL_URL},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                            </master_item_prototype>
                         </item_prototype>
                         <item_prototype>
                             <name>SSL &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; Issued date</name>
-                            <type>2</type>
+                            <type>18</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>website_metrics.ssl.issueddate[{#WEBSITE_METRICS_LLD_SSL_URL}]</key>
                             <delay>0</delay>
-                            <history>7</history>
+                            <history>1w</history>
                             <trends>0</trends>
                             <status>0</status>
-                            <value_type>4</value_type>
+                            <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -896,11 +1046,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -915,64 +1062,32 @@
                                 </application>
                             </applications>
                             <valuemap/>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>SSL &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; run check</name>
-                            <type>10</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>website_metrics.py[&quot;--hostname&quot;,{HOST.HOST},&quot;--testssl&quot;,{#WEBSITE_METRICS_LLD_SSL_URL},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
-                            <delay>3600</delay>
-                            <history>7</history>
-                            <trends>0</trends>
-                            <status>0</status>
-                            <value_type>4</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description>Fake item for periodical run of tests.</description>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>SSL</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>12</type>
+                                    <params>$.ssl_issueddate</params>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype>
+                                <key>website_metrics.py[&quot;--testssl&quot;,{#WEBSITE_METRICS_LLD_SSL_URL},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                            </master_item_prototype>
                         </item_prototype>
                         <item_prototype>
                             <name>SSL &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; serial number</name>
-                            <type>2</type>
+                            <type>18</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>website_metrics.ssl.serialnumber[{#WEBSITE_METRICS_LLD_SSL_URL}]</key>
                             <delay>0</delay>
-                            <history>7</history>
+                            <history>1w</history>
                             <trends>0</trends>
                             <status>0</status>
                             <value_type>4</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -980,11 +1095,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -999,22 +1111,32 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>12</type>
+                                    <params>$.ssl_serialnumber</params>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype>
+                                <key>website_metrics.py[&quot;--testssl&quot;,{#WEBSITE_METRICS_LLD_SSL_URL},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                            </master_item_prototype>
                         </item_prototype>
                         <item_prototype>
                             <name>SSL &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; status</name>
-                            <type>2</type>
+                            <type>18</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>website_metrics.ssl.status[{#WEBSITE_METRICS_LLD_SSL_URL}]</key>
                             <delay>0</delay>
-                            <history>7</history>
-                            <trends>7</trends>
+                            <history>1w</history>
+                            <trends>1w</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1022,11 +1144,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -1044,70 +1163,144 @@
                                 </application>
                             </applications>
                             <valuemap>
-                                <name>Service state</name>
+                                <name>Template website status</name>
                             </valuemap>
+                            <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>12</type>
+                                    <params>$.ssl_status</params>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
+                            <application_prototypes/>
+                            <master_item_prototype>
+                                <key>website_metrics.py[&quot;--testssl&quot;,{#WEBSITE_METRICS_LLD_SSL_URL},&quot;--debug&quot;,{$WEBSITE_METRICS_DEBUG}]</key>
+                            </master_item_prototype>
                         </item_prototype>
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Template Website metrics legacy:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}=0 &amp; {Template Website metrics legacy:website_metrics.ssl.status[{#WEBSITE_METRICS_LLD_SSL_URL}].sum(#3)}=1</expression>
+                            <expression>{Template - SSL metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}=0</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
                             <name>Certificate &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; is expired</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
                             <url/>
                             <status>0</status>
                             <priority>5</priority>
                             <description/>
                             <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies/>
+                            <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template Website metrics legacy:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}=1 &amp; {Template Website metrics legacy:website_metrics.ssl.status[{#WEBSITE_METRICS_LLD_SSL_URL}].sum(#3)}=1</expression>
+                            <expression>{Template - SSL metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}=1</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
                             <name>Certificate &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; is expiring to 1 day</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
                             <url/>
                             <status>0</status>
                             <priority>3</priority>
                             <description/>
                             <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies>
+                                <dependency>
+                                    <name>Certificate &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; is expired</name>
+                                    <expression>{Template - SSL metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}=0</expression>
+                                    <recovery_expression/>
+                                </dependency>
+                            </dependencies>
+                            <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template Website metrics legacy:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}&lt;8 &amp; {Template Website metrics legacy:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}&gt;1 &amp; {Template Website metrics legacy:website_metrics.ssl.status[{#WEBSITE_METRICS_LLD_SSL_URL}].sum(#3)}=1</expression>
+                            <expression>{Template - SSL metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}&lt;=7</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
                             <name>Certificate &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; is expiring to 7 days ({ITEM.LASTVALUE1} left)</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
                             <url/>
                             <status>0</status>
-                            <priority>2</priority>
+                            <priority>3</priority>
                             <description/>
                             <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies>
+                                <dependency>
+                                    <name>Certificate &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; is expiring to 1 day</name>
+                                    <expression>{Template - SSL metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}=1</expression>
+                                    <recovery_expression/>
+                                </dependency>
+                            </dependencies>
+                            <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template Website metrics legacy:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}&lt;31 &amp; {Template Website metrics legacy:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}&gt;7 &amp; {Template Website metrics legacy:website_metrics.ssl.status[{#WEBSITE_METRICS_LLD_SSL_URL}].sum(#3)}=1</expression>
+                            <expression>{Template - SSL metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}&lt;=30</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
                             <name>Certificate &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; is expiring to 30 days ({ITEM.LASTVALUE1} left)</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
                             <url/>
                             <status>0</status>
                             <priority>1</priority>
                             <description/>
                             <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies>
+                                <dependency>
+                                    <name>Certificate &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; is expiring to 7 days ({ITEM.LASTVALUE1} left)</name>
+                                    <expression>{Template - SSL metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}&lt;=7</expression>
+                                    <recovery_expression/>
+                                </dependency>
+                            </dependencies>
+                            <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template Website metrics legacy:website_metrics.ssl.status[{#WEBSITE_METRICS_LLD_SSL_URL}].sum(#3)}=0</expression>
+                            <expression>{Template - SSL metrics:website_metrics.ssl.status[{#WEBSITE_METRICS_LLD_SSL_URL}].sum(#3)}=0</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
                             <name>Certificate &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; is invalid</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
                             <url/>
                             <status>0</status>
                             <priority>4</priority>
                             <description/>
                             <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies/>
+                            <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template Website metrics legacy:website_metrics.ssl.serialnumber[{#WEBSITE_METRICS_LLD_SSL_URL}].change()}=1 &amp; {Template Website metrics legacy:website_metrics.ssl.status[{#WEBSITE_METRICS_LLD_SSL_URL}].sum(#3)}=1</expression>
+                            <expression>{Template - SSL metrics:website_metrics.ssl.serialnumber[{#WEBSITE_METRICS_LLD_SSL_URL}].change()}=1</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
                             <name>Certificate &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; was changed</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
                             <url/>
                             <status>0</status>
                             <priority>1</priority>
                             <description/>
                             <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies/>
+                            <tags/>
                         </trigger_prototype>
                     </trigger_prototypes>
                     <graph_prototypes/>
                     <host_prototypes/>
+                    <jmx_endpoint/>
                 </discovery_rule>
             </discovery_rules>
+            <httptests/>
             <macros>
                 <macro>
                     <macro>{$WEBSITE_METRICS_DEBUG}</macro>
@@ -1154,8 +1347,9 @@
                             <sort_triggers>0</sort_triggers>
                             <resource>
                                 <name>Website response time</name>
-                                <host>Template Website metrics legacy</host>
+                                <host>Template - SSL metrics</host>
                             </resource>
+                            <max_columns>3</max_columns>
                             <application/>
                         </screen_item>
                         <screen_item>
@@ -1175,8 +1369,9 @@
                             <sort_triggers>0</sort_triggers>
                             <resource>
                                 <name>Website speed</name>
-                                <host>Template Website metrics legacy</host>
+                                <host>Template - SSL metrics</host>
                             </resource>
+                            <max_columns>3</max_columns>
                             <application/>
                         </screen_item>
                     </screen_items>
@@ -1186,59 +1381,86 @@
     </templates>
     <triggers>
         <trigger>
-            <expression>{Template Website metrics legacy:website_metrics.test.time.avg(10m)}&gt;{$WEBSITE_METRICS_TIMEOUT}</expression>
+            <expression>{Template - SSL metrics:website_metrics.test.time.avg(10m)}&gt;{$WEBSITE_METRICS_TIMEOUT}</expression>
+            <recovery_mode>1</recovery_mode>
+            <recovery_expression>{Template - SSL metrics:website_metrics.test.time.avg(15m)}&lt;{$WEBSITE_METRICS_TIMEOUT_RECOVERY}</recovery_expression>
             <name>Web site &quot;{$WEBSITE_METRICS_URL}&quot; high average response time &gt; {$WEBSITE_METRICS_TIMEOUT} sec</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
             <url/>
             <status>0</status>
             <priority>2</priority>
             <description>High average response time of website.</description>
             <type>0</type>
+            <manual_close>0</manual_close>
             <dependencies>
                 <dependency>
                     <name>Web site &quot;{$WEBSITE_METRICS_URL}&quot; Nodata</name>
-                    <expression>{Template Website metrics legacy:website_metrics.test.code.nodata(10m)}=1</expression>
+                    <expression>{Template - SSL metrics:website_metrics.test.code.nodata(10m)}=1</expression>
+                    <recovery_expression/>
                 </dependency>
             </dependencies>
+            <tags/>
         </trigger>
         <trigger>
-            <expression>{Template Website metrics legacy:website_metrics.test.status.sum(#3)}=0</expression>
+            <expression>{Template - SSL metrics:website_metrics.test.status.sum(#3)}=0</expression>
+            <recovery_mode>1</recovery_mode>
+            <recovery_expression>{Template - SSL metrics:website_metrics.test.status.sum(#3)}=1</recovery_expression>
             <name>Web site &quot;{$WEBSITE_METRICS_URL}&quot; is down</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
             <url/>
             <status>0</status>
             <priority>4</priority>
             <description>There is no response from website.</description>
             <type>0</type>
+            <manual_close>0</manual_close>
             <dependencies/>
+            <tags/>
         </trigger>
         <trigger>
-            <expression>{Template Website metrics legacy:website_metrics.test.code.nodata(10m)}=1</expression>
+            <expression>{Template - SSL metrics:website_metrics.test.code.nodata(10m)}=1</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
             <name>Web site &quot;{$WEBSITE_METRICS_URL}&quot; Nodata</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
             <url/>
             <status>0</status>
             <priority>3</priority>
             <description/>
             <type>0</type>
+            <manual_close>0</manual_close>
             <dependencies>
                 <dependency>
                     <name>Web site &quot;{$WEBSITE_METRICS_URL}&quot; is down</name>
-                    <expression>{Template Website metrics legacy:website_metrics.test.status.sum(#3)}=0</expression>
+                    <expression>{Template - SSL metrics:website_metrics.test.status.sum(#3)}=0</expression>
+                    <recovery_expression>{Template - SSL metrics:website_metrics.test.status.sum(#3)}=1</recovery_expression>
                 </dependency>
             </dependencies>
+            <tags/>
         </trigger>
         <trigger>
-            <expression>{Template Website metrics legacy:website_metrics.test.phrase_status.sum(#3)}=0</expression>
+            <expression>{Template - SSL metrics:website_metrics.test.phrase_status.sum(#3)}=0</expression>
+            <recovery_mode>1</recovery_mode>
+            <recovery_expression>{Template - SSL metrics:website_metrics.test.phrase_status.sum(#3)}=3</recovery_expression>
             <name>Web site &quot;{$WEBSITE_METRICS_URL}&quot; test phrase failed</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
             <url/>
             <status>0</status>
             <priority>2</priority>
             <description>There is no Test phrase on site.</description>
             <type>0</type>
+            <manual_close>0</manual_close>
             <dependencies>
                 <dependency>
                     <name>Web site &quot;{$WEBSITE_METRICS_URL}&quot; Nodata</name>
-                    <expression>{Template Website metrics legacy:website_metrics.test.code.nodata(10m)}=1</expression>
+                    <expression>{Template - SSL metrics:website_metrics.test.code.nodata(10m)}=1</expression>
+                    <recovery_expression/>
                 </dependency>
             </dependencies>
+            <tags/>
         </trigger>
     </triggers>
     <graphs>
@@ -1268,7 +1490,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template Website metrics legacy</host>
+                        <host>Template - SSL metrics</host>
                         <key>website_metrics.test.time</key>
                     </item>
                 </graph_item>
@@ -1300,11 +1522,26 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template Website metrics legacy</host>
+                        <host>Template - SSL metrics</host>
                         <key>website_metrics.test.speed</key>
                     </item>
                 </graph_item>
             </graph_items>
         </graph>
     </graphs>
+    <value_maps>
+        <value_map>
+            <name>Template website status</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Failed</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>OK</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
 </zabbix_export>
