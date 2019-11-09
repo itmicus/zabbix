@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.4</version>
-    <date>2019-11-03T22:28:16Z</date>
+    <date>2019-11-09T20:17:27Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -700,7 +700,7 @@
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Template - SSL metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}=0</expression>
+                            <expression>{Template Website metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}=0</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
                             <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; is expired</name>
@@ -716,7 +716,7 @@
                             <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template - SSL metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}=1</expression>
+                            <expression>{Template Website metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}=1</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
                             <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; is expiring to 1 day</name>
@@ -731,14 +731,14 @@
                             <dependencies>
                                 <dependency>
                                     <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; is expired</name>
-                                    <expression>{Template - SSL metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}=0</expression>
+                                    <expression>{Template Website metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}=0</expression>
                                     <recovery_expression/>
                                 </dependency>
                             </dependencies>
                             <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template - SSL metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}&lt;=7</expression>
+                            <expression>{Template Website metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}&lt;=7</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
                             <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; is expiring to 7 days ({ITEM.LASTVALUE1} left)</name>
@@ -753,14 +753,14 @@
                             <dependencies>
                                 <dependency>
                                     <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; is expiring to 1 day</name>
-                                    <expression>{Template - SSL metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}=1</expression>
+                                    <expression>{Template Website metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}=1</expression>
                                     <recovery_expression/>
                                 </dependency>
                             </dependencies>
                             <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template - SSL metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}&lt;=30</expression>
+                            <expression>{Template Website metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}&lt;=30</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
                             <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; is expiring to 30 days ({ITEM.LASTVALUE1} left)</name>
@@ -775,16 +775,16 @@
                             <dependencies>
                                 <dependency>
                                     <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; is expiring to 7 days ({ITEM.LASTVALUE1} left)</name>
-                                    <expression>{Template - SSL metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}&lt;=7</expression>
+                                    <expression>{Template Website metrics:website_metrics.domain.daystoexpire[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].last()}&lt;=7</expression>
                                     <recovery_expression/>
                                 </dependency>
                             </dependencies>
                             <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template - SSL metrics:website_metrics.domain.status[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].sum(#3)}=0</expression>
+                            <expression>{Template Website metrics:website_metrics.domain.status[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].sum(#3)}=0</expression>
                             <recovery_mode>1</recovery_mode>
-                            <recovery_expression>{Template - SSL metrics:website_metrics.domain.status[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].sum(#3)}=1</recovery_expression>
+                            <recovery_expression>{Template Website metrics:website_metrics.domain.status[{#WEBSITE_METRICS_LLD_DOMAIN_NAME}].sum(#3)}=1</recovery_expression>
                             <name>Domain &quot;{#WEBSITE_METRICS_LLD_DOMAIN_NAME}&quot; is invalid</name>
                             <correlation_mode>0</correlation_mode>
                             <correlation_tag/>
@@ -1036,7 +1036,7 @@
                             <history>1w</history>
                             <trends>0</trends>
                             <status>0</status>
-                            <value_type>3</value_type>
+                            <value_type>4</value_type>
                             <allowed_hosts/>
                             <units/>
                             <snmpv3_contextname/>
@@ -1181,7 +1181,7 @@
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Template - SSL metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}=0</expression>
+                            <expression>{Template Website metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}=0</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
                             <name>Certificate &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; is expired</name>
@@ -1197,7 +1197,7 @@
                             <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template - SSL metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}=1</expression>
+                            <expression>{Template Website metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}=1</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
                             <name>Certificate &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; is expiring to 1 day</name>
@@ -1212,14 +1212,14 @@
                             <dependencies>
                                 <dependency>
                                     <name>Certificate &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; is expired</name>
-                                    <expression>{Template - SSL metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}=0</expression>
+                                    <expression>{Template Website metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}=0</expression>
                                     <recovery_expression/>
                                 </dependency>
                             </dependencies>
                             <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template - SSL metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}&lt;=7</expression>
+                            <expression>{Template Website metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}&lt;=7</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
                             <name>Certificate &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; is expiring to 7 days ({ITEM.LASTVALUE1} left)</name>
@@ -1234,14 +1234,14 @@
                             <dependencies>
                                 <dependency>
                                     <name>Certificate &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; is expiring to 1 day</name>
-                                    <expression>{Template - SSL metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}=1</expression>
+                                    <expression>{Template Website metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}=1</expression>
                                     <recovery_expression/>
                                 </dependency>
                             </dependencies>
                             <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template - SSL metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}&lt;=30</expression>
+                            <expression>{Template Website metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}&lt;=30</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
                             <name>Certificate &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; is expiring to 30 days ({ITEM.LASTVALUE1} left)</name>
@@ -1256,14 +1256,14 @@
                             <dependencies>
                                 <dependency>
                                     <name>Certificate &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; is expiring to 7 days ({ITEM.LASTVALUE1} left)</name>
-                                    <expression>{Template - SSL metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}&lt;=7</expression>
+                                    <expression>{Template Website metrics:website_metrics.ssl.daystoexpire[{#WEBSITE_METRICS_LLD_SSL_URL}].last()}&lt;=7</expression>
                                     <recovery_expression/>
                                 </dependency>
                             </dependencies>
                             <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template - SSL metrics:website_metrics.ssl.status[{#WEBSITE_METRICS_LLD_SSL_URL}].sum(#3)}=0</expression>
+                            <expression>{Template Website metrics:website_metrics.ssl.status[{#WEBSITE_METRICS_LLD_SSL_URL}].sum(#3)}=0</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
                             <name>Certificate &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; is invalid</name>
@@ -1279,7 +1279,7 @@
                             <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template - SSL metrics:website_metrics.ssl.serialnumber[{#WEBSITE_METRICS_LLD_SSL_URL}].change()}=1</expression>
+                            <expression>{Template Website metrics:website_metrics.ssl.serialnumber[{#WEBSITE_METRICS_LLD_SSL_URL}].change()}=1</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
                             <name>Certificate &quot;{#WEBSITE_METRICS_LLD_SSL_URL}&quot; was changed</name>
@@ -1347,7 +1347,7 @@
                             <sort_triggers>0</sort_triggers>
                             <resource>
                                 <name>Website response time</name>
-                                <host>Template - SSL metrics</host>
+                                <host>Template Website metrics</host>
                             </resource>
                             <max_columns>3</max_columns>
                             <application/>
@@ -1369,7 +1369,7 @@
                             <sort_triggers>0</sort_triggers>
                             <resource>
                                 <name>Website speed</name>
-                                <host>Template - SSL metrics</host>
+                                <host>Template Website metrics</host>
                             </resource>
                             <max_columns>3</max_columns>
                             <application/>
@@ -1381,9 +1381,9 @@
     </templates>
     <triggers>
         <trigger>
-            <expression>{Template - SSL metrics:website_metrics.test.time.avg(10m)}&gt;{$WEBSITE_METRICS_TIMEOUT}</expression>
+            <expression>{Template Website metrics:website_metrics.test.time.avg(10m)}&gt;{$WEBSITE_METRICS_TIMEOUT}</expression>
             <recovery_mode>1</recovery_mode>
-            <recovery_expression>{Template - SSL metrics:website_metrics.test.time.avg(15m)}&lt;{$WEBSITE_METRICS_TIMEOUT_RECOVERY}</recovery_expression>
+            <recovery_expression>{Template Website metrics:website_metrics.test.time.avg(15m)}&lt;{$WEBSITE_METRICS_TIMEOUT_RECOVERY}</recovery_expression>
             <name>Web site &quot;{$WEBSITE_METRICS_URL}&quot; high average response time &gt; {$WEBSITE_METRICS_TIMEOUT} sec</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
@@ -1396,16 +1396,16 @@
             <dependencies>
                 <dependency>
                     <name>Web site &quot;{$WEBSITE_METRICS_URL}&quot; Nodata</name>
-                    <expression>{Template - SSL metrics:website_metrics.test.code.nodata(10m)}=1</expression>
+                    <expression>{Template Website metrics:website_metrics.test.code.nodata(10m)}=1</expression>
                     <recovery_expression/>
                 </dependency>
             </dependencies>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template - SSL metrics:website_metrics.test.status.sum(#3)}=0</expression>
+            <expression>{Template Website metrics:website_metrics.test.status.sum(#3)}=0</expression>
             <recovery_mode>1</recovery_mode>
-            <recovery_expression>{Template - SSL metrics:website_metrics.test.status.sum(#3)}=1</recovery_expression>
+            <recovery_expression>{Template Website metrics:website_metrics.test.status.sum(#3)}=1</recovery_expression>
             <name>Web site &quot;{$WEBSITE_METRICS_URL}&quot; is down</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
@@ -1419,7 +1419,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template - SSL metrics:website_metrics.test.code.nodata(10m)}=1</expression>
+            <expression>{Template Website metrics:website_metrics.test.code.nodata(10m)}=1</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Web site &quot;{$WEBSITE_METRICS_URL}&quot; Nodata</name>
@@ -1434,16 +1434,16 @@
             <dependencies>
                 <dependency>
                     <name>Web site &quot;{$WEBSITE_METRICS_URL}&quot; is down</name>
-                    <expression>{Template - SSL metrics:website_metrics.test.status.sum(#3)}=0</expression>
-                    <recovery_expression>{Template - SSL metrics:website_metrics.test.status.sum(#3)}=1</recovery_expression>
+                    <expression>{Template Website metrics:website_metrics.test.status.sum(#3)}=0</expression>
+                    <recovery_expression>{Template Website metrics:website_metrics.test.status.sum(#3)}=1</recovery_expression>
                 </dependency>
             </dependencies>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template - SSL metrics:website_metrics.test.phrase_status.sum(#3)}=0</expression>
+            <expression>{Template Website metrics:website_metrics.test.phrase_status.sum(#3)}=0</expression>
             <recovery_mode>1</recovery_mode>
-            <recovery_expression>{Template - SSL metrics:website_metrics.test.phrase_status.sum(#3)}=3</recovery_expression>
+            <recovery_expression>{Template Website metrics:website_metrics.test.phrase_status.sum(#3)}=3</recovery_expression>
             <name>Web site &quot;{$WEBSITE_METRICS_URL}&quot; test phrase failed</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
@@ -1456,7 +1456,7 @@
             <dependencies>
                 <dependency>
                     <name>Web site &quot;{$WEBSITE_METRICS_URL}&quot; Nodata</name>
-                    <expression>{Template - SSL metrics:website_metrics.test.code.nodata(10m)}=1</expression>
+                    <expression>{Template Website metrics:website_metrics.test.code.nodata(10m)}=1</expression>
                     <recovery_expression/>
                 </dependency>
             </dependencies>
@@ -1490,7 +1490,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template - SSL metrics</host>
+                        <host>Template Website metrics</host>
                         <key>website_metrics.test.time</key>
                     </item>
                 </graph_item>
@@ -1522,7 +1522,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template - SSL metrics</host>
+                        <host>Template Website metrics</host>
                         <key>website_metrics.test.speed</key>
                     </item>
                 </graph_item>
