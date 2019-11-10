@@ -1004,10 +1004,10 @@ disks (kernel 2.6+):&#13;
 wget https://raw.githubusercontent.com/krom/zabbix_template_md/master/userparameter_md.conf&#13;
 https://www.kernel.org/doc/Documentation/iostats.txt&#13;
 &#13;
-Количество операций в секунду (ops)&#13;
-Пропускная способность (throughput)&#13;
-Время обработки запроса (latency или правильней svctime)&#13;
-Утилизация дисковой подсистемы (utilization)</description>
+I/O per second (ops)&#13;
+Throughput (throughput)&#13;
+Request Processing Time (latency or svctime)&#13;
+Disk utilization (utilization)</description>
             <groups>
                 <group>
                     <name>Templates/Operating Systems</name>
@@ -8163,7 +8163,7 @@ include/uapi/linux/if_arp.h for all possible values.</description>
 &#13;
 Debug:&#13;
 1. Open top&#13;
-2. Check rss и vss column&#13;
+2. Check rss and vss column&#13;
 3. Get process wich using much memory</description>
             <type>0</type>
             <manual_close>1</manual_close>
