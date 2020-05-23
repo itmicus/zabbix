@@ -10,6 +10,7 @@ import subprocess
 import sys
 import time
 import tldextract
+import whois
 from base64 import b64encode
 from datetime import datetime
 from dateutil import parser, relativedelta
@@ -18,9 +19,6 @@ try:
     from urllib.parse import urlparse #python3
 except ImportError:
      from urlparse import urlparse #python2
-
-# custom settings
-import website_settings
 
 __author__ = "Pavel Kuznetsov - https://itmicus.ru"
 __copyright__ = "Copyright 2018, Itmicus LLC, Pavel Kuznetsov"
@@ -36,7 +34,9 @@ __doc__ = """This script is part of Template_Website_metrics.xml Zabbix Monitori
             1. Install requirements Python modules:
             pip install -r requirements.txt
 
-            2. Copy website_settings.example.py to website_settings.py and make proper changes on it
+            2. Instal whois package for you system:
+            apt install whois
+            yum install jwhois
 
             TODO:
             1. pyOpenSSL brokes sock.getpeercert() and --testssl not work
@@ -162,35 +162,22 @@ class WebSiteCheck:
             return 0
 
     def domain_get_status(self, domain):
-        headers = {
-            "Accept": "application/json",
-            "Authorization": "Token token=" + website_settings.JSONWHOIS_API
-        }
+        domain_name = tldextract.extract(domain)
+        domain = domain_name.registered_domain
+        domain = whois.query(domain)
 
-        domain_info = self.session.get(
-            "https://jsonwhois.com/api/v1/whois",
-            headers=headers,
-            data={'domain': domain})
-        domain_info = json.loads(domain_info.text)
-        logging.debug('Domain check result ' + str(domain_info))
+        logging.debug('Domain check result ' + str(domain.__dict__))
 
-        expire_date = parser.parse(domain_info['expires_on'])
-        expire_in = expire_date.replace(tzinfo=None) - datetime.utcnow().replace(tzinfo=None)
+        expire_in = domain.expiration_date.replace(tzinfo=None) - datetime.utcnow().replace(tzinfo=None)
         days_to_expire = 0
         if expire_in.days > 0:
             days_to_expire = expire_in.days
 
-        #fix for ru-centr registrar
-        if str(domain_info['registrar']['name']) != "None":
-            registrar = domain_info['registrar']['name']
-        else:
-            registrar = domain_info['registrar']['id']
-
         data = {
-            'domain_name': domain_info['domain'],
-            'registrar': registrar,
-            'creation_date': datetime.strptime(domain_info['created_on'], '%Y-%m-%dT%H:%M:%S.000Z'),
-            'expiration_date': datetime.strptime(domain_info['expires_on'], '%Y-%m-%dT%H:%M:%S.000Z'),
+            'domain_name': domain.name,
+            'registrar': domain.registrar,
+            'creation_date': domain.creation_date.strftime("%Y-%m-%dT%H:%M:%S.000Z"),
+            'expiration_date': domain.expiration_date.strftime("%Y-%m-%dT%H:%M:%S.000Z"),
             'days_to_expire': days_to_expire,
         }
         logging.debug('Return data:'+str(data))
@@ -349,8 +336,8 @@ def main():
                 data.update({'domain_status': 1})
                 data.update({'domain_daystoexpire': domainname_result['days_to_expire']})
                 data.update({'domain_registrar': domainname_result['registrar']})
-                data.update({'domain_creationdate': domainname_result['creation_date'].strftime("%c")})
-                data.update({'domain_expiredate': domainname_result['expiration_date'].strftime("%c")})
+                data.update({'domain_creationdate': domainname_result['creation_date']})
+                data.update({'domain_expiredate': domainname_result['expiration_date']})
             else:
                 data.update({'domain_status': 0})
             json.dump(data, sys.stdout)

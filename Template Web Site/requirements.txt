@@ -2,3 +2,5 @@ python-dateutil>=2.7.2
 requests>=2.22.0
 tldextract>=2.2.0
 urllib3
+wheel
+whois
