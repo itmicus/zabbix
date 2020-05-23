@@ -188,11 +188,11 @@ class WebSiteCheck:
         user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.78 Safari/537.36"
         headers = {'User-Agent': user_agent}
         phrase_status = 0
-        if timeout_value > 20:
+        if int(timeout_value) > 20:
             timeout_value = 20
         try:
             response = self.session.get(
-                url, headers=headers, timeout=(timeout_value, timeout_value))
+                url, headers=headers, timeout=(int(timeout_value), int(timeout_value)))
             time = round(response.elapsed.total_seconds(), 2)
             code = response.status_code
 
