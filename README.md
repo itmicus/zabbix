@@ -9,12 +9,12 @@ Contains the templates for zabbix, requirements, instructions and scripts.
 
 Depending on your operating system, you can download and use templates for:
 
-1. [Microsoft Hyper-V](Template Microsoft Hyper-V)
-2. [Windows Active](Template OS Windows Active)
-3. [UPS IPPON Back Basic](Template UPS Ippon BACK BASIC)
-4. [Web Site Metrics](Template Web Site)
-5. [Windows Certificates](Template Windows Certificates)
-6. [Office Web Apps](Template Windows Office Web Apps)
+1. [Microsoft Hyper-V](Template%20Microsoft%20Hyper-V)
+2. [Windows Active](Template%20OS%20Windows%20Active)
+3. [UPS IPPON Back Basic](Template%20UPS%20Ippon%20BACK%20BASIC)
+4. [Web Site Metrics](Template%20Web%20Site)
+5. [Windows Certificates](Template%20Windows%20Certificates)
+6. [Office Web Apps](Template%20Windows%20Office%20Web%20Apps)
 7. [Operating systems][templates os]
 
 Each directory contains a `README.md` file with information about the build, etc.
