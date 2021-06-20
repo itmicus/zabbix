@@ -121,7 +121,7 @@ class WebSiteCheck:
 
     def ssl_get_status(self, url, timeout_value=15):
         logging.debug('ssl_get_status:'+str(url))
-        response = self.session.get(url, verify=True, timeout=(timeout_value, timeout_value))
+        response = self.session.get(url, verify=True, timeout=(timeout_value, timeout_value), allow_redirects=False)
         logging.debug('Response:'+str(response))
         if hasattr(response, 'peercert') is False:
             logging.debug('Field peercert not found!')
@@ -154,7 +154,7 @@ class WebSiteCheck:
 
     def ssl_verify_cert(self, url, timeout_value=15):
         try:
-            self.session.get(url, verify=True, timeout=(timeout_value, timeout_value))
+            self.session.get(url, verify=True, timeout=(timeout_value, timeout_value), allow_redirects=False)
             logging.debug('ssl_verify_cert: OK')
             return 1
         except Exception as e:
