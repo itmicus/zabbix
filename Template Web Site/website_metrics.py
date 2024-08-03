@@ -164,7 +164,7 @@ class WebSiteCheck:
     def domain_get_status(self, domain):
         domain_name = tldextract.extract(domain)
         domain = domain_name.registered_domain
-        domain = whois.query(domain)
+        domain = whois.query(domain.encode("idna").decode("utf-8"))
 
         logging.debug('Domain check result ' + str(domain.__dict__))
 
